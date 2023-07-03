@@ -25,6 +25,7 @@ def print_slow(text):
 
 
 def main():
+    print_slow("==============================================")
     print_slow("Welcome to the Temperature Conversion Program!")
     print_slow("==============================================")
     print_slow("Instructions:")

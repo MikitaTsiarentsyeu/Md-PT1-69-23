@@ -1,5 +1,6 @@
 import random
 
+
 def generate_random_number(left, right):
     """
     Generates a random number within the specified range [left, right].
@@ -14,6 +15,7 @@ def generate_random_number(left, right):
     random_number = random.SystemRandom().randint(left, right)
     return random_number
 
+
 def validate_input(value):
     """
     Validates the user input to ensure it is a valid number.
@@ -25,6 +27,7 @@ def validate_input(value):
     - True if the value is a number, False otherwise.
     """
     return value.replace(".", "").isdigit()
+
 
 def main():
     print("----------------------------------")
@@ -60,6 +63,7 @@ def main():
         if choice == "no":
             print("Thank you for using the program. Goodbye!")
             break
+
 
 if __name__ == "__main__":
     main()

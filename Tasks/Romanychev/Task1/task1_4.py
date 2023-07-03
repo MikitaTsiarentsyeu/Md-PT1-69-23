@@ -3,6 +3,7 @@ import requests
 from datetime import datetime
 from decimal import Decimal, ROUND_HALF_UP
 
+
 def get_usd_to_byn_rate():
     url = "https://myfin.by/currency/usd"  # replace with the URL of the currency rate page
     response = requests.get(url)
@@ -11,6 +12,7 @@ def get_usd_to_byn_rate():
     rate_element = soup.find("span", class_="accent")
     rate = rate_element.text
     return Decimal(rate)
+
 
 def validate_amount_input(amount):
     try:
@@ -22,6 +24,7 @@ def validate_amount_input(amount):
     except ValueError:
         return False
 
+
 def main():
     print("=============================")
     print("USD to BYN Conversion Program")
@@ -31,7 +34,7 @@ def main():
     print(f"Best USD to BYN rate as of {datetime.now().strftime('%Y-%m-%d')}: {usd_to_byn_rate} (according to myfin.by)")
 
     while True:
-        amount_usd = input("Enter the amount in USD: ") 
+        amount_usd = input("Enter the amount in USD: ")
 
         if not amount_usd.replace(".", "").isdigit():
             print("Invalid amount. Please enter a positive number.")
@@ -54,6 +57,7 @@ def main():
         if choice == "no":
             print("Thank you for using the USD to BYN Conversion Program. Goodbye!")
             break
+
 
 if __name__ == "__main__":
     main()
