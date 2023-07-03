@@ -49,13 +49,15 @@ def main():
         right = float(right)
 
         if left >= right:
-            print("Invalid range. The left border should be smaller than the right border.")
+            print("Invalid range. The left border should be smaller "
+                  "than the right border.")
             continue
 
         random_number = generate_random_number(left, right)
         print("Random number:", random_number)
 
-        choice = input("Do you want to generate another random number? (Yes/No): ").lower()
+        choice = input("Do you want to generate another random number? "
+                       "(Yes/No): ").lower()
 
         while choice not in ["yes", "no"]:
             choice = input("Invalid choice. Please enter Yes or No: ").lower()

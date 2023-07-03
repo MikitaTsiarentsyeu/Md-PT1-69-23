@@ -29,13 +29,15 @@ def main():
             print("Invalid speed value. Please enter a non-negative number.")
             continue
 
-        choice = input("Do you want to convert another speed? (Yes/No): ").lower()
+        choice = input("Do you want to convert another speed?"
+                       " (Yes/No): ").lower()
 
         while choice not in ["yes", "no"]:
             choice = input("Invalid choice. Please enter Yes or No: ").lower()
 
         if choice == "no":
-            print("Thank you for using the Kilometers per Hour to Meters per Second Converter. Goodbye!")
+            print("Thank you for using the Kilometers per Hour to Meters per"
+                  " Second Converter. Goodbye!")
             break
 
 

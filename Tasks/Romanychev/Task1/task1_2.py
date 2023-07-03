@@ -29,7 +29,8 @@ def main():
         rounded_area = round(area, 2)
         print(f"The area of the circle is: {rounded_area}")
 
-        choice = input("Do you want to calculate the area of another circle? (Yes/No): ").lower()
+        choice = input("Do you want to calculate the area of another circle?"
+                       " (Yes/No): ").lower()
 
         while choice not in ["yes", "no"]:
             choice = input("Invalid choice. Please enter Yes or No: ").lower()
