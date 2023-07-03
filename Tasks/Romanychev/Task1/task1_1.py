@@ -1,10 +1,13 @@
 import time
 
+
 def celsius_to_fahrenheit(celsius):
     return round(celsius * 9/5 + 32, 2)
 
+
 def fahrenheit_to_celsius(fahrenheit):
     return round((fahrenheit - 32) * 5/9, 2)
+
 
 def validate_temperature_input(temperature):
     try:
@@ -13,11 +16,13 @@ def validate_temperature_input(temperature):
     except ValueError:
         return False
 
+
 def print_slow(text):
     for char in text:
         print(char, end='', flush=True)
         time.sleep(0.015)
     print()
+
 
 def main():
     print_slow("Welcome to the Temperature Conversion Program!")
@@ -72,6 +77,7 @@ def main():
         if choice == "no":
             print_slow("Thank you for using the Temperature Conversion Program. Goodbye!")
             break
+
 
 if __name__ == "__main__":
     main()

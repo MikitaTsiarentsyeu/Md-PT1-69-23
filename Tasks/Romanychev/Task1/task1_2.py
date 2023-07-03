@@ -1,5 +1,6 @@
 import math
 
+
 def get_radius_from_user():
     while True:
         radius = input("Enter the radius of the circle: ")
@@ -12,10 +13,13 @@ def get_radius_from_user():
         except ValueError:
             print("Invalid input. Please enter a valid number.")
 
+
 def calculate_circle_area(radius):
     return math.pi * radius**2
 
+
 def main():
+    print("----------------------")
     print("Circle Area Calculator")
     print("----------------------")
 
@@ -33,6 +37,7 @@ def main():
         if choice == "no":
             print("Thank you for using the Circle Area Calculator. Goodbye!")
             break
+
 
 if __name__ == "__main__":
     main()
