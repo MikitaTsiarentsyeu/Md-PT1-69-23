@@ -12,7 +12,7 @@ speed = input("Program is Area of a circle:\nEnter a number in mm [from 1 to +�
 szSpeed = checkNumber(speed)
 if szSpeed > 0:
 
-    #
+    #Ушел на работу
     # area_mm = pi*pow(szRadius, 2)
     # area_sm = area_mm/100
     # area_m2 = float(area_sm/10000)
