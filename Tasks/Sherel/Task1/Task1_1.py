@@ -8,4 +8,4 @@ def checkNumber(celsius):
 celsius = input("Converter Celsius to Fahrenheit\nEnter a number in °C: ")
 szCelsius = checkNumber(celsius)
 convertFahrenheit = (szCelsius * 9/5) + 32
-print(f"""{format(szCelsius, '.1f')} °C is {format(float(convertFahrenheit), '.1f')} °F""")
+print(f"""{format(szCelsius, '.1f')} °C is {format(convertFahrenheit, '.1f')} °F""")
