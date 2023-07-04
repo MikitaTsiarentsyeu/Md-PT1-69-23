@@ -14,9 +14,9 @@ print("Hello! This program converts Celsius to Fahrenheit")
 flag = True
 
 while flag:
-    cel = input("Enter value in Celsius\n")
+    cel = input("Enter value in Celsius, °C\n")
     far = 1.8 * float(cel) + 32
-    print(far)
+    print(far, '℉')
     flag = askToExit()
 
 
