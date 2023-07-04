@@ -6,6 +6,7 @@ def askToExit():
     if answer.upper() == 'N':
         return True
     elif answer.upper() == 'Y':
+        print('Goodbye!')
         return False
     else:
         return askToExit()

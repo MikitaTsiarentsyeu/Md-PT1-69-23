@@ -9,6 +9,6 @@ if radius.isdigit():
 elif '.' in radius[1:-1] and (radius[0:radius.index('.')] + radius[radius.index('.')+1:]).isdigit():
     print("The area of your circle is: ", round(float(radius)**2 * math.pi, 2))
 else:
-    print("Please, enter only integer or float values."
+    print("Please, enter only positive integer or float values."
           " Use '.'-symbol to separate the fractional part in float numbers.")
     exit()
