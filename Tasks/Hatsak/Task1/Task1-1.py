@@ -15,6 +15,9 @@ flag = True
 
 while flag:
     cel = input("Enter value in Celsius, °C\n")
+    if not cel.isdigit():
+        print("ERROR! Only integers valid!")
+        continue
     far = 1.8 * float(cel) + 32
     print(far, '℉')
     flag = askToExit()
