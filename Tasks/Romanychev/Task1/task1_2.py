@@ -52,10 +52,10 @@ def format_area(area):
         return 'Infinity'
     elif area == 0:
         return '0'
-    elif abs(area) < 0.01:
-        return f"{area:.15f}"
+    elif abs(area) < 0.01 or abs(area) >= 1e15:
+        return f"{area:.15e}"
     else:
-        return locale.format_string("%.2f", area, grouping=True)
+        return locale.format_string("%.2f", area, grouping=True, monetary=True)
 
 
 def main():
