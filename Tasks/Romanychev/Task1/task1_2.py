@@ -37,8 +37,12 @@ def main():
     while True:
         radius = get_radius_from_user()
         area = calculate_circle_area(radius)
-        rounded_area = round(area, 2)
-        print(f"The area of the circle is: {rounded_area}")
+
+        if abs(area) < 0.01:
+            print(f"The value is very small - {area:.15f}")
+        else:
+            rounded_area = round(area, 2)
+            print(f"The area of the circle is: {rounded_area}")
 
         choice = input(
             "Do you want to calculate the area of another circle? "
