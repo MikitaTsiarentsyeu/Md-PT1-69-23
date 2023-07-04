@@ -11,6 +11,7 @@ def checkNumber(speed):
 speed = input("Program is Area of a circle:\nEnter a number in mm [from 1 to +∞]: ")
 szSpeed = checkNumber(speed)
 if szSpeed > 0:
+    print('test')
 
     #Ушел на работу
     # area_mm = pi*pow(szRadius, 2)
