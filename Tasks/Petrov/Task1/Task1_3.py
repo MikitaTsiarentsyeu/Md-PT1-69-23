@@ -10,7 +10,7 @@ def isitspeed(x):
         else:
             print("Speed cant be negative or 0")
             return False
-    except:
+    except ValueError:
         print("Invalid input")
         return False
 
@@ -19,6 +19,6 @@ s = input("Put your speed value (in km/h): ")
 
 while not isitspeed(s):
     s = input("Please try again: ")
-        
+
 f = Decimal(s) * 1000 / 3600
 print(f"When your speed is {s} km/h, it is equal to {round(f,2)} m/s")
