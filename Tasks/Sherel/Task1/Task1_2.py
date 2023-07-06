@@ -15,6 +15,6 @@ if szRadius > 0:
     area_sm = area_mm/100
     area_m2 = float(area_sm/10000)
     area_m2 = decimal.Decimal(area_m2)
-    print(f"""Result:\n{szRadius} mm = {round(area_mm, 2)} mm²\n{szRadius} mm = {round(area_sm, 4)} sm²\n{szRadius} mm = {round(area_m2, 7)} m²""")
+    print(f"""Result:\n{szRadius} mm = {round(area_mm, 2)} mm²\n{szRadius} mm = {round(area_sm, 4)} sm²\n{szRadius} mm = {round(area_m2, 10)} m²""")
 else:
     print('Invalid value, try again...')
