@@ -1,6 +1,3 @@
-import decimal
-from math import pi, pow
-
 def checkNumber(speed):
     try:
         return float(speed)
@@ -8,16 +5,10 @@ def checkNumber(speed):
         print('Invalid value, try again...')
         exit()
 
-speed = input("Program is Area of a circle:\nEnter a number in mm [from 1 to +∞]: ")
+speed = input("Converter km/h in m/s:\nEnter a speed in km/h: ")
 szSpeed = checkNumber(speed)
 if szSpeed > 0:
-    print('test')
-
-    #Ушел на работу
-    # area_mm = pi*pow(szRadius, 2)
-    # area_sm = area_mm/100
-    # area_m2 = float(area_sm/10000)
-    # area_m2 = decimal.Decimal(area_m2)
-    # print(f"""Result:\n{szRadius} mm = {round(area_mm, 2)} mm²\n{szRadius} mm = {round(area_sm, 4)} sm²\n{szRadius} mm = {round(area_m2, 7)} m²""")
+    convert = szSpeed*1000/3600
+    print(f"""{szSpeed} km/h = {round(convert, 5)} m/s""")
 else:
     print('Invalid value, try again...')
