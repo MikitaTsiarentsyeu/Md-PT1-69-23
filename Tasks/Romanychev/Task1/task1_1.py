@@ -1,21 +1,19 @@
 import temp_converter
-import utilities as util
+from utilities import print_slow as ps
+from utilities import validate_temperature_input as vti
 
 
 def main():
-    util.print_slow("==============================================")
-    util.print_slow("Welcome to the Temperature Conversion Program!")
-    util.print_slow("==============================================")
-    util.print_slow("Instructions:")
-    util.print_slow(
-        "- Choose the temperature type: C - Celsius, F - Fahrenheit.")
-    util.print_slow("- Enter the temperature value when prompted.")
-    util.print_slow("- The program will convert the temperature and "
-                    "display the result.")
-    util.print_slow(
-        "- You can choose to continue or exit after each conversion.")
-    util.print_slow(
-        "============================================================")
+    ps("==============================================")
+    ps("Welcome to the Temperature Conversion Program!")
+    ps("==============================================")
+    ps("Instructions:")
+    ps("- Choose the temperature type: C - Celsius, F - Fahrenheit.")
+    ps("- Enter the temperature value when prompted.")
+    ps("- The program will convert the temperature and "
+       "display the result.")
+    ps("- You can choose to continue or exit after each conversion.")
+    ps("============================================================")
 
     while True:
         option = input("Please select the temperature type "
@@ -24,7 +22,7 @@ def main():
         if option.upper() == "C":
             while True:
                 celsius = input("Enter the temperature in Celsius: ")
-                if util.validate_temperature_input(celsius):
+                if vti(celsius):
                     break
                 else:
                     print("Invalid temperature value. "
@@ -38,7 +36,7 @@ def main():
         elif option.upper() == "F":
             while True:
                 fahrenheit = input("Enter the temperature in Fahrenheit: ")
-                if util.validate_temperature_input(fahrenheit):
+                if vti(fahrenheit):
                     break
                 else:
                     print("Invalid temperature value. "
@@ -63,8 +61,8 @@ def main():
                 print("Invalid choice. Please enter Yes or No.")
 
         if choice == "no":
-            util.print_slow("Thank you for using the Temperature Conversion "
-                            "Program. Goodbye!")
+            ps("Thank you for using the Temperature Conversion "
+               "Program. Goodbye!")
             break
 
 
