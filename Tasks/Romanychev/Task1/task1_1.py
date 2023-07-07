@@ -1,4 +1,3 @@
-import time
 import temp_converter
 import utilities as util
 
