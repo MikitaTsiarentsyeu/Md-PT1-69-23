@@ -9,7 +9,6 @@ while True:
     print("4 - Конвертер валют")
     print("5 - Генератор случайных чисел")
 
-        speed_ms = speed_kmh * 1000 / 3600
     choice = input()
     if choice.isdigit():
         choice = int(choice)
