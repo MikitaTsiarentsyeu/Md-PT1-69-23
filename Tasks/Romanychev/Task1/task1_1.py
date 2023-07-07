@@ -3,21 +3,6 @@ import temp_converter
 import utilities as util
 
 
-def validate_temperature_input(temperature):
-    try:
-        float(temperature)
-        return True
-    except ValueError:
-        return False
-
-
-def print_slow(text):
-    for char in text:
-        print(char, end='', flush=True)
-        time.sleep(0.015)
-    print()
-
-
 def main():
     util.print_slow("==============================================")
     util.print_slow("Welcome to the Temperature Conversion Program!")
