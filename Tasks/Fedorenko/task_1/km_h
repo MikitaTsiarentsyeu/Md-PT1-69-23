@@ -1,0 +1,6 @@
+km_h = float(input ('entry speed in km/h\n'))
+if km_h <= 0:
+    print('wrong')
+    exit()
+x=3.16
+print(km_h/x,'m/s')
