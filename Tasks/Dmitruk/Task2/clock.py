@@ -21,7 +21,7 @@ time = input ( "Pleese input time in format (hh:mm): \n" )
 
 new_time = time.replace (":", "")
 
-if not new_time.isdigit() or len(minutes) < 2:
+if not new_time.isdigit():
 
     print ("Your enter a wrong time.")
     exit()
