@@ -11,7 +11,7 @@ from time import strptime
 #     elif not possible_time[0:2].isdigit() or not possible_time[3:].isdigit():
 #         print("Incorrect input, try again")
 #         return False
-#     elif int(possible_time[0:2]) > 23 or int(possible_time[3:]) > 60:
+#     elif int(possible_time[0:2]) > 23 or int(possible_time[3:]) > 59:
 #         print("Incorrect input, try again")
 #         return False
 #     else:
