@@ -12,7 +12,7 @@ def main():
         ui.clear_screen()
         ui.print_header()
 
-        time_input = input("Пожалуйста, введите время в формате ЧЧ:ММ "
+        time_input = input("Пожалуйста, введите время в формате ЧЧ:ММ \n"
                            "(24-часовой формат):  ")
         ui.print_separator()
 
