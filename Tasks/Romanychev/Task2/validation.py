@@ -1,5 +1,4 @@
 import re
-from user_interface import print_max_attempts_message
 
 
 def validate_time_format(time_input):
@@ -36,39 +35,3 @@ def validate_yes_no_input(input_str):
             return response
         else:
             print('Пожалуйста, введите "да" или "нет".')
-
-
-def display_invalid_time_error():
-    """
-    Отображает сообщение об ошибке неверного формата времени или
-    недопустимых значений.
-    """
-    print('Неверный формат времени или недопустимые значения.'
-          ' Попробуйте снова.')
-
-
-def ask_to_continue():
-    """
-    Запрашивает у пользователя ответ на вопрос о продолжении работы программы.
-
-    Возвращает:
-    - str: Ответ пользователя ("да" или "нет").
-    """
-    max_attempts = 3  # Максимальное количество попыток
-    attempt_count = 0  # Счетчик попыток
-
-    while attempt_count <= max_attempts:
-        response = input('Хотите продолжить? (да/нет): ').lower()
-        if response == "нет":
-            return "нет"
-        elif response == "да":
-            return response
-        else:
-            print('Пожалуйста, введите "да" или "нет".')
-            attempt_count += 1
-            if attempt_count == max_attempts:
-                print_max_attempts_message()
-                return "нет"
-
-    # Достигнуто макс. кол-во попыток или введен ответ отличный от "да"
-    return 'нет'

@@ -1,9 +1,7 @@
 import time
 import user_interface as ui
 from time_formatting import cur_time
-from validation import (
-    validate_time_format, display_invalid_time_error, ask_to_continue
-)
+from validation import validate_time_format
 
 
 def main():
@@ -24,12 +22,12 @@ def main():
             ui.print_formatted_time(formatted_time)
             ui.print_separator()
 
-            repeat = ask_to_continue()
+            repeat = ui.ask_to_continue()
             if repeat == "нет":
                 break
 
         else:
-            display_invalid_time_error()
+            ui.display_invalid_time_error()
             time.sleep(0.8)
             attempt_count += 1
 
