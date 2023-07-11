@@ -7,9 +7,9 @@ def cur_time(time_input):
 
     # Если время 00:00, то это полночь
     if not (hour or minute):
-        formatted_time = f"{time_input} - полночь"
+        formatted_time = f"{time_input} - {dict_hour[hour % 12][2]}"
     elif hour == 12 and not minute:
-        formatted_time = f"{time_input} - полдень"
+        formatted_time = f"{time_input} - {dict_hour[hour % 12][2]}"
 
     # Если минуты равны нулю, то выводим ровное количество часов
     elif minute == 0:

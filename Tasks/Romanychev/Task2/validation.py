@@ -59,14 +59,16 @@ def ask_to_continue():
 
     while attempt_count <= max_attempts:
         response = input('Хотите продолжить? (да/нет): ').lower()
-        if response == 'да':
+        if response == "нет":
+            return "нет"
+        elif response == "да":
             return response
         else:
             print('Пожалуйста, введите "да" или "нет".')
             attempt_count += 1
             if attempt_count == max_attempts:
                 print_max_attempts_message()
-                return 'нет'
+                return "нет"
 
     # Достигнуто макс. кол-во попыток или введен ответ отличный от "да"
     return 'нет'
