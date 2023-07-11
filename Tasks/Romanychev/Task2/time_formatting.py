@@ -16,7 +16,7 @@ def cur_time(time_input):
         case m if 30 < m < 45:
             formatted_time = f"{time_input} - {dict_min[minute][0]} {dict_min[minute][2]} {dict_hour[(hour + 1) % 12][1]}"
         case m if m >= 45:
-            formatted_time = f"{time_input} - без {dict_min[60 - minute][1]} минут {dict_hour[(hour + 1) % 12][0]}"
+            formatted_time = f"{time_input} - без {dict_min[60 - minute][1]} {dict_min[60 - minute][3]} {dict_hour[(hour + 1) % 12][0]}"
         case _:
             formatted_time = ""  # Обработка случая, если ни одно условие\
             # не совпало
