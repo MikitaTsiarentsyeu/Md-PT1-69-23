@@ -28,7 +28,7 @@ def main():
 
         else:
             ui.display_invalid_time_error()
-            time.sleep(0.8)
+            time.sleep(0.9)
             attempt_count += 1
 
         if attempt_count == MAX_ATTEMPTS:

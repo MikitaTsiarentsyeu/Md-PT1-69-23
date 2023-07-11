@@ -5,28 +5,29 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def print_separator():
+    separator = "=" * 50  # Используем символ "=" в качестве разделителя
+    print(separator)
+
+
 def print_header():
-    print("================================================")
+    print_separator()
     print("   Программа Конвертация Времени. версия 1.0.0")
-    print("================================================\n")
+    print_separator()
 
 
 def print_max_attempts_message():
     """
     Отображает сообщение о превышении максимального количества попыток.
     """
-    print("================================================")
+    print_separator()
     print("Превышено количество попыток. Выход из программы.")
 
 
 def print_footer():
-    print("================================================")
+    print_separator()
     print(" Спасибо, что воспользовались нашей программой!")
-    print("================================================\n")
-
-
-def print_separator():
-    print("------------------------------------------------")
+    print_separator()
 
 
 def print_formatted_time(formatted_time):
