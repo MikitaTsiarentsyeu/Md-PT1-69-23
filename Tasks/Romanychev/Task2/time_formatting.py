@@ -9,7 +9,7 @@ def cur_time(time_input):
     if not (hour or minute):
         formatted_time = f"{time_input} - {dict_hour[hour % 12][2]}"
     elif hour == 12 and not minute:
-        formatted_time = f"{time_input} - {dict_hour[hour % 12][2]}"
+        formatted_time = f"{time_input} - {dict_hour[hour][2]}"
 
     # Если минуты равны нулю, то выводим ровное количество часов
     elif minute == 0:
@@ -41,9 +41,9 @@ def cur_time(time_input):
 
     # Если минуты больше или равны 45, то выводим время без такого-то количества минут текущего часа
     elif 0 <= hour < 23 and 45 <= minute <= 58:
-        formatted_time = f"{time_input} - без {dict_min[60 - minute][1]} минут {dict_hour[hour % 12 + 1][0]}"
+        formatted_time = f"{time_input} - без {dict_min[60 - minute][1]} минут {dict_hour[hour % 12][0]}"
     elif 0 <= hour < 23 and minute == 59:
-        formatted_time = f"{time_input} - без {dict_min[60 - minute][1]} минуты {dict_hour[hour % 12 + 1][0]}"
+        formatted_time = f"{time_input} - без {dict_min[60 - minute][1]} минуты {dict_hour[hour % 12][0]}"
     elif hour == 23 and 45 <= minute <= 58:
         formatted_time = f"{time_input} - без {dict_min[60 - minute][1]} минут {dict_hour[hour - 23][0]}"
     elif hour == 23 and minute == 59:
