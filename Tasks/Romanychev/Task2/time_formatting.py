@@ -1,7 +1,7 @@
 from dictionaries import dict_min, dict_hour
 
 
-def cur_time(time_input, dict_min, dict_hour):
+def cur_time(time_input):
     hour, minute = map(int, time_input.split(':'))
     formatted_time = ""
 

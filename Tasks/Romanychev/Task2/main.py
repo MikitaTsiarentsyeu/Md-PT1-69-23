@@ -1,5 +1,5 @@
 import os
-from dictionaries import dict_min, dict_hour
+import time
 from validation import validate_time_format, display_invalid_time_error, display_max_attempts_message, ask_to_continue
 from time_formatting import cur_time
 
@@ -20,7 +20,7 @@ def main():
 
         if validate_time_format(time_input):
             # Форматирование времени
-            formatted_time = cur_time(time_input, dict_min, dict_hour)
+            formatted_time = cur_time(time_input)
             print('-----------------------------------------------------------')
             print(f'{formatted_time}')
             print('-----------------------------------------------------------')
@@ -33,6 +33,7 @@ def main():
         else:
             # Отображение сообщения об ошибке неверного формата времени
             display_invalid_time_error()
+            time.sleep(0.7)
             attempt_count += 1  # Увеличение счетчика попыток
 
     if attempt_count == MAX_ATTEMPTS:
