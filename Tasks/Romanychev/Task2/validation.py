@@ -1,4 +1,5 @@
 import re
+from user_interface import print_max_attempts_message
 
 
 def validate_time_format(time_input):
@@ -46,13 +47,6 @@ def display_invalid_time_error():
           ' Попробуйте снова.')
 
 
-def display_max_attempts_message():
-    """
-    Отображает сообщение о превышении максимального количества попыток.
-    """
-    print('Превышено количество попыток. Выход из программы.')
-
-
 def ask_to_continue():
     """
     Запрашивает у пользователя ответ на вопрос о продолжении работы программы.
@@ -60,9 +54,19 @@ def ask_to_continue():
     Возвращает:
     - str: Ответ пользователя ("да" или "нет").
     """
-    while True:
+    max_attempts = 3  # Максимальное количество попыток
+    attempt_count = 0  # Счетчик попыток
+
+    while attempt_count <= max_attempts:
         response = input('Хотите продолжить? (да/нет): ').lower()
-        if response == 'да' or response == 'нет':
+        if response == 'да':
             return response
         else:
             print('Пожалуйста, введите "да" или "нет".')
+            attempt_count += 1
+            if attempt_count == max_attempts:
+                print_max_attempts_message()
+                return 'нет'
+
+    # Достигнуто макс. кол-во попыток или введен ответ отличный от "да"
+    return 'нет'

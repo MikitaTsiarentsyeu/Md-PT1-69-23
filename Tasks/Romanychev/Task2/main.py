@@ -1,45 +1,43 @@
-import os
 import time
-from validation import validate_time_format, display_invalid_time_error, display_max_attempts_message, ask_to_continue
+import user_interface as ui
 from time_formatting import cur_time
-
-
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
+from validation import (
+    validate_time_format, display_invalid_time_error, ask_to_continue
+)
 
 
 def main():
-    MAX_ATTEMPTS = 3  # Максимальное количество попыток ввода времени
-    attempt_count = 0  # Счетчик попыток
+    MAX_ATTEMPTS = 3
+    attempt_count = 0
 
     while attempt_count < MAX_ATTEMPTS:
-        clear_screen()
-        print('===========================================================')
-        time_input = input('Введите значение времени в формате чч:мм: ')
-        print('===========================================================')
+        ui.clear_screen()
+        ui.print_header()
+
+        time_input = input("Пожалуйста, введите время в формате ЧЧ:ММ "
+                           "(24-часовой формат):  ")
+        ui.print_separator()
 
         if validate_time_format(time_input):
-            # Форматирование времени
             formatted_time = cur_time(time_input)
-            print('-----------------------------------------------------------')
-            print(f'{formatted_time}')
-            print('-----------------------------------------------------------')
 
-            repeat = ask_to_continue()  # Запрос на продолжение работы программы
-            if repeat == 'нет':
+            ui.print_formatted_time(formatted_time)
+            ui.print_separator()
+
+            repeat = ask_to_continue()
+            if repeat == "нет":
                 break
-            else:
-                attempt_count = 0  # Сброс счетчика попыток
+
         else:
-            # Отображение сообщения об ошибке неверного формата времени
             display_invalid_time_error()
-            time.sleep(0.7)
-            attempt_count += 1  # Увеличение счетчика попыток
+            time.sleep(0.8)
+            attempt_count += 1
 
-    if attempt_count == MAX_ATTEMPTS:
-        # Отображение сообщения о превышении максимального количества попыток
-        display_max_attempts_message()
+        if attempt_count == MAX_ATTEMPTS:
+            ui.print_max_attempts_message()
+
+    ui.print_footer()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
