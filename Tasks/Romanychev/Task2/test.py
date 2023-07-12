@@ -21,7 +21,7 @@ def main():
                 formatted_time = cur_time(time_input)
 
             ui.print_formatted_time(formatted_time)
-            time.sleep(0.1)
+            time.sleep(0.0)
 
             break
 
