@@ -52,7 +52,7 @@ elif hh == 0:
 #first condition
 #min == 0: такое-то значение часа ровно (15:00 - три часа ровно)
 if mm == 0:
-    print(f"""ровно {list[hh][0]} {hhText}""")
+    print(f"""{list[hh][0]} {hhText} ровно""")
     exit()
 
 #second condition
@@ -107,5 +107,5 @@ if mm >= 45:
     if mm == 59:
         print(f"""без {list[60 - mm][2]} {list["mm"][1]} {list[hh + 1][0]}""")
         exit()
-    print(f"""без {list[60-mm][2]} {mmText} {list[hh + 1][0]}""")
+    print(f"""без {list[60-mm][2]} {list["mm"][2]} {list[hh + 1][0]}""")
     exit()
