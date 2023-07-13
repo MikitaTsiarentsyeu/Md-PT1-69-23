@@ -8,7 +8,7 @@ min == 30: половина такого-то (15:30 - половина четв
 min > 30 and min < 45 столько-то минут следующего часа (12:38 - тридцать восемь минут первого)
 min >= 45 без min такого-то (08:54 - без шести минут девять)"""
 
-from db import list
+from db import myList
 
 user_time = input("Enter your data in the format (hh:mm):\n")
 user_time = user_time.replace(':', '')
@@ -41,71 +41,77 @@ if int(user_time[0:2]) > 12:
 
 #Ifulfill the condition for the correct output of the end of minutes
 if hh == 1:
-    hhText = list["hh"][0]
+    hhText = myList["hh"][0]
 elif hh <= 4 and hh > 1:
-    hhText = list["hh"][1]
+    hhText = myList["hh"][1]
 elif hh <= 12 and hh > 4:
-    hhText = list["hh"][2]
+    hhText = myList["hh"][2]
 elif hh == 0:
-    hhText = list["hh"][2]
+    hhText = myList["hh"][2]
 
 #first condition
 #min == 0: такое-то значение часа ровно (15:00 - три часа ровно)
 if mm == 0:
-    print(f"""{list[hh][0]} {hhText} ровно""")
+    print(f"""{myList[hh][0]} {hhText} {myList[0][0]}""")
     exit()
 
 #second condition
 #min < 30: столько-то минут следующего часа (19:12 - двенадцать минут восьмого)
 if m2 == m2:
     if m2 == 1:
-        mmText = list["mm"][0]
+        mmText = myList["mm"][0]
     elif m2 <= 4 and m2 > 1:
-        mmText = list["mm"][1]
+        mmText = myList["mm"][1]
     elif m2 <= 9 and m2 >= 5:
-        mmText = list["mm"][2]
+        mmText = myList["mm"][2]
     elif m2 == 0:
-        mmText = list["mm"][2]
+        mmText = myList["mm"][2]
 
 if mm < 30:
+    if mm >= 16 and mm <= 19:
+        print(f"""{myList[m2][0][:-1]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+        exit()
     if mm >= 10 and mm <= 20:
-        print(f"""{list[mm][0]} {list["mm"][2]} {list[hh + 1][1]}""")
+        print(f"""{myList[mm][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
         exit()
     if mm > 20:
         if m2 == 1 or m2 == 2:
-            print(f"""{list[m1*10][0]} {list[m2][3]} {mmText} {list[hh + 1][1]}""")
+            print(f"""{myList[m1*10][0]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
             exit()
-        print(f"""{list[m1*10][0]} {list[m2][0]} {mmText} {list[hh+1][1]}""")
+        print(f"""{myList[m1*10][0]} {myList[m2][0]} {mmText} {myList[hh+1][1]}""")
         exit()
     if 0 < mm:
         if mm == 1 or m2 == 2:
-            print(f"""{list[m2][3]} {mmText} {list[hh + 1][1]}""")
+            print(f"""{myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
             exit()
-        print(f"""{list[m2][0]} {mmText} {list[hh+1][1]}""")
+        print(f"""{myList[m2][0]} {mmText} {myList[hh+1][1]}""")
         exit()
 
 #third condition
 # min == 30: половина такого-то (15:30 - половина четвёртого)
 if mm == 30:
-    print(f"""половина {list[hh + 1][1]}""")
+    print(f"""{myList[0][1]} {myList[hh + 1][1]}""")
     exit()
 
 #fourth condition
 # min > 30 and min < 45 столько-то минут следующего часа (12:38 - тридцать восемь минут первого)
 if mm > 30 and mm < 45:
-    if m2 == 1 or m2 == 2:
-        print(f"""{list[m1 * 10][0]} {list[m2][3]} {mmText} {list[hh + 1][1]}""")
+    if mm ==40:
+        print(f"""{myList[m1 * 10][0]} {mmText} {myList[hh + 1][1]}""")
         exit()
-    print(f"""{list[m1 * 10][0]} {list[m2][0]} {mmText} {list[hh + 1][1]}""")
+    if m2 == 1 or m2 == 2:
+        print(f"""{myList[m1 * 10][0]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+        exit()
+    print(f"""{myList[m1 * 10][0]} {myList[m2][0]} {mmText} {myList[hh + 1][1]}""")
     exit()
 
 #fifth condition
 #min >= 45 без min такого-то (08:54 - без шести минут девять)
 if mm >= 45:
     if hh == 12:
-        list[hh + 1][0] = list["hh"][0]
+        myList[hh + 1][0] = myList["hh"][0]
     if mm == 59:
-        print(f"""без {list[60 - mm][2]} {list["mm"][1]} {list[hh + 1][0]}""")
+        print(f"""{list[0][2]} {myList[60 - mm][2]} {myList["mm"][1]} {myList[hh + 1][0]}""")
         exit()
-    print(f"""без {list[60-mm][2]} {list["mm"][2]} {list[hh + 1][0]}""")
+    print(f"""{myList[0][2]} {myList[60-mm][2]} {myList["mm"][2]} {myList[hh + 1][0]}""")
     exit()
