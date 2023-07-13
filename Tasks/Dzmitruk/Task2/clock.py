@@ -1,7 +1,6 @@
 # Implement a text output of the time entered from the console 
 
-clock = { 0 : [ "ноль", ],
-          1 : [ "час", "одной", "первого", "одна" ],
+clock = { 1 : [ "час", "одной", "первого", "одна" ],
           2 : [ "два", "двух", "второго", "две" ],
           3 : [ "три", "трех", "третьего", "три" ],
           4 : [ "четыре", "четырех", "четвертого", "четыре" ],
@@ -31,18 +30,18 @@ if not new_time.isdigit():
     print ("Your enter a wrong time.")
     exit()
     
-hours, minutes = time.split (":")
-
-if len(minutes) < 2:
-    print ("Your enter a wrong time.")
-    exit()
-
 try:
+    hours, minutes = time.split (":")
+    
+    if len(minutes) < 2:
+        print ("Your enter a wrong time.")
+        exit()
+    
     hours = int (hours)
     minutes = int (minutes)
 
-except:
-    print ("Your enter a wrong time.")
+except ValueError as msg:
+    print ("Need more than 1 value.")
     exit()
 
 if  hours < 0 or hours > 24:
@@ -59,7 +58,7 @@ if minutes == 0:
 
     if hours == 0:
         hours += 12
-
+        
     if hours == 1:
         print ( "один", clock [hours][0], "ровно" )
 
@@ -87,7 +86,7 @@ elif 0 < minutes < 30 or 30 < minutes < 45:
     elif minutes % 10 != 0 and minutes > 15:
         digit_1 = minutes // 10
         digit_2 = minutes % 10
-
+        
         if digit_2 == 1:
             print ( clock [digit_1 * 10][0], clock [digit_2][3], "минутa", clock [hours + 1][2] )
 
@@ -106,7 +105,6 @@ elif minutes >= 45:
     if hours >= 12:
         hours -= 12
         print ( "без", clock [minutes][1], "минут", clock [hours + 1][0] )
-
+     
     else:
         print ( "без", clock [minutes][1], "минут", clock [hours + 1][0] )
-        
