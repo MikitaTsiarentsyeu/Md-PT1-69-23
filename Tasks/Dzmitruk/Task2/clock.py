@@ -18,23 +18,23 @@ clock = { 1 : [ "час", "одной", "первого", "одна" ],
           20 : ["двадцать" ], 30 : [ "тридцать" ], 40 : [ "сорок" ] }
 
 
-time = input ( "Pleese input time in format (hh:mm): \n" )
+time = input ( "Pleese input the time in the format (hh:mm): \n" )
 
 if not time.count(":"):
-    print ("Your enter a wrong time.")
+    print ("Your entered the wrong time.")
     exit()
 
 new_time = time.replace (":", "")
 
 if not new_time.isdigit():
-    print ("Your enter a wrong time.")
+    print ("Your entered the wrong time.")
     exit()
     
 try:
     hours, minutes = time.split (":")
     
-    if len(minutes) < 2:
-        print ("Your enter a wrong time.")
+    if len(minutes) != 2:
+        print ("Your entered the wrong time.")
         exit()
     
     hours = int (hours)
@@ -45,11 +45,11 @@ except ValueError as msg:
     exit()
 
 if  hours < 0 or hours > 24:
-    print ("Your enter a wrong time.")
+    print ("Your entered the wrong time.")
     exit()
 
 if  minutes < 0 or minutes > 59:
-    print ("Your enter a wrong time.")
+    print ("Your entered the wrong time.")
     exit()
 
 if minutes == 0:
