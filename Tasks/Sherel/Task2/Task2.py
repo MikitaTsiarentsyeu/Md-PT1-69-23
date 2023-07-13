@@ -76,9 +76,9 @@ if mm < 30:
         exit()
     if mm > 20:
         if m2 == 1 or m2 == 2:
-            print(f"""{myList[m1*10][0]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+            print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
             exit()
-        print(f"""{myList[m1*10][0]} {myList[m2][0]} {mmText} {myList[hh+1][1]}""")
+        print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][0]} {mmText} {myList[hh+1][1]}""")
         exit()
     if 0 < mm:
         if mm == 1 or m2 == 2:
@@ -96,13 +96,13 @@ if mm == 30:
 #fourth condition
 # min > 30 and min < 45 столько-то минут следующего часа (12:38 - тридцать восемь минут первого)
 if mm > 30 and mm < 45:
-    if mm ==40:
+    if mm == 40:
         print(f"""{myList[m1 * 10][0]} {mmText} {myList[hh + 1][1]}""")
         exit()
     if m2 == 1 or m2 == 2:
-        print(f"""{myList[m1 * 10][0]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+        print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
         exit()
-    print(f"""{myList[m1 * 10][0]} {myList[m2][0]} {mmText} {myList[hh + 1][1]}""")
+    print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][0]} {mmText} {myList[hh + 1][1]}""")
     exit()
 
 #fifth condition
