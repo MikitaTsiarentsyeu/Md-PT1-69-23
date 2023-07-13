@@ -39,7 +39,7 @@ if hh > 23 or m1 > 5 or m2 > 9:
 if int(user_time[0:2]) > 12:
     hh -= 12
 
-#Ifulfill the condition for the correct output of the end of minutes
+#Ifulfill the condition for the correct output of the end of hours
 if hh == 1:
     hhText = myList["hh"][0]
 elif hh <= 4 and hh > 1:
