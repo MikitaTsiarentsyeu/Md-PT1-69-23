@@ -102,11 +102,18 @@ if mm > 30 and mm < 45:
     if mm == 40:
         print(f"""{myList[m1 * 10][0]} {mmText} {myList[hh + 1][1]}""")
         exit()
-    if m2 == 1 or m2 == 2:
-        print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+    if mm > 40 and mm < 45:
+        if m2 == 1 or m2 == 2:
+            print(f"""{myList[40][0]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+            exit()
+        print(f"""{myList[40][0]} {myList[m2][0]} {mmText} {myList[hh + 1][1]}""")
         exit()
-    print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][0]} {mmText} {myList[hh + 1][1]}""")
-    exit()
+    if mm > 30 and mm < 40:
+        if m2 == 1 or m2 == 2:
+            print(f"""{myList[m1][0] + myList["suff"][1]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+            exit()
+        print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][0]} {mmText} {myList[hh + 1][1]}""")
+        exit()
 
 #fifth condition
 #min >= 45 без min такого-то (08:54 - без шести минут девять)
