@@ -1,7 +1,7 @@
 import os
 
 
-separator_length = 55
+SEPARATOR_LENGTH = 55
 
 
 def clear_screen():
@@ -18,8 +18,7 @@ def print_separator():
     """
     Prints a separator line using the "=" symbol as the separator.
     """
-    separator_length = 55
-    separator = "=" * separator_length
+    separator = "=" * SEPARATOR_LENGTH
     print(separator)
 
 
@@ -28,7 +27,7 @@ def print_header():
     Prints the header for the Time Conversion Program.
     """
     print_separator()
-    print("Time Conversion Program. Version 1.0.1".center(separator_length))
+    print("Time Conversion Program. Version 1.0.1".center(SEPARATOR_LENGTH))
     print_separator()
 
 
@@ -64,7 +63,7 @@ def print_max_attempts_message():
     clear_screen()
     print_header()
     print("Maximum number of attempts exceeded. Exiting the program.".center(
-        separator_length))
+        SEPARATOR_LENGTH))
     print_separator()
 
 
@@ -72,7 +71,7 @@ def print_footer():
     """
     Prints the footer message to thank the user for using the program.
     """
-    print("Thank you for using our program!".center(separator_length))
+    print("Thank you for using our program!".center(SEPARATOR_LENGTH))
     print_separator()
 
 
