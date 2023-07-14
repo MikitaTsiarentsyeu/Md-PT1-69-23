@@ -3,7 +3,7 @@ from tkinter import messagebox
 from tkinter import ttk
 
 
-from time_formatting import cur_time
+from time_formatting import convert_time_to_spoken_word as cur_time
 from validation import validate_time_format
 
 wrong_input_count = 0

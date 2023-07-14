@@ -1,93 +1,114 @@
 import os
 
 
+SEPARATOR_LENGTH = 55
+
+
 def clear_screen():
+    """
+    Clears the terminal screen.
+
+    Uses the 'cls' command on Windows operating system (os.name == 'nt'),
+    or the 'clear' command on other operating systems.
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def print_separator():
-    separator = "=" * 50  # Используем символ "=" в качестве разделителя
+    """
+    Prints a separator line using the "=" symbol as the separator.
+    """
+    separator = "=" * SEPARATOR_LENGTH
     print(separator)
 
 
 def print_header():
+    """
+    Prints the header for the Time Conversion Program.
+    """
     print_separator()
-    print("   Программа Конвертация Времени. версия 1.0.1")
+    print("Time Conversion Program. Version 1.0.1".center(SEPARATOR_LENGTH))
     print_separator()
 
 
-# написать краткую инструкцию
 def print_instruction():
-    print("Инструкция:\n"
-          "- Выберите один из вариантов:\n"
-          "  1. Вывести текущее время.\n"
-          "  2. Ввести время самостоятельно.\n"
-          "  3. Завершить программу.\n"
-          "- Следуйте инструкциям программы.\n"
-          "- После каждого преобразования вы можете выбрать\n "
-          "продолжить или выйти."
-          )
+    """
+    Prints the instructions for using the program.
+    """
+    print("Instructions:")
+    print("- Choose one of the options:")
+    print("  1. Display the current time.")
+    print("  2. Enter the time manually.")
+    print("  3. Exit the program.")
+    print("- Follow the instructions provided by the program.")
+    print("- After each transformation, you can choose to continue or exit.")
 
 
 def print_menu():
+    """
+    Displays the menu options for the program.
+    """
     print_separator()
-    print("Вывести значение текущего времени - 1")
-    print("Ввести время самостоятельно - 2")
-    print("Завершить программу - 3")
+    print("Display current time - 1")
+    print("Enter time manually - 2")
+    print("Exit the program - 3")
     print_separator()
 
 
 def print_max_attempts_message():
     """
-    Отображает сообщение о превышении максимального количества попыток.
+    Displays a message indicating that the maximum number of\n
+    attempts has been exceeded.
     """
     clear_screen()
     print_header()
-    print(" Превышено количество попыток. Выход из программы.")
+    print("Maximum number of attempts exceeded. Exiting the program.".center(
+        SEPARATOR_LENGTH))
     print_separator()
 
 
 def print_footer():
-    print(" Благодарим вас за использование нашей программы!")
+    """
+    Prints the footer message to thank the user for using the program.
+    """
+    print("Thank you for using our program!".center(SEPARATOR_LENGTH))
     print_separator()
-
-
-def print_formatted_time(formatted_time):
-    print(f"{formatted_time}")
 
 
 def display_invalid_time_error():
     """
-    Отображает сообщение об ошибке неверного формата времени или
-    недопустимых значений.
+    Displays an error message for an invalid time format or invalid values.
     """
-    print('Неверный формат времени или недопустимые значения.\n'
-          'Попробуйте снова.')
+    print('Invalid time format or invalid values.')
+    print('Please try again.')
     print_separator()
 
 
 def ask_to_continue():
     """
-    Запрашивает у пользователя ответ на вопрос о продолжении работы программы.
+    Checks if the user wants to continue program execution.
 
-    Возвращает:
-    - str: Ответ пользователя ("да" или "нет").
+    Returns:
+        str: Returns "yes" if the user wants to continue,
+             "no" if the user does not want to continue,
+             or "fail" if the maximum number of attempts is reached.
+
     """
-    max_attempts = 3  # Максимальное количество попыток
-    attempt_count = 0  # Счетчик попыток
+    MAX_ATTEMPTS = 3  # Maximum number of attempts
+    attempt_count = 0  # Attempt counter
 
-    while attempt_count < max_attempts:
-        response = input('Хотите продолжить? (да/нет): ').lower()
+    while attempt_count < MAX_ATTEMPTS:
+        response = input('Would you like to continue? (yes/no): ').lower()
 
         match response:
-            case "да":
-                return "да"
-            case "нет":
-                return 'нет'
+            case "yes":
+                return "yes"
+            case "no":
+                return 'no'
             case _:
                 attempt_count += 1
-                print('Пожалуйста, введите "да" или "нет".')
-                if attempt_count == max_attempts:
+                print('Please enter "yes" or "no".')
+                if attempt_count == MAX_ATTEMPTS:
                     return 'fail'
 
-    return "нет"
+    return "no"
