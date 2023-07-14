@@ -71,8 +71,11 @@ if mm < 30:
     if mm >= 16 and mm <= 19:
         print(f"""{myList[m2][0][:-1]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
         exit()
-    if mm >= 10 and mm <= 20:
-        print(f"""{myList[mm][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+    if mm >= 10 and mm < 20:
+        print(f"""{myList[m1][0][:-1]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+        exit()
+    if mm == 20:
+        print(f"""{myList[m1][0][:-1]+myList["suff"][1]} {myList["mm"][2]} {myList[hh + 1][1]}""")
         exit()
     if mm > 20:
         if m2 == 1 or m2 == 2:
@@ -110,8 +113,12 @@ if mm > 30 and mm < 45:
 if mm >= 45:
     if hh == 12:
         myList[hh + 1][0] = myList["hh"][0]
-    if mm == 59:
-        print(f"""{list[0][2]} {myList[60 - mm][2]} {myList["mm"][1]} {myList[hh + 1][0]}""")
+    if 60-mm >= 5 and 60-mm <= 15:
+        print(f"""{myList[0][2]} {myList[60-mm][0][:-1] + myList["suff"][2]} {myList["mm"][2]} {myList[hh + 1][0]}""")
         exit()
-    print(f"""{myList[0][2]} {myList[60-mm][2]} {myList["mm"][2]} {myList[hh + 1][0]}""")
-    exit()
+    if mm == 59:
+        print(f"""{myList[0][2]} {myList[60 - mm][2]} {myList["mm"][1]} {myList[hh + 1][0]}""")
+        exit()
+    if mm >= 45:
+        print(f"""{myList[0][2]} {myList[60-mm][2]} {myList["mm"][2]} {myList[hh + 1][0]}""")
+        exit()
