@@ -68,11 +68,14 @@ if m2 == m2:
         mmText = myList["mm"][2]
 
 if mm < 30:
-    if mm >= 16 and mm <= 19:
+    if mm == 12:
+        print(f"""{myList[m2][3]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+        exit()
+    if mm > 10 and mm < 20:
         print(f"""{myList[m2][0][:-1]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
         exit()
-    if mm >= 10 and mm < 20:
-        print(f"""{myList[m1][0][:-1]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+    if mm == 10:
+        print(f"""{myList[10][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
         exit()
     if mm == 20:
         print(f"""{myList[m1][0][:-1]+myList["suff"][1]} {myList["mm"][2]} {myList[hh + 1][1]}""")
