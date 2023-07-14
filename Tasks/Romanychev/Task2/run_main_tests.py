@@ -1,11 +1,20 @@
-import user_interface as ui
-from time_formatting import cur_time
+from time_formatting import convert_time_to_spoken_word
 from validation import validate_time_format
 from itertools import product
 import time
 
 
-def main():
+def run_main_tests():
+    """
+    Test function for the main() function.
+
+    It runs various test cases to validate the functionality of the main()\n
+    function.
+    This includes testing different scenarios, inputs, and expected outputs.
+
+    Returns:
+        None
+    """
     MAX_ATTEMPTS = 3
     attempt_count = 0
 
@@ -18,15 +27,11 @@ def main():
             time_input = i
 
             if validate_time_format(time_input):
-                formatted_time = cur_time(time_input)
-
-            ui.print_formatted_time(formatted_time)
+                print(convert_time_to_spoken_word(i))
             time.sleep(0.0)
 
             break
 
-    ui.print_footer()
-
 
 if __name__ == "__main__":
-    main()
+    run_main_tests()

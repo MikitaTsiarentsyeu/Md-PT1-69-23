@@ -1,14 +1,26 @@
 import time
 import user_interface as ui
-from time_formatting import cur_time
+from time_formatting import convert_time_to_spoken_word as time2spoken
 from validation import validate_time_format
 
 
 def main():
+    """
+    The main function that runs the time conversion program.
+
+    It presents a menu to the user and performs corresponding actions
+    based on the user's choice. The program allows the user to display
+    the current time, enter a time manually, or exit the program.
+    The program includes error handling for invalid time input and limits
+    the number of attempts.
+
+    Returns:
+        None
+    """
     MAX_ATTEMPTS = 3
     attempt_count = 0
 
-    is_instruction_printed = False  # Флаг для отслеживания вывода инструкции
+    is_instruction_printed = False  # Flag to track instruction printing
 
     while attempt_count < MAX_ATTEMPTS:
         ui.clear_screen()
@@ -20,23 +32,23 @@ def main():
 
         ui.print_menu()
 
-        user_choice = input("Ваш выбор (1, 2 или 3): ")
+        user_choice = input("Please enter your choice (1, 2, or 3): ")
         ui.print_separator()
 
+        # Handle user's choice
         match user_choice:
             case "1":
                 ui.clear_screen()
                 ui.print_header()
-                formatted_time = cur_time()
-                ui.print_formatted_time(formatted_time)
+                print(f'Current time - {time2spoken()}')
                 ui.print_separator()
 
                 repeat = ui.ask_to_continue()
 
                 match repeat:
-                    case "да":
+                    case "yes":
                         continue
-                    case "нет":
+                    case "no":
                         ui.clear_screen()
                         ui.print_header()
                         ui.print_footer()
@@ -57,22 +69,20 @@ def main():
                     ui.clear_screen()
                     ui.print_header()
                     time_input = input(
-                        "Пожалуйста, введите время в формате ЧЧ:ММ\n"
-                        "(24-часовой формат): ")
+                        "Please enter the time in HH:MM format\n"
+                        "(24-hour format): ")
                     ui.print_separator()
 
                     if validate_time_format(time_input):
-                        formatted_time = cur_time(time_input)
-
-                        ui.print_formatted_time(formatted_time)
+                        print(time2spoken(time_input))
                         ui.print_separator()
 
                         repeat = ui.ask_to_continue()
 
                         match repeat:
-                            case "да":
+                            case "yes":
                                 attempt_count = 0
-                            case "нет":
+                            case "no":
                                 break
                             case "fail":
                                 ui.print_max_attempts_message()
@@ -81,7 +91,7 @@ def main():
 
                     else:
                         ui.display_invalid_time_error()
-                        time.sleep(0.9)
+                        time.sleep(1)
                         attempt_count += 1
 
             case "3":
