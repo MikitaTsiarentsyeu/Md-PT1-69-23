@@ -1,6 +1,9 @@
 import os
 
 
+separator_length = 55
+
+
 def clear_screen():
     """
     Clears the terminal screen.
@@ -25,7 +28,7 @@ def print_header():
     Prints the header for the Time Conversion Program.
     """
     print_separator()
-    print("       Time Conversion Program. Version 1.0.1")
+    print("Time Conversion Program. Version 1.0.1".center(separator_length))
     print_separator()
 
 
@@ -33,15 +36,13 @@ def print_instruction():
     """
     Prints the instructions for using the program.
     """
-    print("Instructions:\n"
-          "- Choose one of the options:\n"
-          "  1. Display the current time.\n"
-          "  2. Enter the time manually.\n"
-          "  3. Exit the program.\n"
-          "- Follow the instructions provided by the program.\n"
-          "- After each transformation, you can choose to\n "
-          "continue or exit."
-          )
+    print("Instructions:")
+    print("- Choose one of the options:")
+    print("  1. Display the current time.")
+    print("  2. Enter the time manually.")
+    print("  3. Exit the program.")
+    print("- Follow the instructions provided by the program.")
+    print("- After each transformation, you can choose to continue or exit.")
 
 
 def print_menu():
@@ -62,7 +63,8 @@ def print_max_attempts_message():
     """
     clear_screen()
     print_header()
-    print(" Maximum number of attempts exceeded. Exiting the program.")
+    print("Maximum number of attempts exceeded. Exiting the program.".center(
+        separator_length))
     print_separator()
 
 
@@ -70,17 +72,16 @@ def print_footer():
     """
     Prints the footer message to thank the user for using the program.
     """
-    print(" Thank you for using our program!")
+    print("Thank you for using our program!".center(separator_length))
     print_separator()
 
 
 def display_invalid_time_error():
     """
-    Displays an error message for an invalid time format or
-    invalid values.
+    Displays an error message for an invalid time format or invalid values.
     """
-    print('Invalid time format or invalid values.\n'
-          'Please try again.')
+    print('Invalid time format or invalid values.')
+    print('Please try again.')
     print_separator()
 
 

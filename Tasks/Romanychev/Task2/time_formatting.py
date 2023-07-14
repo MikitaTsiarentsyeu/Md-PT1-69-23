@@ -11,7 +11,6 @@ def convert_time_to_spoken_word(time_input=None):
     - time_input (str): Optional. Time in the format "hh:mm". If provided,\n
                         generates the textual representation for the given\n
                         time. If not provided, generates the textual\n
-                        representation for the current time.
 
     Returns:
     - str: Textual representation of the time in Russian language.

@@ -8,7 +8,7 @@ def run_main_tests():
     """
     Test function for the main() function.
 
-    It runs various test cases to validate the functionality of the main()\n
+    It runs various test cases to validate the functionality of the main()
     function.
     This includes testing different scenarios, inputs, and expected outputs.
 
