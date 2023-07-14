@@ -27,7 +27,7 @@ def print_header():
     Prints the header for the Time Conversion Program.
     """
     print_separator()
-    print("Time Conversion Program. Version 1.0.1".center(SEPARATOR_LENGTH))
+    print("Time Conversion Program. Version 1.0.2".center(SEPARATOR_LENGTH))
     print_separator()
 
 
