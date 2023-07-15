@@ -123,11 +123,15 @@ if mm > 30 and mm < 45:
 if mm >= 45:
     if hh == 12:
         myList[hh + 1][0] = myList["hh"][0]
-    if 60-mm >= 5 and 60-mm <= 15:
+    if 60-mm >= 5 and 60-mm <= 13:
         print(f"""{myList[0][2]} {myList[60-mm][0][:-1] + myList["suff"][2]} {myList["mm"][2]} {myList[hh + 1][0]}""")
         exit()
     if mm == 59:
         print(f"""{myList[0][2]} {myList[60 - mm][2]} {myList["mm"][1]} {myList[hh + 1][0]}""")
+        exit()
+    if 60 - mm == 14 or 60 - mm == 15:
+        x = 60 - mm - 10
+        print(f"""{myList[0][2]} {myList[x][0][:-1]+ myList["suff"][0][:-1]+ myList["suff"][2]} {myList["mm"][2]} {myList[hh + 1][0]}""")
         exit()
     if mm >= 45:
         print(f"""{myList[0][2]} {myList[60-mm][2]} {myList["mm"][2]} {myList[hh + 1][0]}""")
