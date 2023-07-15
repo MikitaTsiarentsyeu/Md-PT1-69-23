@@ -68,29 +68,38 @@ if m2 == m2:
         mmText = myList["mm"][2]
 
 if mm < 30:
+    if hh + 1 == 5 or hh + 1 == 6 or hh + 1 == 9 or hh + 1 == 10:
+        next_hh = myList[hh + 1][0][:-1]+myList["suff"][3]
+    elif hh + 1 == 11 or hh + 1 == 12:
+        next_hh = myList[hh + 1][0][:-1]+myList["suff"][3]
+    elif hh + 1 == 13:
+        next_hh = myList[1][1]
+    elif hh + 1 == 7 or hh + 1 == 8 or hh + 1 == 1 or hh + 1 == 2 or hh + 1 == 3 or hh + 1 == 4:
+        next_hh = myList[hh + 1][1]
+
     if mm == 12:
-        print(f"""{myList[m2][3]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+        print(f"""{myList[m2][3]+myList["suff"][0]} {myList["mm"][2]} {next_hh}""")
         exit()
     if mm > 10 and mm < 20:
-        print(f"""{myList[m2][0][:-1]+myList["suff"][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+        print(f"""{myList[m2][0][:-1]+myList["suff"][0]} {myList["mm"][2]} {next_hh}""")
         exit()
     if mm == 10:
-        print(f"""{myList[10][0]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+        print(f"""{myList[10][0]} {myList["mm"][2]} {next_hh}""")
         exit()
     if mm == 20:
-        print(f"""{myList[m1][0][:-1]+myList["suff"][1]} {myList["mm"][2]} {myList[hh + 1][1]}""")
+        print(f"""{myList[m1][0][:-1]+myList["suff"][1]} {myList["mm"][2]} {next_hh}""")
         exit()
     if mm > 20:
         if m2 == 1 or m2 == 2:
-            print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+            print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][3]} {mmText} {next_hh}""")
             exit()
-        print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][0]} {mmText} {myList[hh+1][1]}""")
+        print(f"""{myList[m1][0]+myList["suff"][1]} {myList[m2][0]} {mmText} {next_hh}""")
         exit()
     if 0 < mm:
         if mm == 1 or m2 == 2:
-            print(f"""{myList[m2][3]} {mmText} {myList[hh + 1][1]}""")
+            print(f"""{myList[m2][3]} {mmText} {next_hh}""")
             exit()
-        print(f"""{myList[m2][0]} {mmText} {myList[hh+1][1]}""")
+        print(f"""{myList[m2][0]} {mmText} {next_hh}""")
         exit()
 
 #third condition
