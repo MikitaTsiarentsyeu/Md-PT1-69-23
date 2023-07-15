@@ -1,5 +1,5 @@
 from datetime import datetime
-from dictionaries import dict
+from dictionary import time_word_mapping
 
 
 def convert_time_to_spoken_word(time_input=None):
@@ -30,18 +30,18 @@ def convert_time_to_spoken_word(time_input=None):
 
     match (minute):
         case 0:
-            return f"{current_time_str} - {dict[hour % 12][5]} {dict[hour % 12][6]} ровно"
+            return f"{current_time_str} - {time_word_mapping[hour % 12][5]} {time_word_mapping[hour % 12][6]} ровно"
         case m if m <= 20:
-            return f"{current_time_str} - {dict[minute][0]} {dict[minute][1]} {dict[(hour + 1) % 12][2]}"
+            return f"{current_time_str} - {time_word_mapping[minute][0]} {time_word_mapping[minute][1]} {time_word_mapping[(hour + 1) % 12][2]}"
         case m if 21 <= m <= 29:
-            return f"{current_time_str} - {dict[20][0]} {dict[m2][0]} {dict[m2][1]} {dict[(hour + 1) % 12][2]}"
+            return f"{current_time_str} - {time_word_mapping[20][0]} {time_word_mapping[m2][0]} {time_word_mapping[m2][1]} {time_word_mapping[(hour + 1) % 12][2]}"
         case 30:
-            return f"{current_time_str} - половина {dict[(hour + 1) % 12][2]}"
+            return f"{current_time_str} - половина {time_word_mapping[(hour + 1) % 12][2]}"
         case m if 31 <= m <= 39:
-            return f"{current_time_str} - {dict[30][0]} {dict[m2][0]} {dict[m2][1]} {dict[(hour + 1) % 12][2]}"
+            return f"{current_time_str} - {time_word_mapping[30][0]} {time_word_mapping[m2][0]} {time_word_mapping[m2][1]} {time_word_mapping[(hour + 1) % 12][2]}"
         case m if 40 <= m <= 44:
-            return f"{current_time_str} - {dict[40][0]} {dict[m2][0]} {dict[m2][1]} {dict[(hour + 1) % 12][2]}"
+            return f"{current_time_str} - {time_word_mapping[40][0]} {time_word_mapping[m2][0]} {time_word_mapping[m2][1]} {time_word_mapping[(hour + 1) % 12][2]}"
         case m if m >= 45:
-            return f"{current_time_str} - без {dict[60 - minute][3]} {dict[m2][1]} {dict[(hour + 1) % 12][5]}"
+            return f"{current_time_str} - без {time_word_mapping[60 - minute][3]} {time_word_mapping[m2][1]} {time_word_mapping[(hour + 1) % 12][5]}"
         case _:
             return ''

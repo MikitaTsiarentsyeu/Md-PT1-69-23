@@ -1,4 +1,4 @@
-# Use the latest Python 3.9 base image
+# Use the latest Python 3.11
 FROM python:3.11.0-alpine3.17
 
 # Set the working directory in the container

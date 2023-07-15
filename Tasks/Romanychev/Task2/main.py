@@ -33,6 +33,13 @@ def main():
         ui.print_menu()
 
         user_choice = input("Please enter your choice (1, 2, or 3): ")
+        while user_choice not in ["1", "2", "3"]:
+            ui.clear_screen()
+            ui.print_header()
+            ui.print_instruction()
+            ui.print_menu()
+            print("Invalid choice. Please enter 1, 2, or 3.")
+            user_choice = input("Please enter your choice (1, 2, or 3): ")
         ui.print_separator()
 
         # Handle user's choice
