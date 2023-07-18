@@ -1,6 +1,6 @@
+import time
 import matplotlib.pyplot as plt
 from langdetect import detect_langs
-from collections import Counter
 
 
 # Function to detect the language of a given text
@@ -49,7 +49,7 @@ def choose_language():
 
 
 # Function to count the number of vowels in a string
-def count_vowels(string, vowels):
+def count_vowels(input_string, vowels):
     """
     Counts the number of vowels in a given string.
 
@@ -60,11 +60,12 @@ def count_vowels(string, vowels):
     Returns:
         dict: A dictionary containing the vowel counts, where the keys are the vowels and the values are the counts.
     """
-    counter = Counter()
-    for char in string:
-        if char.lower() in vowels:
-            counter[char.lower()] += 1
-    return dict(counter)
+    start_time = time.time()
+    input_string_lower = input_string.lower()
+    vowel_counts = {vowel: input_string_lower.count(vowel) for vowel in vowels}
+    end_time = time.time()
+    execution_time = end_time - start_time
+    return vowel_counts, execution_time
 
 
 # Function to plot a histogram of vowel counts by language
@@ -98,8 +99,7 @@ def plot_histogram(vowel_counts_by_language):
     ax.set_ylabel('Count of Vowels')
     total_vowels = sum(vowel_counts.values())
     ax.set_title(
-        f"COUNT OF VOWELS\n(text language - {''.join(language)})\ntotal "
-        "number of vowels: {total_vowels}")
+        f"COUNT OF VOWELS\n(text language - {''.join(language)})\ntotal number of vowels: {total_vowels}")
 
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -114,6 +114,8 @@ def plot_histogram(vowel_counts_by_language):
 
 # Main program loop
 while True:
+    start_time = time.time()  # Start time of the program
+
     # Choose the source of the input string (keyboard or file)
     source_choice = choose_source()
 
@@ -131,7 +133,7 @@ while True:
             # changed to any language from the following list:\
             # ['en','ru','pl','de','fr']
 
-            with open('test(en)_task3_1.txt', 'r') as file:
+            with open('test(war and peace)_task3_1.txt', 'r') as file:
                 user_input = file.read().strip()
             detected_language = detect_language(user_input)
             language = detected_language[0]
@@ -151,11 +153,20 @@ while True:
 
     # Count the number of vowels in the input string for the selected language
     vowel_counts_by_language = {}
-    vowel_counts_by_language[language] = count_vowels(
+    vowel_counts, execution_time = count_vowels(
         user_input, vowels_by_language[language])
+    vowel_counts_by_language[language] = vowel_counts
+
+    # Display the execution time for the specific function
+    print(f"Execution time for 'count_vowels': {execution_time:.5f} seconds")
 
     # Plot a histogram of vowel counts by language
     plot_histogram(vowel_counts_by_language)
+
+    # Display the total execution time
+    end_time = time.time()  # End time of the program
+    total_execution_time = end_time - start_time  # Total execution time
+    print(f"Total execution time: {total_execution_time:.5f} seconds")
 
     # Prompt the user if they want to run the program again
     restart_choice = input("Do you want to run the program again? (y/n): ")
