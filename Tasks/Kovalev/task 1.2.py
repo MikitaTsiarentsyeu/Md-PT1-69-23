@@ -3,6 +3,6 @@ import math
 radius = input("Enter only positive values")
 square = math.pi*float(radius)**2
 print(square)
-exit
+
 
 
