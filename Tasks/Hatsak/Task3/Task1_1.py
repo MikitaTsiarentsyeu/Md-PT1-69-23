@@ -8,6 +8,15 @@ my_str = Task1_1_tests.cases[0]
 my_str = my_str.strip()
 
 
+def KortezR(function):
+    def wrapped(*args):
+        print("Это решение было предложено @KortezR в телеграме!")
+        res = function(*args)
+        print("Спасибо за такой вариант!")
+        return res
+    return wrapped
+
+
 def branch(number_of_repeats=10000):
     def time_of_function(function):
         def wrapped(*args):
@@ -55,6 +64,7 @@ def try5(s):
     return s
 
 
+@KortezR
 def try6(s):
     if len(s) == 1:
         return 1 if s in vowels else 0
