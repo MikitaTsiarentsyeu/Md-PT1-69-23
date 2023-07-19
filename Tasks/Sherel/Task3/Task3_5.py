@@ -10,4 +10,4 @@ for i in user_input:
     if int(length) > 5:
         myList.append(i)
 
-print("list with all strings that have a length greater than 5 characters:\n", myList)
+print("List with all strings that have a length greater than 5 characters:\n", myList)
