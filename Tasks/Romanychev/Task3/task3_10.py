@@ -1,6 +1,8 @@
 import random
 import time
 
+# Function to perform the Miller-Rabin primality test
+
 
 def miller_rabin_primality_test(n, k=5):
     if n < 2:
@@ -29,8 +31,9 @@ def miller_rabin_primality_test(n, k=5):
             return False
     return True
 
+# User Interface
 
-# юзер интерфейс
+
 def get_user_choice():
     while True:
         print("1. Enter numbers manually")
@@ -41,6 +44,8 @@ def get_user_choice():
             return choice
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
+
+# Process user's choice
 
 
 def process_choice(choice):
@@ -73,6 +78,8 @@ def process_choice(choice):
 
     return numbers_list
 
+# Ask if the user wants to continue
+
 
 def continue_program():
     while True:
@@ -82,22 +89,29 @@ def continue_program():
         else:
             print("Please enter 'yes' or 'no'.")
 
+# Function to generate a list of numbers in descending order
 
-# формирование списков
+
 def generate_numbers(upper_limit):
     num = upper_limit
     while num >= 1:
         yield num
         num -= 1
 
+# Function to generate an ordered list from 1 to the specified upper limit
+
 
 def generate_ordered_list(upper_limit):
     return list(range(1, upper_limit + 1))
+
+# Function to generate a random list of specified length with numbers from 1 to the upper limit
 
 
 def generate_random_list(upper_limit, list_length):
     random_list = [random.randint(1, upper_limit) for _ in range(list_length)]
     return list(set(random_list))
+
+# Function to manually input numbers from the user
 
 
 def get_manual_numbers_list():
@@ -116,8 +130,9 @@ def get_manual_numbers_list():
             continue
         return sorted(numbers_list)
 
+# Decorator to measure execution time of functions
 
-# decorator
+
 def measure_execution_time(func):
     def wrapper(*args, **kwargs):
         start_time = time.time()
@@ -128,8 +143,9 @@ def measure_execution_time(func):
         return result
     return wrapper
 
+# Validation functions
 
-# validation
+
 def get_random_list_length():
     while True:
         list_length_input = input("Enter the length of the random list: ")
@@ -162,8 +178,9 @@ def get_generator_upper_limit():
 
         return upper_limit
 
+# Function to find the largest prime number in the list
 
-# функция которая ищет простое число
+
 @measure_execution_time
 def get_largest_prime(numbers_list):
     largest_prime = None
@@ -185,6 +202,8 @@ def get_largest_prime(numbers_list):
                 break
 
     return largest_prime
+
+# Main function to run the program
 
 
 def main():
