@@ -2,17 +2,6 @@ import ast
 
 
 def get_nth_largest(numbers, n):
-    """
-    Get the nth largest number from the list of numbers.
-
-    Args:
-        numbers (list): The list of numbers.
-        n (int): The position of the desired largest number (1-indexed).
-
-    Returns:
-        float: The nth largest number, or None if the list doesn't have enough elements.
-
-    """
     # Check if all elements in the list are numeric (int or float)
     if not all(isinstance(num, (int, float)) for num in numbers):
         raise ValueError("The list should contain only numeric values.")

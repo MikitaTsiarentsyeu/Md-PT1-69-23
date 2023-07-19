@@ -172,10 +172,14 @@ while True:
     # Count the number of vowels and words in the input string for the selected language
     vowel_counts_by_language = {}
     word_counts_by_language = {}
+
     vowel_counts, execution_time = count_vowels(
         user_input, vowels_by_language[language])
+
     word_counts = count_words(user_input)
+
     vowel_counts_by_language[language] = vowel_counts
+
     word_counts_by_language[language] = word_counts
 
     # Display the execution time for the specific function
