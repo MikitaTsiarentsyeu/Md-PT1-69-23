@@ -49,34 +49,32 @@ def get_user_choice():
 
 
 def process_choice(choice):
-    if choice == "1":
-        numbers_list = get_manual_numbers_list()
-    elif choice == "2":
-        while True:
-            print("Select the type of random list to generate:")
-            print("1. Ordered list from 1 to the upper limit")
-            print("2. Random list with specified length")
+    match choice:
+        case "1":
+            numbers_list = get_manual_numbers_list()
+        case "2":
             sub_choice = input("Enter your choice (1 or 2): ").strip()
-
-            if sub_choice == "1":
-                upper_limit = get_generator_upper_limit()
-                numbers_list = generate_ordered_list(upper_limit)
-                break
-            elif sub_choice == "2":
-                list_length = get_random_list_length()
-                upper_limit = list_length
-                numbers_list = generate_random_list(upper_limit, list_length)
-                break
-            else:
-                print("Invalid choice. Please enter 1 or 2.")
-    elif choice == "3":
-        upper_limit = get_generator_upper_limit()
-        numbers_list = generate_numbers(upper_limit)
-    else:
-        print("Invalid choice. Please enter 1, 2, or 3.")
-        return None
+            match sub_choice:
+                case "1":
+                    upper_limit = get_generator_upper_limit()
+                    numbers_list = generate_ordered_list(upper_limit)
+                case "2":
+                    list_length = get_random_list_length()
+                    upper_limit = list_length
+                    numbers_list = generate_random_list(
+                        upper_limit, list_length)
+                case _:
+                    print("Invalid choice. Please enter 1 or 2.")
+                    return None
+        case "3":
+            upper_limit = get_generator_upper_limit()
+            numbers_list = generate_numbers(upper_limit)
+        case _:
+            print("Invalid choice. Please enter 1, 2, or 3.")
+            return None
 
     return numbers_list
+
 
 # Ask if the user wants to continue
 
