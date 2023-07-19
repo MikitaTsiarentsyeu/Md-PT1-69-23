@@ -8,4 +8,4 @@ for num in user_input:
     if int(num) %2 == 0:
         sum_num += int(num)
 
-print(sum_num)
+print("Sum of all even numbers in the list:", sum_num)
