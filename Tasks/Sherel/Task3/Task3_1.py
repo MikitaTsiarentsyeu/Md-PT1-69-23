@@ -3,11 +3,11 @@
 vowels = "eyuioa"
 values = []
 
-text = input("Enter your string:\n")
-my_text = list(text.lower())
-my_text.sort()
+user_input = input("Enter your string:\n")
+f_user_input = list(user_input.lower())
+f_user_input.sort()
 
-for i in my_text:
+for i in f_user_input:
     if i in vowels:
         values.append(i)
 
