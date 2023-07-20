@@ -1,5 +1,49 @@
+"""
+Prime Number Finder
+
+This script allows the user to find the largest prime number from a list of numbers. It offers three main options:
+1. Enter numbers manually: The user can input numbers directly to create a list.
+2. Generate an ordered or random list: The user can generate a list of numbers in a specific range, either ordered or random.
+3. Create a generator: The user can generate numbers in descending order using a generator.
+
+Miller-Rabin Primality Test is used to efficiently check if a number is prime.
+
+How to Use:
+1. Run the script, and it will present the user with three main options.
+2. Choose an option by entering the corresponding number (1, 2, or 3).
+3. Depending on the option, the script will prompt you to enter the numbers or range of numbers.
+4. The script will find the largest prime number in the list and display the result.
+5. After each iteration, the script will ask if you want to continue or exit.
+
+Note:
+- The Miller-Rabin primality test used in this script is probabilistic, but the probability of false positives decreases with a higher number of iterations (k).
+- The script provides execution time for each operation, allowing you to gauge the efficiency of finding the largest prime.
+
+For educational and demonstration purposes only.
+
+Author: ROANVL
+"""
+
 import random
 import time
+
+
+# Constant for user interface options - first set of options
+UI_OPTIONS = {
+    "1": "Enter numbers manually",
+    "2": "Generate an ordered or random list",
+    "3": "Create a generator"
+}
+
+# Constant for user interface options - second set of options
+CONTINUE_OPTIONS = {
+    "yes": "Yes",
+    "no": "No"
+}
+
+OPTION_MANUAL = "1"
+OPTION_RANDOM_LIST = "2"
+OPTION_GENERATOR = "3"
 
 # Function to perform the Miller-Rabin primality test
 
@@ -31,87 +75,64 @@ def miller_rabin_primality_test(n, k=5):
             return False
     return True
 
+
 # User Interface
-
-
+# Function to get the user's choice from the UI_OPTIONS
 def get_user_choice():
     while True:
-        print("1. Enter numbers manually")
-        print("2. Generate an ordered or random list")
-        print("3. Create a generator")
+        print("Choose one of the following options:")
+        for key, value in UI_OPTIONS.items():
+            print(f"{key}. {value}")
+
         choice = input("Enter your choice (1, 2, or 3): ").strip()
-        if choice in ["1", "2", "3"]:
-            return choice
-        else:
+
+        try:
+            if choice in [OPTION_MANUAL, OPTION_RANDOM_LIST, OPTION_GENERATOR]:
+                return choice
+            else:
+                raise ValueError()
+        except ValueError:
             print("Invalid choice. Please enter 1, 2, or 3.")
+
 
 # Process user's choice
-
-
 def process_choice(choice):
-    match choice:
-        case "1":
-            numbers_list = get_manual_numbers_list()
-        case "2":
-            sub_choice = input("Enter your choice (1 or 2): ").strip()
-            match sub_choice:
-                case "1":
-                    upper_limit = get_generator_upper_limit()
-                    numbers_list = generate_ordered_list(upper_limit)
-                case "2":
-                    list_length = get_random_list_length()
-                    upper_limit = list_length
-                    numbers_list = generate_random_list(
-                        upper_limit, list_length)
-                case _:
-                    print("Invalid choice. Please enter 1 or 2.")
-                    return None
-        case "3":
+    if choice == OPTION_MANUAL:
+        numbers_list = get_manual_numbers_list()
+    elif choice == OPTION_RANDOM_LIST:
+        sub_choice = input(
+            "Enter 1 for an ordered list or 2 for a random list: ").strip()
+        if sub_choice == "1":
             upper_limit = get_generator_upper_limit()
-            numbers_list = generate_numbers(upper_limit)
-        case _:
-            print("Invalid choice. Please enter 1, 2, or 3.")
+            numbers_list = generate_ordered_list(upper_limit)
+        elif sub_choice == "2":
+            list_length = get_random_list_length()
+            upper_limit = list_length
+            numbers_list = generate_random_list(upper_limit, list_length)
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
             return None
+    elif choice == OPTION_GENERATOR:
+        upper_limit = get_generator_upper_limit()
+        numbers_list = generate_numbers(upper_limit)
+    else:
+        print("Invalid choice. Please enter 1, 2, or 3.")
+        return None
 
     return numbers_list
 
 
 # Ask if the user wants to continue
-
-
 def continue_program():
     while True:
         choice = input("Do you want to continue? (yes/no): ").lower()
-        if choice in ["yes", "no"]:
+        if choice in CONTINUE_OPTIONS:
             return choice
         else:
             print("Please enter 'yes' or 'no'.")
 
-# Function to generate a list of numbers in descending order
-
-
-def generate_numbers(upper_limit):
-    num = upper_limit
-    while num >= 1:
-        yield num
-        num -= 1
-
-# Function to generate an ordered list from 1 to the specified upper limit
-
-
-def generate_ordered_list(upper_limit):
-    return list(range(1, upper_limit + 1))
-
-# Function to generate a random list of specified length with numbers from 1 to the upper limit
-
-
-def generate_random_list(upper_limit, list_length):
-    random_list = [random.randint(1, upper_limit) for _ in range(list_length)]
-    return list(set(random_list))
 
 # Function to manually input numbers from the user
-
-
 def get_manual_numbers_list():
     while True:
         user_input = input(
@@ -128,22 +149,14 @@ def get_manual_numbers_list():
             continue
         return sorted(numbers_list)
 
-# Decorator to measure execution time of functions
+# Function to generate an ordered list from 1 to the specified upper limit
 
 
-def measure_execution_time(func):
-    def wrapper(*args, **kwargs):
-        start_time = time.time()
-        result = func(*args, **kwargs)
-        end_time = time.time()
-        execution_time = end_time - start_time
-        print("Execution time: {:.6f} seconds".format(execution_time))
-        return result
-    return wrapper
+def generate_ordered_list(upper_limit):
+    return list(range(1, upper_limit + 1))
+
 
 # Validation functions
-
-
 def get_random_list_length():
     while True:
         list_length_input = input("Enter the length of the random list: ")
@@ -176,9 +189,35 @@ def get_generator_upper_limit():
 
         return upper_limit
 
+# Function to generate a random list of specified length with numbers from 1 to the upper limit
+
+
+def generate_random_list(upper_limit, list_length):
+    random_list = [random.randint(1, upper_limit) for _ in range(list_length)]
+    return list(set(random_list))
+
+
+# Function to generate a list of numbers in descending order
+def generate_numbers(upper_limit):
+    num = upper_limit
+    while num >= 1:
+        yield num
+        num -= 1
+
+
+# Decorator to measure execution time of functions
+def measure_execution_time(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print("Execution time: {:.6f} seconds".format(execution_time))
+        return result
+    return wrapper
+
+
 # Function to find the largest prime number in the list
-
-
 @measure_execution_time
 def get_largest_prime(numbers_list):
     largest_prime = None
@@ -201,16 +240,17 @@ def get_largest_prime(numbers_list):
 
     return largest_prime
 
+
 # Main function to run the program
-
-
 def main():
     while True:
         choice = get_user_choice()
         numbers_list = process_choice(choice)
 
         if numbers_list is None:
-            continue
+            # Terminate the program if an invalid choice is made or user chooses to exit.
+            print("Exiting the program.")
+            break
 
         print("Your list:", numbers_list)
 
@@ -222,6 +262,7 @@ def main():
 
         choice = continue_program()
         if choice == "no":
+            print("Exiting the program.")
             break
 
 
