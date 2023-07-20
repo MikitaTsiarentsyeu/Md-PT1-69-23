@@ -12,6 +12,10 @@ for s in string:
         continue
     ans.append(s)
 
-
 print(string)
 print(''.join(ans))
+# Also, using swapcase():
+print(string.swapcase())
+
+
+
