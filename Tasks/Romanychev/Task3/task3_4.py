@@ -9,11 +9,12 @@ Usage:
 5. You can choose to continue or exit after each calculation.
 
 """
+from typing import List, Optional
 
 import ast
 
 
-def get_nth_largest_number(numbers, n):
+def get_nth_largest_number(numbers: List[float], n: int) -> Optional[float]:
     """
     Returns the n-th largest number from the list.
 
@@ -37,7 +38,7 @@ def get_nth_largest_number(numbers, n):
     return unique_numbers[n - 1]
 
 
-def user_input_to_list(user_input):
+def user_input_to_list(user_input: str) -> List[float]:
     """
     Converts user input string to a list of numeric values.
 
@@ -56,7 +57,7 @@ def user_input_to_list(user_input):
     return numbers_list
 
 
-def get_valid_numbers_list_input():
+def get_valid_numbers_list_input() -> List[float]:
     """
     Prompts the user to enter a list of numbers and validates the input.
 
@@ -76,7 +77,7 @@ def get_valid_numbers_list_input():
             print("Please enter numbers in the correct format.")
 
 
-def get_valid_index_from_user(numbers_list):
+def get_valid_index_from_user(numbers_list: List[float]) -> int:
     """
     Prompts the user to enter the index (position) of the largest number from the end.
 
@@ -99,7 +100,7 @@ def get_valid_index_from_user(numbers_list):
     return valid_index
 
 
-def ask_for_continue():
+def ask_for_continue() -> bool:
     """
     Asks the user whether to continue or exit the program.
 
@@ -117,7 +118,7 @@ def ask_for_continue():
             print("Invalid choice. Please enter only 'yes' or 'no'.")
 
 
-def display_result(valid_index, result):
+def display_result(valid_index: int, result: Optional[float]) -> None:
     """
     Displays the result of finding the n-th largest number.
 
@@ -132,7 +133,7 @@ def display_result(valid_index, result):
         print("The list does not have enough elements.")
 
 
-def main():
+def main() -> None:
     """
     Main function to run the script. Asks the user for input, finds the n-th largest number,
     displays the result, and allows the user to continue or exit.

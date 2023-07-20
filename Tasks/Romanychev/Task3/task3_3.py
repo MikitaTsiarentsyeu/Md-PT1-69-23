@@ -36,6 +36,7 @@ before running the script.
 
 Author: ROANVL
 """
+from typing import List, Tuple, Dict
 
 import time
 import re
@@ -45,7 +46,7 @@ from collections import Counter
 
 
 # Function to detect the language of a given text
-def detect_language(text):
+def detect_language(text: str) -> Tuple[str, Dict[str, float]]:
     """
     Detects the language of the given text.
     Args:
@@ -68,7 +69,7 @@ def detect_language(text):
 VALID_SOURCE_CHOICES = ['1', '2']
 
 
-def choose_source():
+def choose_source() -> str:
     while True:
         source_choice = input(
             "Choose the source of the string:\n1 - keyboard input,\n2 - file input.\nYour choice: ")
@@ -82,7 +83,7 @@ def choose_source():
 VALID_LANGUAGE_CHOICES = ['en', 'ru', 'pl', 'de', 'fr']
 
 
-def choose_language():
+def choose_language() -> str:
     while True:
         language = input(
             f"Choose the language of the input string:\nValid choices: {', '.join(VALID_LANGUAGE_CHOICES)}\nYour choice: ")
@@ -93,7 +94,7 @@ def choose_language():
 
 
 # Function to get the user input based on the source choice
-def get_user_input(source_choice):
+def get_user_input(source_choice: str) -> Tuple[str, str]:
     if source_choice == "1":
         while True:
             language = choose_language()
@@ -131,7 +132,7 @@ def measure_execution_time(func):
 
 # Function to count the number of vowels in a string
 @measure_execution_time
-def count_vowels(input_string, vowels):
+def count_vowels(input_string: str, vowels: List[str]) -> Dict[str, int]:
     """
     Counts the number of vowels in a given string.
 
@@ -149,7 +150,7 @@ def count_vowels(input_string, vowels):
 
 # Function to count the occurrences of each word in a string
 @measure_execution_time
-def count_words(input_string):
+def count_words(input_string: str) -> Dict[str, int]:
     """
     Counts the occurrences of each word in a given string, excluding punctuation and special characters.
 
@@ -166,7 +167,7 @@ def count_words(input_string):
 
 
 # Function to plot a histogram of vowel counts by language
-def plot_histogram(vowel_counts_by_language):
+def plot_histogram(vowel_counts_by_language: Dict[str, Dict[str, int]]) -> None:
     """
     Plots a histogram showing the distribution of vowel counts by language.
     Args:

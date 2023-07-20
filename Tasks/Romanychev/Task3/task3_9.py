@@ -18,12 +18,12 @@ Note:
 """
 
 
-def contains_only_words(input_str):
+def contains_only_words(input_str: str) -> bool:
     words = input_str.split()
     return all(any(char.isalpha() for char in word) for word in words)
 
 
-def get_valid_input():
+def get_valid_input() -> str:
     while True:
         try:
             user_input = input("Enter a string containing words: ")
@@ -36,11 +36,11 @@ def get_valid_input():
             exit(0)
 
 
-def reverse_string(input_str):
+def reverse_string(input_str: str) -> str:
     return input_str[::-1]
 
 
-def prompt_continue():
+def prompt_continue() -> bool:
     while True:
         try:
             choice = input("Do you want to continue? (yes/no): ").lower()
@@ -53,7 +53,7 @@ def prompt_continue():
             exit(0)
 
 
-def main():
+def main() -> None:
     while True:
         user_input = get_valid_input()
         reversed_str = reverse_string(user_input)

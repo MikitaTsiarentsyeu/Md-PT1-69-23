@@ -26,6 +26,7 @@ Author: ROANVL
 
 import random
 import time
+from typing import List, Union, Generator
 
 
 # Constant for user interface options - first set of options
@@ -48,7 +49,7 @@ OPTION_GENERATOR = "3"
 # Function to perform the Miller-Rabin primality test
 
 
-def miller_rabin_primality_test(n, k=5):
+def miller_rabin_primality_test(n: int, k: int = 5) -> bool:
     if n < 2:
         return False
     if n < 4:
@@ -78,7 +79,7 @@ def miller_rabin_primality_test(n, k=5):
 
 # User Interface
 # Function to get the user's choice from the UI_OPTIONS
-def get_user_choice():
+def get_user_choice() -> str:
     while True:
         print("Choose one of the following options:")
         for key, value in UI_OPTIONS.items():
@@ -96,7 +97,7 @@ def get_user_choice():
 
 
 # Process user's choice
-def process_choice(choice):
+def process_choice(choice: str) -> Union[List[int], None]:
     if choice == OPTION_MANUAL:
         numbers_list = get_manual_numbers_list()
     elif choice == OPTION_RANDOM_LIST:
@@ -123,7 +124,7 @@ def process_choice(choice):
 
 
 # Ask if the user wants to continue
-def continue_program():
+def continue_program() -> str:
     while True:
         choice = input("Do you want to continue? (yes/no): ").lower()
         if choice in CONTINUE_OPTIONS:
@@ -133,7 +134,7 @@ def continue_program():
 
 
 # Function to manually input numbers from the user
-def get_manual_numbers_list():
+def get_manual_numbers_list() -> List[int]:
     while True:
         user_input = input(
             "Enter numbers separated by spaces or a list (e.g. [1, 2, 3]): ")
@@ -152,12 +153,12 @@ def get_manual_numbers_list():
 # Function to generate an ordered list from 1 to the specified upper limit
 
 
-def generate_ordered_list(upper_limit):
+def generate_ordered_list(upper_limit: int) -> List[int]:
     return list(range(1, upper_limit + 1))
 
 
 # Validation functions
-def get_random_list_length():
+def get_random_list_length() -> int:
     while True:
         list_length_input = input("Enter the length of the random list: ")
         try:
@@ -173,7 +174,7 @@ def get_random_list_length():
         return list_length
 
 
-def get_generator_upper_limit():
+def get_generator_upper_limit() -> int:
     while True:
         upper_limit_input = input(
             "Enter the upper limit for generating numbers: ")
@@ -192,13 +193,13 @@ def get_generator_upper_limit():
 # Function to generate a random list of specified length with numbers from 1 to the upper limit
 
 
-def generate_random_list(upper_limit, list_length):
+def generate_random_list(upper_limit: int, list_length: int) -> List[int]:
     random_list = [random.randint(1, upper_limit) for _ in range(list_length)]
     return list(set(random_list))
 
 
 # Function to generate a list of numbers in descending order
-def generate_numbers(upper_limit):
+def generate_numbers(upper_limit: int) -> Generator[int, None, None]:
     num = upper_limit
     while num >= 1:
         yield num
@@ -219,7 +220,7 @@ def measure_execution_time(func):
 
 # Function to find the largest prime number in the list
 @measure_execution_time
-def get_largest_prime(numbers_list):
+def get_largest_prime(numbers_list: Union[List[int], range, Generator[int, None, None]]) -> Union[int, None]:
     largest_prime = None
 
     if isinstance(numbers_list, list):
@@ -242,7 +243,7 @@ def get_largest_prime(numbers_list):
 
 
 # Main function to run the program
-def main():
+def main() -> None:
     while True:
         choice = get_user_choice()
         numbers_list = process_choice(choice)

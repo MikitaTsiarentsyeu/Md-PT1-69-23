@@ -33,7 +33,7 @@ vowels = {
 }
 
 
-def remove_vowels(input_string, vowels_set):
+def remove_vowels(input_string: str, vowels_set: list) -> str:
     """Remove vowels from the input string.
 
     Args:
@@ -46,7 +46,7 @@ def remove_vowels(input_string, vowels_set):
     return ''.join(char for char in input_string if char.lower() not in vowels_set)
 
 
-def get_valid_string_input():
+def get_valid_string_input() -> str:
     """Get a valid input string from the user.
 
     Returns:
@@ -62,7 +62,7 @@ def get_valid_string_input():
             print("Invalid input. Please enter a valid string.")
 
 
-def choose_language():
+def choose_language() -> str:
     """Prompt the user to choose the language of the input string.
 
     Returns:
@@ -82,7 +82,7 @@ def choose_language():
             print(err)
 
 
-def get_continue_choice():
+def get_continue_choice() -> str:
     """Prompt the user to choose whether to continue or exit the program.
 
     Returns:
@@ -96,7 +96,7 @@ def get_continue_choice():
             print("Invalid input. Please enter 'yes' or 'no'.")
 
 
-def main():
+def main() -> None:
     """Main function to execute the vowel remover script."""
     while True:
         try:

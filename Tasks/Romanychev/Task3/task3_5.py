@@ -22,12 +22,13 @@ Example:
     Occurrences of words (length > 5): {'banana': 1, 'orange': 1, 'pineapple': 1}
 
 """
+from typing import List, Dict
 
 import re
 from collections import Counter
 
 
-def is_valid_word(word):
+def is_valid_word(word: str) -> bool:
     """
     Check if a word is valid.
 
@@ -40,7 +41,7 @@ def is_valid_word(word):
     return word.isalpha()
 
 
-def get_valid_words_from_user():
+def get_valid_words_from_user() -> List[str]:
     """
     Get a valid list of words from the user.
 
@@ -59,7 +60,7 @@ def get_valid_words_from_user():
             print("Invalid input. Please enter only words.")
 
 
-def filter_long_words(words_list):
+def filter_long_words(words_list: List[str]) -> List[str]:
     """
     Filter a list of words based on their length.
 
@@ -72,7 +73,7 @@ def filter_long_words(words_list):
     return [word for word in words_list if len(word) > 5]
 
 
-def count_word_occurrences(words_list):
+def count_word_occurrences(words_list: List[str]) -> Dict[str, int]:
     """
     Count occurrences of words in the list with a length greater than 5 characters.
 
@@ -87,7 +88,7 @@ def count_word_occurrences(words_list):
     return {word: count for word, count in word_counts.items() if len(word) > 5}
 
 
-def get_user_choice():
+def get_user_choice() -> str:
     """
     Ask the user if they want to continue or exit the script.
 
@@ -110,7 +111,7 @@ def get_user_choice():
             print("Please try again.")
 
 
-def main():
+def main() -> None:
     """
     The main function to run the Word Filter Script.
     """

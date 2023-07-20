@@ -22,12 +22,12 @@ Enjoy swapping the case of your words with this simple script!
 """
 
 
-def is_valid_word_input(input_str):
+def is_valid_word_input(input_str: str) -> bool:
     words = input_str.split()
     return all(word.isalpha() for word in words)
 
 
-def get_valid_word_input():
+def get_valid_word_input() -> str:
     while True:
         try:
             user_input = input("Enter a string of words: ")
@@ -40,11 +40,11 @@ def get_valid_word_input():
             exit(0)
 
 
-def swap_case(input_str):
+def swap_case(input_str: str) -> str:
     return input_str.swapcase()
 
 
-def get_continue_choice():
+def get_continue_choice() -> bool:
     while True:
         try:
             choice = input("Do you want to continue? (yes/no): ").lower()
@@ -61,7 +61,7 @@ def get_continue_choice():
             print("Please enter 'yes' or 'no.'")
 
 
-def main():
+def main() -> None:
     while True:
         user_input = get_valid_word_input()
         swapped_string = swap_case(user_input)

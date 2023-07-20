@@ -14,10 +14,11 @@ Usage:
 The program ensures that at least two numbers are entered before calculating the sum.
 """
 
+from typing import List
+
+
 # Function to get a list of numbers from the user
-
-
-def get_numbers_from_user():
+def get_numbers_from_user() -> List[int]:
     """
     Asks the user to input a list of numbers separated by spaces.
 
@@ -43,7 +44,7 @@ def get_numbers_from_user():
 # Function to calculate the sum of all even numbers in the list
 
 
-def get_even_sum(numbers):
+def get_even_sum(numbers: List[int]) -> int:
     """
     Calculates the sum of all even numbers in the given list.
 
@@ -59,7 +60,7 @@ def get_even_sum(numbers):
 # Function to display the result
 
 
-def display_result(result):
+def display_result(result: int) -> None:
     """
     Displays the result of the even sum calculation.
 
@@ -77,7 +78,7 @@ def display_result(result):
 # Main function to control the program
 
 
-def main():
+def main() -> None:
     """
     Main function to handle user input and display the result.
     """

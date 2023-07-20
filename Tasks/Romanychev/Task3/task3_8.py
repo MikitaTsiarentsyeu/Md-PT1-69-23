@@ -14,7 +14,7 @@ Usage:
 """
 
 
-def get_valid_numbers_input():
+def get_valid_numbers_input() -> list:
     """
     Prompt the user to enter numbers separated by spaces and validate the input.
 
@@ -36,7 +36,7 @@ def get_valid_numbers_input():
         return numbers
 
 
-def calculate_mean(numbers):
+def calculate_mean(numbers: list) -> float:
     """
     Calculate the mean value of a list of numbers.
 
@@ -52,7 +52,7 @@ def calculate_mean(numbers):
     return mean
 
 
-def continue_program():
+def continue_program() -> bool:
     """
     Ask the user if they want to continue or exit the program.
 
@@ -70,7 +70,7 @@ def continue_program():
             print("Invalid input. Please enter 'yes' or 'no'.")
 
 
-def main():
+def main() -> None:
     """
     Main function to execute the mean calculator.
 
