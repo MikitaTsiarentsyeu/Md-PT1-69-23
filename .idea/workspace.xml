@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="79b7e02f-05de-4336-bbf1-68bfa6e85374" name="Changes" comment="Done first task_2">
-      <change beforePath="$PROJECT_DIR$/.idea/Md-PT1-69-23.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Md-PT1-69-23.iml" afterDir="false" />
+    <list default="true" id="79b7e02f-05de-4336-bbf1-68bfa6e85374" name="Changes" comment="Start Task3_1">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tasks/!Tasks/Task2/Task2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Tasks/!Tasks/Task2/Task2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tasks/Hatsak/Task2/Task2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tasks/Hatsak/Task2/Task2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,14 +31,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "Q:/Py_Anaconda_Jupiter/python.exe",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Q:/Py_Anaconda_Jupiter/python.exe&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,7 +62,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688463902693</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Start Task3_1">
+      <created>1689673688523</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689673688524</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -72,7 +77,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/HatsakTask3" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -80,6 +97,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Done first task_2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done first task_2" />
+    <MESSAGE value="Start Task3_1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start Task3_1" />
   </component>
 </project>

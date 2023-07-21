@@ -1,9 +1,9 @@
 """6. Write a program that takes a string as input and returns the string with all vowels removed."""
-import Task3_6_tests
+import tests
 import time
 
 vowels = ['a', 'e', 'o', 'u', 'y', 'i', 'A', 'E', 'O', 'U', 'Y', 'I']
-my_str = Task3_6_tests.cases[0]
+my_str = tests.cases[0]
 
 my_str = my_str.strip()
 

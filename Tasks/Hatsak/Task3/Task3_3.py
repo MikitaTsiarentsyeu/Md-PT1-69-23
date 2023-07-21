@@ -1,7 +1,7 @@
 """3. Write a program that takes a string as input and returns a dictionary
  with the count of each word in the string."""
 
-from Task3_6_tests import cases
+from tests import cases
 
 string = cases[0].replace('.', '').replace('!', '').replace(',', '').replace('?', '').replace('—', '').replace('-', '').replace('_', '').replace('+', '').lower()
 words = string.split()
