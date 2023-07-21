@@ -1,7 +1,7 @@
 # a program that takes a list of numbers as input
 # and returns the second largest number in the list
 
-list_of_num = input("Pleese, input a list of numbers: ")
+list_of_num = input("Please, input a list of numbers: ")
 
 list_of_num = set(list(list_of_num.split(", ")))
 

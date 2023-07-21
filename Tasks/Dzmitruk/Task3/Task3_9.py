@@ -1,6 +1,6 @@
 # a program that takes a string as input and returns the string reversed.
 
-text = input("Pleese, input a string: ")
+text = input("Please, input a string: ")
 
 # text = text[::-1]
 

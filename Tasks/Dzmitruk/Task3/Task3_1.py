@@ -2,7 +2,7 @@
 # and returns the number of vowels in the string.
 
 vowels = "aeoui"
-words = input("Pleese, input a string: ")
+words = input("Please, input a string: ")
 words = list(words)
 
 found = {}

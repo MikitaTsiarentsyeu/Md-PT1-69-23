@@ -3,7 +3,7 @@
 
 n = []
 
-l = input("Pleese, input a list of numbers: ")
+l = input("Please, input a list of numbers: ")
 
 l = list(l.split(", "))
 

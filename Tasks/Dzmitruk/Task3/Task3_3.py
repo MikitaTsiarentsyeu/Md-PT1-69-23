@@ -3,7 +3,7 @@
 
 count = {}
 
-text = input("Pleese, input a text: ")
+text = input("Please, input a text: ")
 
 text = text.replace(".", "" )
 text = text.replace(",", "" )

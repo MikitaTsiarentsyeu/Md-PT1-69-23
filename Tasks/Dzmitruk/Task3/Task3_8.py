@@ -1,7 +1,7 @@
 # a program that takes a list of numbers as input and returns
 # the average of all numbers in the list.
 
-numbers = input("Pleese input a list of number: ")
+numbers = input("Please, input a list of number: ")
 numbers = list(numbers.split(", "))
 
 s = 0

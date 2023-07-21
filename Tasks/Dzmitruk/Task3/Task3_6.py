@@ -2,7 +2,7 @@
 # and returns the string with all vowels removed.
 
 vowels = "aeoui"
-words = input("Pleese, input a string: ")
+words = input("Please, input a string: ")
 words = list(words)
 
 for letter in words:
