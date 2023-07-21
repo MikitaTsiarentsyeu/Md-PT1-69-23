@@ -4,7 +4,7 @@ import time
 
 vowels = ['a', 'e', 'o', 'u', 'y', 'i', 'A', 'E', 'O', 'U', 'Y', 'I']
 my_str = tests.cases[0]
-
+#my_str = input('Enter any string: ')
 my_str = my_str.strip()
 
 

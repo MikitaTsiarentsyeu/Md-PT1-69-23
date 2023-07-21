@@ -4,6 +4,7 @@
 from tests import cases
 
 string = cases[0].replace('.', '').replace('!', '').replace(',', '').replace('?', '').replace('—', '').replace('-', '').replace('_', '').replace('+', '').lower()
+#string = input('Enter any string: ')
 words = string.split()
 my_dict = dict()
 for word in words:
