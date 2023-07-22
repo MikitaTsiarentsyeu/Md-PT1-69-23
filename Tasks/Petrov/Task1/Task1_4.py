@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from random import randint
 
 
@@ -11,7 +11,7 @@ def isitamount(x):
         else:
             print("Money cant be negative or 0")
             return False
-    except ValueError:
+    except InvalidOperation:
         print("Invalid input")
         return False
 
