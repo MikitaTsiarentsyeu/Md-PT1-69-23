@@ -21,5 +21,5 @@ for word in text:
     count[word] += 1
    
 for k, v in count.items():
-    print(f"Word '" {k} "' was found" {v} "time(s).")
+    print(f"Word '{k}' was found {v} time(s).")
     
