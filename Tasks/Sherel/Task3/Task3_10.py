@@ -18,12 +18,12 @@ for x in user_input:
 #print(myList)
 
 #check max number in list option 1
-max_number_p = max(myList, key=int)
+#max_number_p = max(myList, key=int)
 
-##check max number in list option 2
-# max_number_p = 0
-# for i in myList:
-#     if int(i) > int(max_number_p):
-#         max_number_p = i
+#check max number in list option 2
+max_number_p = 0
+for i in myList:
+    if int(i) > int(max_number_p):
+        max_number_p = i
 
 print(max_number_p)
