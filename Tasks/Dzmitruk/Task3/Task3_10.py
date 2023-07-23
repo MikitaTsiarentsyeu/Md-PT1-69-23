@@ -15,6 +15,12 @@ for num in l:
                 break
         else:
             prime_numbers.append(num)
+    elif num == 1:
+        prime_numbers.append(num)
+
+if  prime_numbers == []:
+    print ("No prime number in the list." )
+    exit()
 
 prime_numbers = sorted(prime_numbers)
    
