@@ -3,8 +3,10 @@
 
 from tests import cases
 
-string = cases[0].replace('.', '').replace('!', '').replace(',', '').replace('?', '').replace('—', '').replace('-', '').replace('_', '').replace('+', '').lower()
-#string = input('Enter any string: ')
+string = cases[0]
+# string = input('Enter any string: ')
+string = string.replace('.', '').replace('!', '').replace(',', '').replace('?', '').replace('—', '').replace('-', '').replace('_', '').replace('+', '').lower()
+
 words = string.split()
 my_dict = dict()
 for word in words:

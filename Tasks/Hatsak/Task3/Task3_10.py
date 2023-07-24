@@ -1,5 +1,7 @@
 """10. Write a program that takes a list of numbers as input and returns the largest prime number in the list."""
-nums = [1, 2, 3, 11, 13, 17, 19, 613, 1000, 1024, 2048]
+from list_input import enter
+
+nums = enter()
 
 
 def is_prime(num):
