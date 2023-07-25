@@ -1,5 +1,5 @@
 from math import pi
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 
 def isitradius(x):
@@ -11,7 +11,7 @@ def isitradius(x):
         else:
             print("Radius cant be negative or 0")
             return False
-    except ValueError:
+    except InvalidOperation:
         print("Invalid input")
         return False
 
