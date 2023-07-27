@@ -20,7 +20,7 @@ def make_lines(paragraph, line_length):
             if len(line) == line_length:
                 break
             if index >= len(line):
-                index = 0
+                index = 1
                 round += 1
         position_start = position_current
         lines.append(f"{line}\n")
