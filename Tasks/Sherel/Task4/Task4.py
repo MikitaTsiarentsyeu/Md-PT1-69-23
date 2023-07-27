@@ -5,8 +5,8 @@
 4. Write the resulting text to a new file and notify the user about it."""
 
 user_input = int(input("Enter maximum number of characters per line, an integer that must be greater than 35: "))
-if user_input <= 35:
-    print("Повтори попытку и введи значение больше 35.")
+if user_input < 35:
+    print("Restart the program and enter a value greater than 35.")
     exit()
 
 with open("text.txt", "r") as input_file:
@@ -25,12 +25,12 @@ with open("output_text.txt", "w") as output_file:
                 formatted_line += word + " "
                 current_length += word_length + 1
             else:
-                for str_length in formatted_line.split("\n"):
+                for str_length in formatted_line[:-1].split("\n"):
                     difference = user_input - len(str_length)
                     while difference != 0:
                         str_length = str_length.replace(" ", "  ", difference)
                         difference = user_input-len(str_length)
-                    output_file.write(str_length[:-1:] + "\n")
+                    output_file.write(str_length + "\n")
                     formatted_line = word + " "
                     current_length = word_length + 1
         output_file.write(formatted_line.rstrip() + "\n")
