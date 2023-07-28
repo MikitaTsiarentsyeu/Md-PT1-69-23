@@ -2,29 +2,29 @@ class WrongNumberOfCharactersPerLine(Exception):
     pass
 
 
-def make_lines(paragraph, line_length):
+def make_lines(paragraph, needed_length):
     lines = []
-    position_start, position_current = 0, 0
-    while position_current + line_length < len(paragraph):
-        position_current += line_length
-        while paragraph[position_current] != " ":
-            position_current -= 1
-        line = paragraph[position_start: position_current].strip()
+    pos_start, pos_current = 0, 0
+    while pos_current + needed_length < len(paragraph):
+        pos_current += needed_length
+        while paragraph[pos_current] != " ":
+            pos_current -= 1
+        line = paragraph[pos_start: pos_current].strip()
         index, round = 1, 1
-        while True:
+        actual_length = len(line)
+        while actual_length != needed_length:
             if line[index] == " ":
                 line = f"{line[0:index+1]}{line[index:]}"
                 index += round + 1
+                actual_length = len(line)
             else:
-                index += round
-            if len(line) == line_length:
-                break
-            if index >= len(line):
+                index += 1
+            if index == actual_length:
                 index = 1
                 round += 1
-        position_start = position_current
+        pos_start = pos_current
         lines.append(f"{line}\n")
-    lines.append(paragraph[position_current+1:])
+    lines.append(paragraph if pos_current == 0 else paragraph[pos_current+1:])
     return lines
 
 
