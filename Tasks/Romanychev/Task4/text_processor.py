@@ -57,28 +57,15 @@ def split_text_into_chunks(text, max_chunk_size):
 
 def adjust_chunk_length(chunk, max_chunk_size):
     """
-    Adjusts the length of a chunk by adding spaces to fit the specified
-    max_chunk_size.
+    Adjusts  the length of a given chunk of text by distributing spaces between
+    words.
+    If the input chunk is already equal to or longer than the maximum size,
+    it will be returned unchanged.
     Args:
-    chunk (str): The chunk of text to be adjusted.
-    max_chunk_size (int): The maximum allowed number of characters per
-    line.
+    chunk (str): The input chunk of text to be adjusted.
+    max_chunk_size (int): The maximum desired size of the adjusted chunk.
     Returns:
-        str: The adjusted chunk with added spaces.
-    Example:
-        >>> chunk = "This is a sample"
-        >>> max_size = 20
-        >>> adjusted_chunk = adjust_chunk_length(chunk, max_size)
-        >>> adjusted_chunk
-    'This is a sample'
-    Note:
-     - If  the input chunk is already equal to or longer than the maximum size,
-    it is returned unchanged.
-     - The  function  adds  spaces  between  words  in  the chunk to adjust its
-    length, maintaining proper spacing.
-     - The extra spaces are distributed evenly between words, starting from the
-    leftmost word.
-     - The final adjusted chunk is returned as the result.
+    str: The adjusted chunk of text with spaces distributed between words.
     """
 
     # If the input chunk is already equal to or longer than the maximum size,
@@ -88,30 +75,28 @@ def adjust_chunk_length(chunk, max_chunk_size):
 
     # Split the chunk into individual words.
     words = chunk.split()
+
+    # Calculate the total number of spaces needed to achieve the desired chunk
+    # size
+    total_spaces = max_chunk_size - sum(map(len, words))
+
+    # Calculate the number of spaces to distribute between words
     num_words = len(words)
+    spaces_per_word, extra_spaces = divmod(total_spaces, num_words - 1)
 
-    # Calculate the number of spaces needed to reach the maximum size.
-    num_spaces_needed = max_chunk_size - len(chunk) + num_words - 1
+    # Generate the list with the distributed spaces using a list comprehension
+    space_counts = [spaces_per_word + (1 if index < extra_spaces else 0)
+                    for index in range(num_words - 1)]
 
-    # Calculate the number of spaces to distribute between words.
-    num_spaces_between_words = num_spaces_needed // (
-        num_words - 1) if num_words > 1 else 0
+    # Add 0 at the end of the space_counts list
+    space_counts.append(0)
 
-    # Calculate any extra spaces that should be distributed between words.
-    extra_spaces = num_spaces_needed % (num_words - 1) if num_words > 1 else 0
+    # Combine words with their corresponding space counts using a list
+    # comprehension
+    words_with_spaces = [word + ' ' * spaces_to_add for word,
+                         spaces_to_add in zip(words, space_counts)]
 
-    # Create the adjusted chunk by adding spaces between words.
-    adjusted_chunk = words[0]  # Start with the first word.
-
-    # Iterate through the remaining words.
-    for word in words[1:]:
-        # Determine the number of spaces to add after the word.
-        num_spaces = num_spaces_between_words + (1 if extra_spaces > 0 else 0)
-
-        # Add the word and the calculated spaces to the adjusted chunk.
-        adjusted_chunk += ' ' * num_spaces + word
-
-        # Decrement the count of extra spaces if we used one for this word.
-        extra_spaces = max(0, extra_spaces - 1)
+    # Join the words with spaces using the str.join method
+    adjusted_chunk = words_with_spaces[0] + ''.join(words_with_spaces[1:])
 
     return adjusted_chunk
