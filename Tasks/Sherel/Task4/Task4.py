@@ -1,18 +1,26 @@
-""""
-1. Prepare to read the contents of the file text.txt
-2. Allow the user to enter a parameter "maximum number of characters per line", which must be greater than 35.
-3. Format the text taking into account the maximum number of characters, but if a word does not fit entirely on a line, it should be moved to the next one, and the spacing between words should be evenly increased (similarly to the "Justify" function in text editors). There is a module called ‘textwrap’ which can do it, you may take a look at it but do not use for this task.
-4. Write the resulting text to a new file and notify the user about it."""
+def input_validation(func):
+    def wrapper():
+        while True:
+            try:
+                user_input = int(
+                    input("Enter maximum number of characters per line, an integer that must be greater than 35: "))
+                if user_input <= 35:
+                    print("Restart the program and enter a value greater than 35.")
+                else:
+                    return user_input
+            except ValueError:
+                print("Invalid input. Enter an integer.")
+                continue
 
-user_input = int(input("Enter maximum number of characters per line, an integer that must be greater than 35: "))
-if user_input < 35:
-    print("Restart the program and enter a value greater than 35.")
-    exit()
+    return wrapper
 
-with open("text.txt", "r") as input_file:
-    lines = input_file.readlines()
+@input_validation
+def get_user_input():
+    pass
 
-with open("output_text.txt", "w") as output_file:
+def format_lines(lines, user_input):
+    formatted_lines = []
+
     for line in lines:
         words = line.split()
 
@@ -29,8 +37,22 @@ with open("output_text.txt", "w") as output_file:
                     difference = user_input - len(str_length)
                     while difference != 0:
                         str_length = str_length.replace(" ", "  ", difference)
-                        difference = user_input-len(str_length)
-                    output_file.write(str_length + "\n")
+                        difference = user_input - len(str_length)
+                    formatted_lines.append(str_length)
                     formatted_line = word + " "
                     current_length = word_length + 1
-        output_file.write(formatted_line.rstrip() + "\n")
+        formatted_lines.append(formatted_line.rstrip())
+
+    return formatted_lines
+
+def write_output_file(output_lines):
+    with open("output_text.txt", "w") as output_file:
+        for line in output_lines:
+            output_file.write(line + "\n")
+
+with open("text.txt", "r") as input_file:
+    lines = input_file.readlines()
+
+user_input = get_user_input()
+formatted_lines = format_lines(lines, user_input)
+write_output_file(formatted_lines)
