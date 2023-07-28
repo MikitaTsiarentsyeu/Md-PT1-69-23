@@ -1,6 +1,5 @@
-import text_processor
+from text_processor import TextProcessor
 import user_interface
-
 
 OUTPUT_FILE_NAME = 'formatted_text.txt'
 
@@ -17,9 +16,9 @@ def process_file(input_file_path, max_chunk_size):
      2. Reads  each  line  from  the  input  file,  strips leading and trailing
     whitespaces, and splits the line into chunks.
     Chunks  are  created  based  on  the  specified  max_chunk_size  using  the
-    split_text_into_chunks function from the text_processor module.
+    split_text_into_chunks method from the TextProcessor class.
      3. Adjusts  the  length  of each chunk to fit the specified max_chunk_size
-    using the adjust_chunk_length function from the text_processor module.
+    using the adjust_chunk_length method from the TextProcessor class.
     The adjusted chunks are then written to the output file.
      4. Displays  a  success  message,  indicating  that  the  file  processing
     completed successfully, and provides the path to the output file.
@@ -42,6 +41,9 @@ def process_file(input_file_path, max_chunk_size):
     output_file_path = OUTPUT_FILE_NAME
 
     try:
+        # Create an instance of TextProcessor
+        processor = TextProcessor(max_chunk_size)
+
         # Open the input file for reading and the output file for writing.
         with open(input_file_path, 'r') as input_file, \
                 open(output_file_path, 'w') as output_file:
@@ -52,16 +54,14 @@ def process_file(input_file_path, max_chunk_size):
 
                 # Split the line into smaller chunks based on the specified \
                 # max_chunk_size.
-                chunks = text_processor.split_text_into_chunks(
-                    line, max_chunk_size)
+                chunks = processor.split_text_into_chunks(line)
 
                 # Process each chunk.
                 for i, chunk in enumerate(chunks, 1):
                     # If the chunk is not the last one, adjust its length to \
                     # the maximum size.
                     if i < len(chunks):
-                        adjusted_chunk = text_processor.adjust_chunk_length(
-                            chunk, max_chunk_size)
+                        adjusted_chunk = processor.adjust_chunk_length(chunk)
                         # Write the adjusted chunk to the output file, \
                         # followed by a newline.
                         output_file.write(adjusted_chunk + '\n')
