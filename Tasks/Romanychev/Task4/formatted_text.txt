@@ -16,18 +16,18 @@ positions  four  through eight unchanged
 from  the  same  time  last  year. Those
 slots  are  occupied,  respectively,  by
 C++,  C#,  Visual  Basic, JavaScript and
-PHP.  Positions nine and 10 swapped from
-Feb.  21  to now, with Assembly Language
-and   SQL  now  occupying  each  other’s
-positions.
+PHP.   Positions  nine  and  10  swapped
+from  Feb.  21  to  now,  with  Assembly
+Language  and  SQL  now  occupying  each
+other’s positions.
 The  one  big  move of note between Feb.
 2021  and  Feb. 2022 was with the Groovy
 programming         language,         an
-object-oriented  language for Java. Over
-the  course  of  the  year,  Groovy fell
-from  12th position all the way to 20th,
-putting   it  perilously  close  to  the
-“other programming languages” list.
+object-oriented   language   for   Java.
+Over  the  course  of  the  year, Groovy
+fell  from  12th position all the way to
+20th,  putting  it  perilously  close to
+the “other programming languages” list.
 TIOBE   CEO   Paul   Jansen   attributes
 Groovy’s  decline  to  the growth in the
 CI/CD   space.   Groovy   was  the  only
@@ -49,8 +49,8 @@ Jensen said.
 The  TIOBE  index  may  not  be  full of
 surprises  this  month,  but  Jansen did
 have  a  lot  to  say  about  the  index
-itself  this month, as this is the first
-time   it   has   been   compiled  using
+itself   this  month,  as  this  is  the
+first  time  it  has been compiled using
 Similarweb’s  traffic  analysis platform
 instead of Alexa.
 “We  have  used Similarweb for the first
@@ -75,6 +75,7 @@ APIs  that  let  Java apps invoke pages,
 fill  forms  and  do  other standard web
 browsing   activity.  This  switch  will
 eventually   allow   TIOBE   to  include
-websites  it was unable to crawl before,
-like  Stackoverflfow  and  Github, which
-could have a larger impact on scores.
+websites   it   was   unable   to  crawl
+before,    like    Stackoverflfow    and
+Github,   which   could  have  a  larger
+impact on scores.
