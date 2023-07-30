@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 
 # Since isdecimal() works not as how I expected
@@ -8,7 +8,7 @@ def isitdecimalable(x):
     try:
         x = Decimal(x)
         return True
-    except ValueError:
+    except InvalidOperation:
         return False
 
 

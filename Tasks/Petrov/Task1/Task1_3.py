@@ -1,4 +1,4 @@
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 
 def isitspeed(x):
@@ -10,7 +10,7 @@ def isitspeed(x):
         else:
             print("Speed cant be negative or 0")
             return False
-    except ValueError:
+    except InvalidOperation:
         print("Invalid input")
         return False
 
