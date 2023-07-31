@@ -1,6 +1,16 @@
 NUMBER_OF_SYMBOLS = 40
 
+
+def enter():
+    NUMBER_OF_SYMBOLS = input("Enter the number >= 15 of symbols in a row: ")
+    if not NUMBER_OF_SYMBOLS.isdigit() or int(NUMBER_OF_SYMBOLS) < 15:
+        return enter()
+    return int(NUMBER_OF_SYMBOLS)
+
+
+NUMBER_OF_SYMBOLS = enter()
 write_file = open('answer.txt', 'w')
+
 with open("text.txt", "a+") as f:
     f.seek(0)
     end_str = ''
@@ -24,7 +34,7 @@ with open("text.txt", "a+") as f:
             print(string)
             continue
 
-        if len(string) < 41:
+        if len(string) < NUMBER_OF_SYMBOLS + 1:
             end_str = ''
         else:
             string, end_str = string.rsplit(maxsplit=1)
@@ -34,7 +44,8 @@ with open("text.txt", "a+") as f:
         string = string.split()
 
         i = 0
-        while i < spaces:
+        while string[0:-1] and i < spaces:
+
             for j, word in enumerate(string[0:-1]):
                 word = word + ' '
                 string[j] = word
