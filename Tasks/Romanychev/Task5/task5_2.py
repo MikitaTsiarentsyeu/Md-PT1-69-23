@@ -11,6 +11,12 @@ def reverse_strings(input_list: List[str]) -> List[str]:
     Returns:
         List[str]: A new list containing the reversed strings.
 
+    Examples:
+        >>> reverse_strings(['hello', 'world'])
+        ['olleh', 'dlrow']
+        >>> reverse_strings(['abc', '123'])
+        ['cba', '321']
+
     Raises:
         TypeError: If the input_list contains elements that are not strings.
     """

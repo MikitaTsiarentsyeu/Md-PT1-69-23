@@ -2,10 +2,9 @@ from functools import reduce
 
 
 def sum_two_integers(*args: int) -> int:
-    # Check if any arguments are provided
-    if not args:
-        raise ValueError(
-            'No arguments provided. Please provide at least two integers.')
+    # Check if at least two arguments are provided
+    if len(args) < 2:
+        raise ValueError('Please provide at least two integers.')
 
     # Check if all arguments are integers
     if not all(isinstance(arg, int) for arg in args):
@@ -26,13 +25,22 @@ test_cases = [
     [100, 200],
     [5, '6'],
     [5.5, 6.6],
+    [1],
     [],
+    [10**1000, 10**1000],  # Test with large integers
+    [-(10**1000), 10**1000],
+    [(2 ** 31 - 1) - 1, 2]  # Test with large integers and negatives
 ]
 
 for numbers in test_cases:
     try:
-        result = sum_two_integers(*numbers)
-        print(f'The sum of {numbers[0]} and {numbers[1]} is equal to {result}')
+        if len(numbers) >= 2:
+            result = sum_two_integers(*numbers)
+            print(
+                f'The sum of {numbers[0]} and {numbers[1]} '
+                f'is equal to {result}')
+        else:
+            raise ValueError("Please provide at least two integers.")
     except ValueError as ve:
         print(f'Error: {ve}')
     except TypeError as te:
