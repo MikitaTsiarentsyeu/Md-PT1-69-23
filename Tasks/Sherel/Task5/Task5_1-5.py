@@ -60,3 +60,36 @@ print(f"""Count lower case symbols: {lower_count}\nCount upper case symbols: {up
 # Output:
 # Count lower case symbols: 66
 # Count upper case symbols: 3
+
+
+# 5. Write a function that takes an ordered list of numbers without duplicates and returns a string with ranges for those numbers, check the example below:
+# get_ranges([0, 1, 2, 3, 4, 7, 8, 10])  ->  "0-4, 7-8, 10"
+# get_ranges([4,7,10])  -> "4, 7, 10"
+# get_ranges([2, 3, 8, 9])  -> "2-3, 8-9"
+
+numbers = [-10, 0, 1, 1, 1, 1, 2, 3, 5, 6, 8, 10, 11, 12, 15, -20, -13, 22, 21, -6]
+
+def string_with_ranges(numbers):
+    numbers = list(set(numbers))
+    numbers.sort()
+    ranges = []
+    start_range = end_range = numbers[0]
+
+    for i in range(1, len(numbers)):
+        if numbers[i] == end_range + 1:
+            end_range = numbers[i]
+        else:
+            if start_range == end_range:
+                ranges.append(str(start_range))
+            else:
+                ranges.append(f"{start_range}-{end_range}")
+            start_range = end_range = numbers[i]
+    if start_range == end_range:
+        ranges.append(str(start_range))
+    else:
+        ranges.append(f"{start_range}-{end_range}")
+
+    return ", ".join(ranges)
+
+print(string_with_ranges(numbers), type(string_with_ranges(numbers)))
+# Output: "-20, -13, -10, -6, 0-3, 5-6, 8, 10-12, 15, 21-22" <class 'str'>
