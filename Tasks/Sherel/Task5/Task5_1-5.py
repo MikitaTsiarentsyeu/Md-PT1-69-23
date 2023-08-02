@@ -68,7 +68,7 @@ print(f"""Count lower case symbols: {lower_count}\nCount upper case symbols: {up
 # get_ranges([4,7,10])  -> "4, 7, 10"
 # get_ranges([2, 3, 8, 9])  -> "2-3, 8-9"
 
-numbers = [-10, 0, 1, 1, 1, 1, 2, 3, 5, 6, 8, 10, 11, 12, 15, -20, -13, 21, 22, -6]
+numbers = [23, -9, 0, 21, 1, 1, -13, 1, 1, 3, 2, 8, 6, 5, 10, 11, 12, 15, 22]
 
 def string_with_ranges(numbers):
     numbers = list(set(numbers))
@@ -93,4 +93,4 @@ def string_with_ranges(numbers):
     return ", ".join(ranges)
 
 print(string_with_ranges(numbers), type(string_with_ranges(numbers)))
-# Output: "-20, -13, -10, -6, 0-3, 5-6, 8, 10-12, 15, 21-22" <class 'str'>
+# Output: "-13, -9, 0-3, 5-6, 8, 10-12, 15, 21-23" <class 'str'>
