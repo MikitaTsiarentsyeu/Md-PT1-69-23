@@ -2,15 +2,19 @@
 
 def sum_of_numbers(a, b):
     """
-    :param a: first argument
-    :param b: second argument
+    :param a: first argument -> integer
+    :param b: second argument -> integer
     :return: sum arguments
     """
-    return a + b
+    if a == str(a) or b == str(b):
+        print('Please, enter only integer value...')
+    else:
+        return a + b
 
-result = sum_of_numbers(-20, 6)
-print(result)
-# Output: -14
+result = sum_of_numbers('20', 6.5)
+print('' if result is None else result)
+# Input (20, 6.5)        # Input ('20', 6.5)
+# Output: 26.5           # Output: 'Please, enter only integer value...'
 
 
 #2. Write a function that takes a list of strings as an argument and
@@ -20,13 +24,10 @@ input_list_2 = ["Hi", "my", "name", "is", "Artyom", "Sherel"]
 
 def reverse_strings_in_list(input_list_2):
     """
-    :param input_list_2:
+    :param input_list_2: a list of strings as an argument
     :return: a new list of strings that are all reversed
     """
-    reversed_list = []
-    for string in input_list_2[::-1]:
-        reversed_string = string[::-1]
-        reversed_list.append(reversed_string)
+    reversed_list = [string[::-1] for string in input_list_2[::-1]]
     return reversed_list
 
 print(reverse_strings_in_list(input_list_2))
@@ -41,7 +42,7 @@ input_list_3 = ["London", ",", "is", "the", "capital", "of", "Great", "Britain",
 
 def filter_strings_by_length(input_list_3):
     """
-    :param input_list_3:
+    :param input_list_3: a list of strings as an argument
     :return: a new list with all the strings that have a length greater than 5
     """
     return [string for string in input_list_3 if len(string) > 5]
@@ -57,26 +58,29 @@ initial_string = "London is the capital of Great Britain, its political, economi
 
 def count_lower_upper_case_symbols(initial_string):
     """
-    :param initial_string:
+    :param initial_string: a string as an argument
     :return: two numbers, first for count of lower case symbols, second for count of the upper case symbols
     """
-    count_lower = 0
-    count_upper = 0
+    #the second variant, by Romanychev
+    count_lower = len([char for char in initial_string if char.islower()])
+    count_upper = len([char for char in initial_string if char.isupper()])
 
-    for char in initial_string:
-        if char.islower():
-            count_lower += 1
-        elif char.isupper():
-            count_upper += 1
+    #the firs variant
+    # count_lower = 0
+    # count_upper = 0
+    # for char in initial_string:
+    #     if char.islower():
+    #         count_lower += 1
+    #     elif char.isupper():
+    #         count_upper += 1
 
     return count_lower, count_upper
 
 lower_count, upper_count = count_lower_upper_case_symbols(initial_string)
 
 print(f"""Count lower case symbols: {lower_count}\nCount upper case symbols: {upper_count}""")
-# Output:
-# Count lower case symbols: 66
-# Count upper case symbols: 3
+# Output: Count lower case symbols: 66
+#         Count upper case symbols: 3
 
 
 # 5. Write a function that takes an ordered list of numbers without duplicates
@@ -89,7 +93,7 @@ numbers = [23, -9, 0, 21, 1, 1, -13, 1, 1, 3, 2, 8, 6, 5, 10, 11, 12, 15, 22]
 
 def string_with_ranges(numbers):
     """
-    :param numbers:
+    :param numbers: an ordered list of numbers without duplicates
     :return: a string with ranges for those numbers
     """
     numbers = list(set(numbers)) # cleaning up duplicates
@@ -111,7 +115,11 @@ def string_with_ranges(numbers):
     else:
         ranges.append(f"{start_range}-{end_range}")
 
-    return ", ".join(ranges)
-
+    return '"' + ", ".join(ranges) + '"'
 print(string_with_ranges(numbers), type(string_with_ranges(numbers)))
+# Output: "-13, -9, 0-3, 5-6, 8, 10-12, 15, 21-23" <class 'str'>
+
+#or
+#     return ", ".join(ranges)
+# print(f'''"{string_with_ranges(numbers)}"''', type(string_with_ranges(numbers)))
 # Output: "-13, -9, 0-3, 5-6, 8, 10-12, 15, 21-23" <class 'str'>
