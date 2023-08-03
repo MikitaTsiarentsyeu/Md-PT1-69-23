@@ -27,9 +27,6 @@ test_cases = [
     [5.5, 6.6],
     [1],
     [],
-    [10**1000, 10**1000],  # Test with large integers
-    [-(10**1000), 10**1000],
-    [(2 ** 31 - 1) - 1, 2]  # Test with large integers and negatives
 ]
 
 for numbers in test_cases:

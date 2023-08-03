@@ -38,6 +38,7 @@ test_cases = [
     [5, 6, 'HTML'],
     ['a', 'bb', 'ccc', 'dddd'],
     ['Python', 'JavaScript', 'C#'],
+    ['hello', 'world', 'apple', 'grape']
 ]
 
 for i, words_list in enumerate(test_cases):

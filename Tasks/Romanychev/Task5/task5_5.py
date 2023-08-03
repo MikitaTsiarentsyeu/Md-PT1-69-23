@@ -5,13 +5,10 @@ from typing import List
 def get_ranges(numbers: List[int]) -> str:
     """
     Returns a string representing ranges in a list of numbers.
-
     Parameters:
         numbers (List[int]): The list of integers to find ranges in.
-
     Returns:
         str: A string representing the ranges in the list of numbers.
-
     Raises:
         TypeError: If the input is not a list of integers.
     """
@@ -40,6 +37,19 @@ def get_ranges(numbers: List[int]) -> str:
     return ', '.join(result)
 
 
+def pretty_print_ranges(test_cases):
+    for i, numbers in enumerate(test_cases):
+        try:
+            result = get_ranges(numbers)
+            print(f'{"=" * 50}\nTest Case {i+1}:\n{"-" * 50}\n'
+                  f'Input: {numbers}\n'
+                  f'Output: "{result}"')
+        except TypeError as te:
+            print(f'{"=" * 50}\nTest Case {i+1}:\n{"-" * 50}\n'
+                  f'Input: {numbers}\n'
+                  f'Error: {te}')
+
+
 # Test cases for get_ranges function
 test_cases = [
     [0, 1, 2, 3, 4, 7, 8, 10],
@@ -63,9 +73,4 @@ test_cases = [
     [1, 2, None, 3],
 ]
 
-for i, numbers in enumerate(test_cases):
-    try:
-        result = get_ranges(numbers)
-        print(f'Test Case {i+1}: Input: {numbers}, Output: {result}')
-    except TypeError as te:
-        print(f"Error: {te}")
+pretty_print_ranges(test_cases)
