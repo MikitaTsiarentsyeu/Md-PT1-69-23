@@ -9,13 +9,10 @@ def count_case(string):
     for s in string:
         if not s.isalpha():
             continue
-        print(s)
         if s.islower():
             l += 1
-            print('l: ', l)
         else:
             u += 1
-            print('u: ', u)
 
     return l, u
 
