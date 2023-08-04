@@ -5,7 +5,7 @@ my_list = ['', ' ', 'a', 'ab', '12345', 'qwerty', 'ss ccc']
 
 
 def check(strings, n=5):
-    return [string for string in strings if len(string) > 5]
+    return [string for string in strings if len(string) > n]
 
 
 print(check(my_list))
