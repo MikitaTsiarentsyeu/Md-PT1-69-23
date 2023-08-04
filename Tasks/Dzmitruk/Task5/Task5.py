@@ -35,34 +35,26 @@ def countlowup (string):
     return (print("Lower case symbols -", low,", upper case symbols -", up))
 
 def get_ranges(list_of_num):
-    ranges = ""
-    start = stop = ""
-    list_of_num = list(set(list_of_num)) 
-    list_of_num.sort() 
-
-    for i in range(len(list_of_num)-1):
-
-        if list_of_num[i+1] != list_of_num[i] + 1:
-            stop = str(list_of_num[i])
-            ranges += stop + ","
-
-        else:
-            start = str(list_of_num[i])
-            ranges += start + "-"
-
-    ranges += str(list_of_num[i+1])
-
-    ranges = ranges.split(",")
-
-    new_ranges = []
-
-    for new_range in ranges:
-        if new_range.count("-") > 1:
-            number = new_range.split("-")
-            new_ranges.append(number[0] + "-" + number[-1])
-        else:
-            new_ranges.append(new_range)
-
-    new_ranges = ', '.join(new_ranges)
     
-    return new_ranges
+    ranges = ""
+    list_of_num = list(set(list_of_num))
+    list_of_num.sort()
+                       
+    start = stop = list_of_num[0]
+
+    for i in range(1, len(list_of_num)):
+        if list_of_num[i] == stop + 1:
+            stop = list_of_num[i]
+        else:
+            if start == stop:
+                ranges += str(start) + ", "
+            else:
+                ranges += str(start) + "-" + str(stop) + ", " 
+            start = stop = list_of_num[i]
+            
+    if start == stop:
+        ranges += str(start) 
+    else:
+        ranges += str(start) + "-" + str(stop) 
+
+    return ranges
