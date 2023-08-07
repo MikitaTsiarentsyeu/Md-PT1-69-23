@@ -9,15 +9,12 @@ iterations = 1000
 def recursive_reverse_string(string, acc=""):
     """
     Reverses a given string recursively using tail recursion.
-
     Parameters:
         string (str): The input string to be reversed.
         acc (str, optional): The accumulator to store the reversed string.
         Defaults to ''.
-
     Returns:
         str: The reversed string.
-
     Raises:
         TypeError: If the input is not a string.
     """
@@ -34,10 +31,8 @@ def recursive_reverse_string(string, acc=""):
 def iterative_reverse_string(string):
     """
     Reverses a given string iteratively.
-
     Parameters:
         string (str): The input string to be reversed.
-
     Returns:
         str: The reversed string.
     """
@@ -51,10 +46,8 @@ def iterative_reverse_string(string):
 def reversed_reverse_string(string):
     """
     Reverses a given string using the built-in reversed method.
-
     Parameters:
         string (str): The input string to be reversed.
-
     Returns:
         str: The reversed string.
     """
@@ -66,10 +59,8 @@ def reversed_reverse_string(string):
 def slice_reverse_string(string):
     """
     Reverses a given string using slicing.
-
     Parameters:
         string (str): The input string to be reversed.
-
     Returns:
         str: The reversed string.
     """
@@ -82,10 +73,8 @@ def slice_reverse_string(string):
 def measure_execution_time(func):
     """
     Measure the execution time of a given function.
-
-    Parameters:
+rameters:
         func (callable): The function to be measured.
-
     Returns:
         float: The total time taken by the function to execute.
     """
@@ -120,8 +109,8 @@ print(f"{'#': <3} {'Function': <{max_name_length}} {'Time (s)': <10} "
       f"{'Slower by a factor'}")
 for i, (name, time) in enumerate(sorted_results):
     if i == 0:
-        continue  # Skip the first function (fastest one)
-
-    ratio = time / best_time
-    print(f"{i: <3} {name: <{max_name_length}} {time:.8f} {ratio:.2f}"
-          f" times slower than {best_name}")
+        print(f"{i: <3} {name: <{max_name_length}} {time:.8f}")
+    else:
+        ratio = time / best_time
+        print(f"{i: <3} {name: <{max_name_length}} {time:.8f} {ratio:.2f}"
+              f" times slower than {best_name}")

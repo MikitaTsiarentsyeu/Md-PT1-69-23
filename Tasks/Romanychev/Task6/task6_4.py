@@ -13,7 +13,7 @@ def power(base: Union[int, float], exponent: int) -> Union[int, float]:
         exponent (int): The exponent value.
 
     Returns:
-        int or float: The result of raising the base to the power of the 
+        int or float: The result of raising the base to the power of the
         exponent.
     """
     if not isinstance(base, (int, float)):
