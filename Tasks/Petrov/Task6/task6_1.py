@@ -5,4 +5,7 @@ def reversed_string(text):
 
 
 line = input("Input text: ")
-print(reversed_string(line))
+if line:
+    print(reversed_string(line))
+else:
+    print("No text - no reverse text")
