@@ -11,9 +11,12 @@ def ispalindrome(text):
 
 
 line = input("Input text: ")
-without_all = str.maketrans("", "", punctuation + " ")
-flag_without_all = ispalindrome(line.lower().translate(without_all))
-with_spaces = str.maketrans("", "", punctuation)
-flag_with_spaces = ispalindrome(line.lower().translate(with_spaces))
-print(f"Is your input a palindrome? {flag_without_all}")
-print(f"Is your input a palindrome with spaces? {flag_with_spaces}")
+if line:
+    without_all = str.maketrans("", "", punctuation + " ")
+    flag_without_all = ispalindrome(line.lower().translate(without_all))
+    with_spaces = str.maketrans("", "", punctuation)
+    flag_with_spaces = ispalindrome(line.lower().translate(with_spaces))
+    print(f"Is your input a palindrome? {flag_without_all}")
+    print(f"Is your input a palindrome with spaces? {flag_with_spaces}")
+else:
+    print("There is no input")
