@@ -51,6 +51,8 @@ def is_string_palindrome(the_string):
         bool: True if the string is a palindrome, False otherwise.
     """
     cleaned_string = clean_and_normalize_text(the_string)
+    if len(cleaned_string) <= 1:
+        return False
     return recursive_palindrome_check(cleaned_string)
 
 
@@ -138,7 +140,7 @@ def main():
         },
     ]
 
-    test_strings = []
+    test_strings = [" ", 'A', '  ']
     for url_info in urls:
         url, element_name, start_index, end_index, limit = (
             url_info['url'],

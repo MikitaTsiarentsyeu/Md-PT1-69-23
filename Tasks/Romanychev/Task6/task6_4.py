@@ -21,6 +21,10 @@ def power(base: Union[int, float], exponent: int) -> Union[int, float]:
     if not isinstance(exponent, int):
         raise TypeError('Exponent must be an integer.')
 
+    if base == 0 and exponent < 0:
+
+        return float('inf')
+
     match (base, exponent):
         case (0, 0):
             return 1
@@ -35,8 +39,10 @@ def power(base: Union[int, float], exponent: int) -> Union[int, float]:
             return base * power(base, exponent - 1)
 
 
-base_numbers = [2, 2, 3, 3, 2, 2, 4, 4, 5, 5, 6, 6, 5, 5, -2, -2, -3, -3]
-exponent_values = [3, 3, 5, 5, 2, 2, 4, 4, 6, 6, 7, 7, 5, 5, 2, 2, -3, -3]
+base_numbers = [2, 2, 3, 3, 2, 2, 4, 4, 5,
+                5, 6, 6, 5, 5, -2, -2, -3, -3, 0, 0, 0, -1, 0]
+exponent_values = [3, 3, 5, 5, 2, 2, 4, 4,
+                   6, 6, 7, 7, 5, 5, 2, 2, -3, -3, 1, 1, 0, 0, -1]
 
 # Perform the power calculations for each base-exponent pair and measure time
 # taken
