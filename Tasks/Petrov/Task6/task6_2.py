@@ -20,9 +20,9 @@ if line:
     if flag_with_spaces and flag_without_all:
         print("Yes")
     elif flag_without_all:
-        print("Only without spaces in count")
+        print("Only without spaces in counting")
     elif flag_with_spaces:
-        print("Only with spaces in count")
+        print("Only with spaces in counting")
     else:
         print("No")
 else:
