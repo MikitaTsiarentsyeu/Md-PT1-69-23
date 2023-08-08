@@ -23,7 +23,7 @@ def power(base: Union[int, float], exponent: int) -> Union[int, float]:
 
     match (base, exponent):
         case (0, 0):
-            return 0
+            return 1
         case (base, 0):
             return 1
         case (base, exponent) if exponent < 0:
