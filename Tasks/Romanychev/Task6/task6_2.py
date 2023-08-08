@@ -14,7 +14,7 @@ def clean_and_normalize_text(text):
     Returns:
         str: The cleaned and normalized text.
     """
-    # Удаление всех не-буквенных символов и приведение к нижнему регистру
+
     cleaned_text = re.sub(r'[^a-zA-Zа-яА-Я0-9]', '', text)
     cleaned_text = cleaned_text.strip().lower()
 
@@ -31,6 +31,7 @@ def recursive_palindrome_check(text):
     Returns:
         bool: True if the text is a palindrome, False otherwise.
     """
+    text = re.sub(r'[^\w\s]', '', text)
     if len(text) <= 1:
         return True
 
@@ -51,8 +52,6 @@ def is_string_palindrome(the_string):
         bool: True if the string is a palindrome, False otherwise.
     """
     cleaned_string = clean_and_normalize_text(the_string)
-    if len(cleaned_string) <= 1:
-        return False
     return recursive_palindrome_check(cleaned_string)
 
 
@@ -100,11 +99,9 @@ def fetch_texts_from_url(url, element_name, start_index,
 def print_strings_with_label(strings, label):
     """
     Print a list of strings with a label.
-
     Parameters:
         strings (list): The list of strings to print.
         label (str): The label to print before the list.
-
     Returns:
         None
     """
@@ -112,8 +109,7 @@ def print_strings_with_label(strings, label):
         print(label + ":")
         for i, s in enumerate(strings, 1):
             print(
-                f"{i}. '{s}' is {'' if label == 'Palindromes' else 'not '}"
-                f"a palindrome")
+                f"{i}. '{s}' is {'' if is_string_palindrome(s) else 'not '}a palindrome")
     else:
         print(f"No {label.lower()} found.")
 
@@ -163,10 +159,14 @@ def main():
     non_palindromes = [
         text for text in test_strings if not is_string_palindrome(text)
     ]
+    palindrome_with_spaces = [
+        text for text in test_strings if len(text) > 1 and text.strip() != "" and recursive_palindrome_check(text)
+    ]
 
     # Print the palindromes and non-palindromes
     print_strings_with_label(palindromes, "Palindromes")
     print_strings_with_label(non_palindromes, "Non-Palindromes")
+    print_strings_with_label(palindrome_with_spaces, "Palindromes with spaces")
 
 
 if __name__ == "__main__":
