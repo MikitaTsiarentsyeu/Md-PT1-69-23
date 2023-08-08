@@ -35,8 +35,8 @@ def power(base: Union[int, float], exponent: int) -> Union[int, float]:
             return base * power(base, exponent - 1)
 
 
-base_numbers = [2, 2, 3, 3, 2, 2, 4, 4, 5, 5, 6, 6, 5, 5]
-exponent_values = [3, 3, 5, 5, 2, 2, 4, 4, 6, 6, 7, 7, 5, 5]
+base_numbers = [2, 2, 3, 3, 2, 2, 4, 4, 5, 5, 6, 6, 5, 5, -2, -2, -3, -3]
+exponent_values = [3, 3, 5, 5, 2, 2, 4, 4, 6, 6, 7, 7, 5, 5, 2, 2, -3, -3]
 
 # Perform the power calculations for each base-exponent pair and measure time
 # taken
