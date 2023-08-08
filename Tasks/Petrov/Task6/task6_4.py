@@ -1,4 +1,4 @@
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal, InvalidOperation, DivisionByZero
 
 
 def power(number, pow_count):
@@ -26,5 +26,8 @@ while True:
         print("This input should be an integer number")
         continue
 
-result = 1/power(num, -pow) if pow < 0 else power(num, pow)
-print(f"{num} in power {pow} is {result}")
+try:
+    result = 1/power(num, -pow) if pow < 0 else power(num, pow)
+    print(f"{num} in power {pow} is {result}")
+except DivisionByZero:
+    print(f"{num} in power {pow} is infinity")
