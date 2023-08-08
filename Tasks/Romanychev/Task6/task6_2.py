@@ -136,7 +136,7 @@ def main():
         },
     ]
 
-    test_strings = [" ", 'A', '  ']
+    test_strings = [" ", 'A', '  ', '   ', 'Ток как кот']
     for url_info in urls:
         url, element_name, start_index, end_index, limit = (
             url_info['url'],
@@ -160,7 +160,8 @@ def main():
         text for text in test_strings if not is_string_palindrome(text)
     ]
     palindrome_with_spaces = [
-        text for text in test_strings if len(text) > 1 and text.strip() != "" and recursive_palindrome_check(text)
+        text for text in test_strings if len(text) > 1 and text.strip() != ""
+        and " " in text and recursive_palindrome_check(text.lower())
     ]
 
     # Print the palindromes and non-palindromes
