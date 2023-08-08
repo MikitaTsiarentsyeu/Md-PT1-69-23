@@ -24,8 +24,8 @@ def check_str_palindrome(string):
     if len(string) <= 1:
         return string
     if len(string) % 2 == 0:
-        check_midle = len(input_str) // 2
-        string = input_str[:check_midle] + " " + input_str[check_midle:]
+        check_midle = len(string) // 2
+        string = string[:check_midle] + " " + input_str[check_midle:].lower()
     if string[0] == string[-1]:
         return check_str_palindrome(string[1:-1])
     return False
