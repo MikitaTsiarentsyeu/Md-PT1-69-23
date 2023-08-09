@@ -138,3 +138,8 @@ def fibonacci_input_validation():
         print("Invalid input. Enter an integer.")
 
 fibonacci_input_validation()
+# Input 1: 8
+# Output 1: 13
+
+# Input 2: -10
+# Output 2: 34
