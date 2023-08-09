@@ -72,6 +72,8 @@ CATEGORY_PALINDROME = 'palindrome'
 CATEGORY_PALINDROME_WITH_SPACES = 'palindrome_with_spaces'
 CATEGORY_NON_PALINDROME = 'non_palindrome'
 
+HORIZONTAL_LINE = '-' * 40
+
 
 def fetch_texts_from_url(url, element_name, start_index,
                          end_index, limit=None):
@@ -213,12 +215,11 @@ def print_strings_with_label(strings_list, label_text):
         None
     """
     if strings_list:
-        print(label_text + ":")
+        max_index_width = len(str(len(strings_list)))
+        print(label_text)
         for index, string in enumerate(strings_list, 1):
-            print(
-                f"{index}. '{string}' is"
-                f" {'' if is_string_palindrome(string) else 'not '}"
-                f"a palindrome")
+            index_str = f"{index:>{max_index_width}}"
+            print(f"{index_str}. '{string}'")
     else:
         print(f"No {label_text.lower()} found.")
 
@@ -237,9 +238,16 @@ def main():
 
     counters, categorized_strings = categorize_strings(TEST_STRINGS)
 
+    # Sort categorized_strings by category
+    sorted_categorized_strings = {
+        category: sorted(strings) for category, strings in categorized_strings.items()
+    }
+
     for category, count in counters.items():
-        print_strings_with_label(categorized_strings[category],
-                                 f"{category.capitalize()}s ({count}):")
+        print_strings_with_label(
+            sorted_categorized_strings[category],
+            f"\n{HORIZONTAL_LINE}\n{category.upper()} "
+            f"({count}):\n{HORIZONTAL_LINE}")
 
 
 if __name__ == "__main__":
