@@ -93,7 +93,11 @@ def calculate_power(number, degree):
 input_number = input("{}\nPlease, enter your number: ".format(dictSzerel["work4"]))
 input_degree = input("Ok, enter degree: ")
 
-print("Result: ", calculate_power(float(input_number), float(input_degree)))
+if input_number == '0' and input_degree == '-1':
+    print('Infinity')
+else:
+    print(calculate_power(float(input_number), float(input_degree)))
+
 # Input 1: 2
 # Input 2: -5
 # Output: 0.03125
