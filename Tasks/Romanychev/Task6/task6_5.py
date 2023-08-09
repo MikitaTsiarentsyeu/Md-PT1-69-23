@@ -51,7 +51,7 @@ def main():
             execution_time = end_time - start_time
 
             print(
-                f"The {n}th number in the Fibonacci sequence is: {result}")
+                f"{'-' * 50}\nThe {n}th number in the Fibonacci sequence is: {result}")
             print('-' * 50)
             print(f"Execution time: {execution_time:.8f} seconds\n")
         except ValueError:
