@@ -95,6 +95,10 @@ input_degree = input("Ok, enter degree: ")
 
 if input_number == '0' and input_degree == '-1':
     print('Infinity')
+elif input_number != '1' and input_degree == '∞':
+    print('Infinity')
+elif input_number == '1' and input_degree == '∞':
+    print('Indefinite')
 else:
     print(calculate_power(float(input_number), float(input_degree)))
 
