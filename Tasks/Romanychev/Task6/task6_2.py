@@ -1,11 +1,119 @@
+"""
+Web Text Analysis Module
+
+This module facilitates fetching texts from web pages, checking for
+palindromes, and categorizing them based on their properties.
+
+It provides functions to extract texts from URLs, clean and normalize text by
+removing non-alphanumeric characters and converting to lowercase, check if a
+string is a palindrome, and categorize strings into different categories such
+as pure palindromes and those with spaces.
+
+Dependencies:
+    - re (regular expressions)
+    - requests (HTTP requests)
+    - BeautifulSoup (HTML parsing)
+    - collections (defaultdict)
+
+Constants:
+    - CATEGORY_PALINDROME: String label for pure palindromes
+    - CATEGORY_PALINDROME_WITH_SPACES: String label for palindromes with spaces
+    - CATEGORY_NON_PALINDROME: String label for non-palindromes
+    - TEST_STRINGS: List of test strings to start with
+    - ELEMENTS_TO_FETCH: List of dictionaries containing URL information for
+    fetching texts
+
+Functions:
+    - fetch_texts_from_url: Fetches texts from a web page by URL and extracts
+      from specific elements
+    - clean_and_normalize_text: Cleans and normalizes input text for palindrome
+      checking
+    - recursive_palindrome_check: Recursive helper function to check if a text
+      is a palindrome
+    - is_string_palindrome: Checks if a given string is a palindrome
+    - categorize_strings: Categorizes a list of strings into different
+      palindrome categories
+    - print_strings_with_label: Prints a list of strings with a label
+    - main: Main function to orchestrate text fetching, categorization, and
+      printing
+"""
+
 import re
 import requests
 from bs4 import BeautifulSoup
 from collections import defaultdict
 
 
-# Clean and normalize the input text by removing non-alphanumeric characters
-# and spaces, and converting it to lowercase.
+# Constants for test strings
+TEST_STRINGS = [" ", 'A', '  ', '   ', 'Ток как кот']
+
+# Constants for URL fetching
+ELEMENTS_TO_FETCH = [
+    # List of dictionaries with URL information to fetch texts from
+    {
+        'url': 'http://english2017.ru/english-palindrome',
+        'element_name': 'span',
+        'start_index': 7,
+        'end_index': 57,
+        'limit': None
+    },
+    {
+        'url': ('https://www.analogi.net/igra/'
+                'slova-palindromy-i-stroka-palindrom'),
+        'element_name': 'li',
+        'start_index': 70,
+        'end_index': 130,
+        'limit': None
+    },
+]
+
+# Constants for categorized strings
+CATEGORY_PALINDROME = 'palindrome'
+CATEGORY_PALINDROME_WITH_SPACES = 'palindrome_with_spaces'
+CATEGORY_NON_PALINDROME = 'non_palindrome'
+
+
+def fetch_texts_from_url(url, element_name, start_index,
+                         end_index, limit=None):
+    """
+    Fetch texts from a web page by URL and extract them from specific elements.
+
+    Args:
+        url (str): The URL of the web page to fetch texts from.
+        element_name (str): The name of the HTML element to find and extract
+        texts from.
+        start_index (int): The starting index for slicing the elements.
+        end_index (int): The ending index for slicing the elements.
+        limit (int, optional): The maximum number of elements to fetch and
+        process.
+
+    Returns:
+        list: A list of cleaned and normalized texts extracted from the
+        specified elements.
+    """
+    response = requests.get(url)
+    if response.status_code == 200:
+        html_content = response.content
+        soup = BeautifulSoup(html_content, 'html.parser')
+
+        # Find all elements with the specified element_name
+        all_elements = soup.find_all(element_name)
+
+        if limit is not None:
+            all_elements = all_elements[:limit]
+
+        # Extract and return the text from the elements, excluding empty texts
+        result = [element.text for element in
+                  all_elements[start_index:end_index]
+                  if element.text.strip()]
+        return result
+
+    else:
+        raise ConnectionError(
+            f"Failed to fetch the URL: {url}. Status code: "
+            f"{response.status_code}")
+
+
 def clean_and_normalize_text(text):
     """
     Clean and normalize the input text by removing non-alphanumeric characters
@@ -56,116 +164,79 @@ def is_string_palindrome(the_string):
     return recursive_palindrome_check(cleaned_string)
 
 
-def fetch_texts_from_url(url, element_name, start_index,
-                         end_index, limit=None):
+def categorize_strings(strings):
     """
-    Fetch texts from a web page by URL and extract them from specific elements.
+    Categorize a list of strings into different palindrome categories.
 
     Args:
-        url (str): The URL of the web page to fetch texts from.
-        element_name (str): The name of the HTML element to find and extract
-        texts from.
-        start_index (int): The starting index for slicing the elements.
-        end_index (int): The ending index for slicing the elements.
-        limit (int, optional): The maximum number of elements to fetch and
-        process.
+        strings (list): The list of strings to be categorized.
 
     Returns:
-        list: A list of cleaned and normalized texts extracted from the
-        specified elements.
+        tuple: A tuple containing two defaultdict objects:
+            - The first defaultdict contains counters for different categories.
+            - The second defaultdict contains lists of strings for each
+              category.
     """
-    response = requests.get(url)
-    if response.status_code == 200:
-        html_content = response.content
-        soup = BeautifulSoup(html_content, 'html.parser')
+    # Initialize counters for different categories and defaultdict for
+    # categorized strings
+    counters = defaultdict(int)
+    categorized_strings = defaultdict(list)
 
-        # Find all elements with the specified element_name
-        all_elements = soup.find_all(element_name)
+    # Iterate through the input strings to categorize and count palindromes
+    for text in strings:
+        cleaned_text = clean_and_normalize_text(text)
 
-        if limit is not None:
-            all_elements = all_elements[:limit]
+        if is_string_palindrome(cleaned_text):
+            counters[CATEGORY_PALINDROME] += 1
+            if len(text) > 1 and text.strip() and " " in text\
+                    and recursive_palindrome_check(text.lower()):
+                counters[CATEGORY_PALINDROME_WITH_SPACES] += 1
+                categorized_strings[CATEGORY_PALINDROME_WITH_SPACES].append(
+                    text)
+            categorized_strings[CATEGORY_PALINDROME].append(text)
+        else:
+            counters[CATEGORY_NON_PALINDROME] += 1
+            categorized_strings[CATEGORY_NON_PALINDROME].append(text)
 
-        # Extract and return the text from the elements, excluding empty texts
-        result = [element.text for element in
-                  all_elements[start_index:end_index]
-                  if element.text.strip()]
-        return result
-
-    else:
-        raise ConnectionError(
-            f"Failed to fetch the URL: {url}. Status code: "
-            f"{response.status_code}")
+    return counters, categorized_strings
 
 
-def print_strings_with_label(strings, label):
+def print_strings_with_label(strings_list, label_text):
     """
     Print a list of strings with a label.
 
     Args:
-        strings (list): The list of strings to print.
-        label (str): The label to print before the list.
+        strings_list (list): The list of strings to print.
+        label_text (str): The label to print before the list.
 
     Returns:
         None
     """
-    if strings:
-        print(label + ":")
-        for i, s in enumerate(strings, 1):
+    if strings_list:
+        print(label_text + ":")
+        for index, string in enumerate(strings_list, 1):
             print(
-                f"{i}. '{s}' is {'' if is_string_palindrome(s) else 'not '}a palindrome")
+                f"{index}. '{string}' is"
+                f" {'' if is_string_palindrome(string) else 'not '}"
+                f"a palindrome")
     else:
-        print(f"No {label.lower()} found.")
+        print(f"No {label_text.lower()} found.")
 
 
 def main():
     print("Fetching texts from web pages...")
 
-    urls = [
-        # List of dictionaries with URL information to fetch texts from
-        {
-            'url': 'http://english2017.ru/english-palindrome',
-            'element_name': 'span',
-            'start_index': 7,
-            'end_index': 57,
-            'limit': None
-        },
-        {
-            'url': 'https://www.analogi.net/igra/slova-palindromy-i-stroka-palindrom',
-            'element_name': 'li',
-            'start_index': 70,
-            'end_index': 130,
-            'limit': None
-        },
-    ]
+    counters, categorized_strings = categorize_strings(TEST_STRINGS)
 
-    test_strings = [" ", 'A', '  ', '   ', 'Ток как кот']
-
-    counters = defaultdict(int)
-    categorized_strings = defaultdict(list)
-
-    # Loop through URLs and fetch texts from web pages
-    for url_info in urls:
+    for url_info in ELEMENTS_TO_FETCH:
         try:
             parsed_texts = fetch_texts_from_url(**url_info)
-            test_strings.extend(parsed_texts)
+            TEST_STRINGS.extend(parsed_texts)
         except ConnectionError as e:
             print(f"Failed to fetch the URL: {url_info['url']}. Error: {e}")
 
-    # Iterate through test strings to categorize and count palindromes
-    for text in test_strings:
-        cleaned_text = clean_and_normalize_text(text)
+    counters, categorized_strings = categorize_strings(TEST_STRINGS)
 
-        if is_string_palindrome(cleaned_text):
-            counters['palindrome'] += 1
-            if len(text) > 1 and text.strip() and " " in text and recursive_palindrome_check(text.lower()):
-                counters['palindrome_with_spaces'] += 1
-                categorized_strings['palindrome_with_spaces'].append(text)
-            categorized_strings['palindrome'].append(text)
-        else:
-            counters['non_palindrome'] += 1
-            categorized_strings['non_palindrome'].append(text)
-
-    # Print the categorized strings with labels and their counts
     for category, count in counters.items():
         print_strings_with_label(categorized_strings[category],
                                  f"{category.capitalize()}s ({count}):")
