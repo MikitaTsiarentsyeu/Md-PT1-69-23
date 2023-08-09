@@ -3,7 +3,7 @@ szerel = {
     "work2": "2. Write a recursive function to check whether a given string is a palindrome.",
     "work3": "3. Write a recursive function to count the number of occurrences of a given character in a string.",
     "work4": "4. Write a recursive function to calculate the power of a given number.",
-    "work5": "Write a recursive function to find the Nth number in the Fibonacci sequence. "
+    "work5": "5. Write a recursive function to find the Nth number in the Fibonacci sequence. "
              "0, 1, 2, 3, 5, 8, 13, 21, ...",
 }
 
@@ -99,5 +99,27 @@ print("Result: ", calculate_power(float(input_number), float(input_degree)))
 # Output: 0.03125
 
 
-def test_5():
-    pass
+def fibonacci_positive(n):
+    if n == 0:
+        return 0
+    if n in (1, 2):
+        return 1
+    return fibonacci_positive(n - 1) + fibonacci_positive(n - 2)
+
+def fibonacci_negative(n):
+    return fibonacci_positive(n) * (-1)**(n+1)
+
+def fibonacci_input_validation():
+    try:
+        user_input = int(input("Enter integer: "))
+        if user_input == 0:
+            return print(fibonacci_positive(user_input))
+        elif user_input >= 1:
+            return print(fibonacci_positive(user_input-1))
+        elif user_input < 0:
+            return print(fibonacci_negative((user_input+1)*(-1)))
+        else:
+            return user_input
+    except ValueError:
+        print("Invalid input. Enter an integer.")
+fibonacci_input_validation()
