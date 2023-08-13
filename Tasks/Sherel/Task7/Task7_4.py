@@ -11,10 +11,7 @@ def logs(func):
             result = func(*args)
             end_time = datetime.datetime.now()
             amount_time = end_time - start_time
-            f.write('Amount of time: {}\n'.format(amount_time))
-            f.write('Arguments: {}\n'.format(args))
-            f.write('Result: {}\n'.format(result))
-            f.write('\n')
+            f.write('Amount of time: {}\nArguments: {}\nResult: {}\n\n'.format(amount_time, args, result))
         return result
     return wrapper
 
