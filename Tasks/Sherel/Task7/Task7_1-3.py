@@ -28,7 +28,7 @@ def read_file():
     """
     try:
         with open("fileName.py", 'r') as f:
-            print(f.read())
+            return print(f.read())
     except FileNotFoundError:
         print('File not found')
     except:
@@ -37,4 +37,19 @@ def read_file():
 read_file()
 
 
-def
+def sum_integers_in_list(szList: list) -> int:
+    """
+    A function that takes a list of integers as input and returns the sum of all even numbers in the list.
+    Handle the TypeError and return "Invalid input type" if the input is not a list or not every element is int.
+    :param szList: list only integers
+    :return: summ integers in list
+    """
+    try:
+        return print(sum([integer for integer in szList if integer % 2 == 0]))
+    except TypeError:
+        print('Invalid input type')
+    except:
+        print('Other error')
+
+szList = 1,2,3,4,5,6,7,8.1,9,10
+sum_integers_in_list(szList)
