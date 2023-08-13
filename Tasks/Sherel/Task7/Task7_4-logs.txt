@@ -1,0 +1,8 @@
+Amount of time: 0:00:00.000004
+Arguments: (19, 1)
+Result: 20
+
+Amount of time: 0:00:00.000004
+Arguments: (19, 1)
+Result: 20
+
