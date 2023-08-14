@@ -6,7 +6,6 @@ def open_file_for_read(file_path):
     """
     with open(file_path, 'r') as file:
         data = json.load(file)
-        print(data)
     return data
 
 def find_value_to_json_file(key, data):
