@@ -32,17 +32,18 @@ def add_key_value_to_json_file(data, key, key_change, value):
     data[key] = value
     data[key_change] = value
 
+
 def main():
     """
     Sum function of two integers
     :return: the result of the calculation - made in real time (if not in the cache) or will return the value from
     the cache and will not perform the calculation
-    (CASH) - result taken from cache
+    (Cache) - result taken from cache
     (Online) - the result was not in the cache - so it was calculated and added to the cache
     """
     while True:
         try:
-            file_path = 'Task7_5-logs.json'
+            file_path = 'cache.json'
             a = input('Enter the first value: ')
             b = input('Enter the second value: ')
             value = int(a) + int(b)
@@ -53,7 +54,7 @@ def main():
 
             result = find_value_to_json_file(key, data)
             if result is not None:
-                print('The sum of arguments {} and {} is equal {} (CASH)'.format(a, b, result))
+                print('The sum of arguments {} and {} is equal {} (Cache)'.format(a, b, result))
             else:
                 add_key_value_to_json_file(data, key, key_change, value)
                 with open(file_path, 'w') as file:
