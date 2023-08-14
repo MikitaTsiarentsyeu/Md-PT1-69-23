@@ -32,7 +32,6 @@ def add_key_value_to_json_file(data, key, key_change, value):
     data[key] = value
     data[key_change] = value
 
-
 def main():
     """
     Sum function of two integers
