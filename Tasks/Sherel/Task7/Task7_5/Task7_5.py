@@ -6,6 +6,7 @@ def open_file_for_read(file_path):
     """
     with open(file_path, 'r') as file:
         data = json.load(file)
+        print(data)
     return data
 
 def find_value_to_json_file(key, data):
@@ -20,7 +21,6 @@ def find_value_to_json_file(key, data):
             result = find_value_to_json_file(key, value)
             if result:
                 return result
-
 
 def add_key_value_to_json_file(data, key, key_change, value):
     """
@@ -39,6 +39,8 @@ def main():
     Sum function of two integers
     :return: the result of the calculation - made in real time (if not in the cache) or will return the value from
     the cache and will not perform the calculation
+    (CASH) - result taken from cache
+    (Online) - the result was not in the cache - so it was calculated and added to the cache
     """
     while True:
         try:
