@@ -45,11 +45,16 @@ def sum_integers_in_list(szList: list) -> int:
     :return: summ integers in list
     """
     try:
+        if not isinstance(szList, list):
+            raise TypeError
+        result = [integer for integer in szList if integer % 1 == 0]
+        if len(result) != len(szList):
+            raise TypeError
         return print(sum([integer for integer in szList if integer % 2 == 0]))
     except TypeError:
         print('Invalid input type')
     except:
         print('Other error')
 
-szList = 1,2,3,4,5,6,7,8.1,9,10
+szList = [1,2,3,4,5,6,7,8.1,9,10]
 sum_integers_in_list(szList)
