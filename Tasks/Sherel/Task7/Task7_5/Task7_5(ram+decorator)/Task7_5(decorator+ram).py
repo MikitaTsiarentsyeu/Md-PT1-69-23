@@ -5,11 +5,11 @@ my_dict = dict()
 
 def cache(func):
     def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
         key = '{}'.format(args)
         if key in my_dict:
-            return print('Cash', my_dict[key])
+            return print('Cache', my_dict[key])
         else:
+            result = func(*args, **kwargs)
             my_dict[key] = result
             return print('Online:', my_dict[key])
         return result
