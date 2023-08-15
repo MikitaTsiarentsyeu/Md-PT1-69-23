@@ -7,7 +7,7 @@ def even_sum(integers):
         return "Invalid input type"
 
 
-text = "Processing the sum of all even numbers in "
+text = "Processing the sum of all even numbers in"
 not_a_list = "test"
 not_all_ints = [1, 2, 3.3, 4]
 proper_list = [1, 2, 3, 4, 5]
