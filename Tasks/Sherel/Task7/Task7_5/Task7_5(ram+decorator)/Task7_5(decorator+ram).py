@@ -16,11 +16,11 @@ def cache(func):
         """
         key = '{}'.format(args)
         if key in my_dict:
-            return print('Cache', my_dict[key])
+            return print('Cache result:', my_dict[key])
         else:
             result = func(*args, **kwargs)
             my_dict[key] = result
-            return print('Online:', my_dict[key])
+            return print('Online result:', my_dict[key])
     return wrapper
 
 @cache
