@@ -9,7 +9,7 @@ file_path = 'cache.json' #file cache
 
 def cache(func):
     """
-    A decorator function that caches the return value of a function with a dictionary.
+    A decorator function that caches the return value of the function in a json file.
     :param func: def summ(x, y)
     """
     def wrapper(*args, **kwargs):
