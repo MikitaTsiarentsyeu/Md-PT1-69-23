@@ -19,13 +19,12 @@ while True:
         print("Processing of dividing elements")
         print(f"Result is: {divide(*nums)}")
         break
-    except InvalidOperation:
 
-        # If input can't be converted to Decimal, InvalidOperation raises
-        # It also raises for [0, 0] and [inf, inf] cases
+    # If input can't be converted to Decimal, InvalidOperation raises
+    # It also raises for [0, 0] and [inf, inf] cases
+    except InvalidOperation:
         print("Invalid operation")
 
+    # If the list has more than 2 numbers, TypeError raises
     except TypeError:
-
-        # If the list has more than 2 numbers, TypeError raises
         print("You need only 2 numbers")

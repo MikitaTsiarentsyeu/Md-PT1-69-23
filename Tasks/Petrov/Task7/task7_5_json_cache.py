@@ -26,9 +26,12 @@ def caching(func):
     file.close
 
     def wrapper(list):
+
+        # Making a string of sorted arguments to prevent duplicates in cache
         arguments = str(sorted(list))
+
         # If the function is called again with the same arguments,
-        # return the cached value instead of computing it again.
+        # return the cached value instead of computing it again
         if arguments in current_cache:
             print("Result was taken from cache")
         else:
@@ -42,8 +45,9 @@ def args_sum(numbers_list):
     """Return sum of all numbers from the given."""
     try:
         return sum(Decimal(i) for i in numbers_list)
+
+    # If input can't be converted to Decimal, InvalidOperation raises
     except InvalidOperation:
-        # If input can't be converted to Decimal, InvalidOperation raises
         return "Error, wrong input(s)"
 
 

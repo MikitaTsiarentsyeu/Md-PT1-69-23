@@ -8,9 +8,9 @@ def read_file(name: str) -> str:
         with open(name, "r", encoding="UTF-8") as file:
             text = file.read()
             return text
-    except FileNotFoundError:
 
-        # If file with given name doesn't exist, FileNotFoundError raises
+    # If file with given name doesn't exist, FileNotFoundError raises
+    except FileNotFoundError:
         return "File not found"
 
 

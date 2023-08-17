@@ -6,7 +6,7 @@ caches = {}
 
 def caching(func):
     """Decorator function that caches the return value of a function
-    with a dictionary
+    with a dictionary.
 
     func
         function that will be decorated"""
@@ -17,9 +17,12 @@ def caching(func):
     cache_current = caches[func.__name__]
 
     def wrapper(list):
+
+        # Making a tuple of sorted arguments to prevent duplicates in cache
         arguments = tuple(sorted(list))
+
         # If the function is called again with the same arguments,
-        # return the cached value instead of computing it again.
+        # return the cached value instead of computing it again
         if arguments in cache_current:
             print("Result was taken from cache")
         else:
@@ -33,8 +36,9 @@ def args_sum(numbers_list):
     """Return sum of all numbers from the given."""
     try:
         return sum(Decimal(i) for i in numbers_list)
+
+    # If input can't be converted to Decimal, InvalidOperation raises
     except InvalidOperation:
-        # If input can't be converted to Decimal, InvalidOperation raises
         return "Error, wrong input(s)"
 
 
