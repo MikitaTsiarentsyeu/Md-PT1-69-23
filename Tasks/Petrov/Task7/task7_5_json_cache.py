@@ -44,9 +44,9 @@ while True:
     else:
         break
 
-if caches:
-    for key, value in caches.items():
-        file_name = f"{key}_cache.json"
-        file = open(file_name, "w", encoding="UTF-8")
-        json.dump(value, file, indent=4)
-        file.close
+
+for key, value in caches.items():
+    file_name = f"{key}_cache.json"
+    file = open(file_name, "w", encoding="UTF-8")
+    json.dump(value, file, indent=4)
+    file.close
