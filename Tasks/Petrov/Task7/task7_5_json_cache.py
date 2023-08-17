@@ -40,5 +40,5 @@ while True:
 
 
 file = open("cache.json", "w", encoding="UTF-8")
-json.dump(cache, file)
+json.dump(cache, file, indent=4)
 file.close
