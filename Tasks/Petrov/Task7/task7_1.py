@@ -2,7 +2,7 @@ from decimal import Decimal, InvalidOperation
 
 
 def divide(num1: Decimal, num2: Decimal) -> Decimal:
-    """Return the result of division of two numbers"""
+    """Return the result of division of two numbers."""
     try:
         return num1 / num2
     except ZeroDivisionError:
