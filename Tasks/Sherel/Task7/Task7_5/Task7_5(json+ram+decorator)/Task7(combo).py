@@ -12,22 +12,23 @@ file_path = 'cache.json'
 try:
     with open(file_path, 'r') as json_file:
         data = json.load(json_file)
-        my_dict = data
 except:
     with open(file_path, 'w') as json_file:
         json.dump({}, json_file)
 
+def write_in_json():
+    with open(file_path, 'w') as file:
+        json.dump(data, file, sort_keys=True, indent=4)
+
 def cache(func):
     def wrapper(*args, **kwargs):
         key = '{}'.format(args)
-        if key in my_dict:
-            return print('Cache result:', my_dict[key])
+        if key in data:
+            return print('Cache result:', data[key])
         else:
             result = func(*args, **kwargs)
-            my_dict[key] = result
             data[key] = result
-            with open(file_path, 'w') as file:
-                json.dump(data, file, sort_keys=True, indent=4)
+            write_in_json()
             return print('Online result:', data[key])
     return wrapper
 
