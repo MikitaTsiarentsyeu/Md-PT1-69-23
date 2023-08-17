@@ -1,17 +1,21 @@
 from decimal import Decimal, InvalidOperation
 
 
-cache = {}
+caches = {}
 
 
 def caching(func):
+
+    caches[func.__name__] = {}
+    cache_current = caches[func.__name__]
+
     def wrapper(list):
         arguments = tuple(sorted(list))
-        if arguments in cache:
+        if arguments in cache_current:
             print("Result was taken from cache")
         else:
-            cache[arguments] = func(list)
-        return cache[arguments]
+            cache_current[arguments] = func(list)
+        return cache_current[arguments]
     return wrapper
 
 
