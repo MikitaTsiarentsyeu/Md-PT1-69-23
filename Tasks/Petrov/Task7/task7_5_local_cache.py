@@ -9,10 +9,9 @@ def caching(func):
         arguments = tuple(sorted(list))
         if arguments in cache:
             print("Result was taken from cache")
-            return cache[arguments]
         else:
             cache[arguments] = func(list)
-            return cache[arguments]
+        return cache[arguments]
     return wrapper
 
 
