@@ -1,5 +1,5 @@
 def even_sum(integers: list[int]) -> int:
-    """Return sum of all even numbers in the list
+    """Return sum of all even numbers in the list.
 
     integers
         list of numbers.

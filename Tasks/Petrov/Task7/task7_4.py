@@ -3,7 +3,7 @@ import time
 
 def logs(func):
     """Decorator function that logs the execution time, arguments
-    and return value of a function to a file
+    and return value of a function to a file.
 
     func
         function that will be decorated
@@ -23,7 +23,7 @@ def logs(func):
 
 @logs
 def positive_args_sum(*args) -> int:
-    """Return sum of all positive numbers from the given"""
+    """Return sum of all positive numbers from the given."""
     return sum(filter(lambda x: x > 0, args))
 
 
