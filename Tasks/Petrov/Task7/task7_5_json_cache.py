@@ -16,10 +16,9 @@ def caching(func):
         arguments = str(sorted(list))
         if arguments in cache:
             print("Result was taken from cache")
-            return cache[arguments]
         else:
             cache[arguments] = str(func(list))
-            return cache[arguments]
+        return cache[arguments]
     return wrapper
 
 
