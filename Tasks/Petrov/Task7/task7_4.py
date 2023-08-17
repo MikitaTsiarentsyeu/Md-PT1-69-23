@@ -1,8 +1,13 @@
 import time
 
 
-def logs(func: object.function) -> object.function:
-    """Decorator function that logs the execution time, arguments and return value of a function to a file"""
+def logs(func):
+    """Decorator function that logs the execution time, arguments
+    and return value of a function to a file
+
+    func
+        function that will be decorated
+    """
     def wrapper(*args):
 
         # Counting the execution time of function
