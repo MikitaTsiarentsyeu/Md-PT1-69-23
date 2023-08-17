@@ -27,9 +27,10 @@ def cache(func):
             return print('Cache result:', data[key])
         else:
             result = func(*args, **kwargs)
+            print('Online result:', result)
             data[key] = result
             write_in_json()
-            return print('Online result:', data[key])
+            return
     return wrapper
 
 @cache
