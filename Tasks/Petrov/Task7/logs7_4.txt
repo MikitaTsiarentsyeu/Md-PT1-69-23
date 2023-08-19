@@ -1,0 +1,4 @@
+positive_args_sum was called
+Arguments of this function: (-1, 2, -3, 4, 5)
+Execution time: 0.00000400 sec
+Result: 11
