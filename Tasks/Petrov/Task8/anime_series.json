@@ -1,0 +1,14 @@
+{
+    "1" : {
+        "title" : "Death Note",
+        "studios" : "MADHOUSE",
+        "year" : 2006,
+        "genres" : [ "Mystery", "Psychological", "Supernatural", "Thriller" ]
+    },
+    "2" : {
+        "title" : "One-Punch Man",
+        "studios" : "MADHOUSE",
+        "year" : 2015,
+        "genres" : [ "Action", "Comedy", "Sci-Fi", "Supernatural" ]
+    }
+}

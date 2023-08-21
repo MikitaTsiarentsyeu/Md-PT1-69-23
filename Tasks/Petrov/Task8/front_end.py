@@ -14,8 +14,13 @@ def ending():
 def process():
     while True:
         action = back_end.action()
-
+        print()
         if action == "":
             break
         elif action == "1":
-            pass  # todo
+            back_end.list_all_anime_series()
+        elif action == "2":
+            back_end.add_new_anime_series()
+        elif action == "3":
+            back_end.search_anime_series()
+        back_end.separation()
