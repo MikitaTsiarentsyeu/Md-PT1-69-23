@@ -42,5 +42,16 @@
             "Fantasy",
             "Romance"
         ]
+    },
+    "5": {
+        "title": "Kanon",
+        "studios": "Kyoto Animation",
+        "year": 2006,
+        "genres": [
+            "Drama",
+            "Romance",
+            "Slice of Life",
+            "Supernatural"
+        ]
     }
 }

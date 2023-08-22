@@ -1,5 +1,4 @@
 import json
-import time
 
 
 with open("anime_series.json", "r", encoding="UTF-8") as file:
@@ -7,46 +6,42 @@ with open("anime_series.json", "r", encoding="UTF-8") as file:
 
 fields = ["title", "studios", "year", "genres"]
 
-def separation():
-    print("-"*30)
-    time.sleep(1.5)
-
 
 def greeting_message():
-    print("Welcome to digital anime series storage!")
+    return "Welcome to digital anime series storage!"
 
 
 def goodbye_message():
-    print("Thank you for using our storage, have a great day!")
+    return "Thank you for using our storage, have a great day!"
 
 
-def action():  # todo
-    print("""What would you like to do?
-
-          1. List all current anime series
-          2. Add a new anime series to storage
-          3. Search an anime series
-
-          If you want to quit the program, just press Enter""", end="\n\n")
+def action():
     return input("Your choice: ")
 
 
-def list_all_anime_series():
-    print("Currently we have anime series such as:", end="\n\n")
+def all_anime_series():
+    result = []
     for pos, series in data.items():
-        print(f"{pos}.", end=" ")
-        format_anime_series(series)
-        print()
+        element = ""
+        element = f"{element}{pos}. "
+        lines = '\n'.join(line for line in format_anime_series(series))
+        element = f"{element}{lines}"
+        result.append(element)
+    return result
 
 
 def format_anime_series(anime_series):
+    result = []
     for key, value in anime_series.items():
+        line = ""
         if key == "title":
-            print(value)
+            line = f"{line}{value}"
         elif key == "genres":
-            print(f"{key}: {', '.join(genre for genre in value)}")
+            line = f"{line}{key}: {', '.join(genre for genre in value)}"
         else:
-            print(f"{key}: {value}")
+            line = f"{line}{key}: {value}"
+        result.append(line)
+    return result
 
 
 def filling_new_series(new_title):
@@ -67,39 +62,66 @@ def filling_new_series(new_title):
             print("Wrong info for this field, error happened, try again")
 
 
-def add_new_anime_series():
-    new_title = input("Which anime series do you want to add? ")
-
-    # to do - search_by_title(new_title)
-    current_titles = [series["title"] for series in data.values()]
-    if new_title in current_titles:
-        print("This series is already in our storage")
-    else:
-        print("Okay")
-
-        new_series = filling_new_series(new_title)
-        new_pos = int(list(data.keys())[-1])+1
-        data[str(new_pos)] = new_series
-        with open("anime_series.json", "w", encoding="UTF-8") as file:
-            json.dump(data, file, indent=4)
-        print("New anime series was added to storage")
+def add_new_anime_series(new_title):
+    new_series = filling_new_series(new_title)
+    new_pos = int(list(data.keys())[-1])+1
+    data[str(new_pos)] = new_series
+    with open("anime_series.json", "w", encoding="UTF-8") as file:
+        json.dump(data, file, indent=4)
 
 
 def search_anime_series():
-    pass
+    while True:
+        try:
+            print("""Choose field to search anime series from:
+
+                1. Title
+                2. Studios
+                3. Year
+                4. Genre
+
+                5. Cancel the search""", end="\n\n")
+            search_field = int(input("Your choice: "))
+            print(f"\nWrite the {fields[search_field-1]} you're searching for:", end=" ")
+            if search_field == 1:
+                res = search_by_title(input())
+            elif search_field == 2:
+                res = search_by_studios(input())
+            elif search_field == 3:
+                res = search_by_year(input())
+            elif search_field == 4:
+                res = search_by_genre(input())
+            elif search_field == 5:
+                break
+            else:
+                raise ValueError
+            print("\nThe following anime series were found: \n")
+            order = 1
+            for item in res:
+                print(f"{order}.", end=" ")
+                format_anime_series(item)
+                order += 1
+                print()
+            if order == 1:
+                print("No search results")
+            break
+        except ValueError:
+            print("Wrong input")
 
 
 def search_by_title(title_seek):
+    for anime_series in data.values():
+        if anime_series["title"] == title_seek:
+            yield anime_series
+
+
+def search_by_studios():
     pass
 
 
-def search_by_studios(studios_seek):
+def search_by_year():
     pass
 
 
-def search_by_year(year_seek):
-    pass
-
-
-def search_by_genre(genre_seek):
+def search_by_genre():
     pass
