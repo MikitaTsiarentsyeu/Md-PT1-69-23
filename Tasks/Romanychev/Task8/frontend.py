@@ -30,18 +30,12 @@ option 8.
 
 import backend  # Import the backend module for data handling
 
-# Constants for menu choices
-LIST_ITEMS_OPTION = '1'
-ADD_ITEM_OPTION = '2'
-SEARCH_TITLE_OPTION = '3'
-SEARCH_AUTHOR_OPTION = '4'
-SEARCH_YEAR_OPTION = '5'
-SEARCH_GENRE_OPTION = '6'
-DELETE_ITEM_OPTION = '7'
-QUIT_OPTION = '8'
+
+COLUMN_SEPARATOR_WIDTH = 3
+TABLE_RIGHT_MARGIN = 1
 
 
-def add_item(data_store):
+def add_book_record(data_store):
     """
     Add a new item to the library.
 
@@ -66,7 +60,7 @@ def add_item(data_store):
     new_item = dict(zip(["title", "author", "year", "genre"], user_inputs))
 
     # Add the new item to the data store
-    data_store.add_item(new_item)
+    data_store.add_book_record(new_item)
     print("The item has been successfully added.")
 
 
@@ -119,7 +113,8 @@ def list_items(items):
     )
 
     # Calculate the total width of the table
-    total_width = sum(column_widths.values()) + len(headers) * 3 + 1
+    total_width = sum(column_widths.values()) + len(headers) * \
+        COLUMN_SEPARATOR_WIDTH + TABLE_RIGHT_MARGIN
     horizontal_line = "-" * total_width
 
     # Format strings for the table header and data rows
@@ -135,10 +130,10 @@ def list_items(items):
         *headers), horizontal_line, sep="\n")
 
     # Extract values for each item and print them in a formatted row
-    item_values = map(
+    formatted_items = map(
         lambda item: [item[header.lower()] for header in headers], items_list
     )
-    for values in item_values:
+    for values in formatted_items:
         print(data_format.format(*values))
 
     # Print the horizontal line to complete the table
@@ -158,17 +153,18 @@ def main():
     # Create a data storage object using the backend module
     data_store = backend.create_data_store('data.json')
 
-    # Define the menu options available to the user
-    options = [
-        "List all items",
-        "Add a new item",
-        "Search by title",
-        "Search by author",
-        "Search by year",
-        "Search by genre",
-        "Delete an item by ID",
-        "Quit"
-    ]
+    # Define the menu options available to the user as a dictionary
+    options = {
+        "1": "List all items",
+        "2": "Add a new item",
+        "3": "Search by title",
+        "4": "Search by author",
+        "5": "Search by year",
+        "6": "Search by genre",
+        "7": "Search by filter",
+        "8": "Delete an item by ID",
+        "9": "Quit"
+    }
 
     # Main loop to repeatedly present the menu to the user
     while True:
@@ -176,45 +172,57 @@ def main():
             "\nWelcome to the Library System!\n\n\033[1;32mChoose an option:\033[0m")
 
         # Display the menu options with corresponding indices
-        for index, option in enumerate(options, start=1):
-            print(f"{index}. {option}")
+        for key, value in options.items():
+            print(f"{key}. {value}")
 
         # Get the user's choice from the menu
         choice = input("\n\033[1;32mEnter your choice: \033[0m")
 
-        # Process the user's choice
-        if choice == QUIT_OPTION:
-            print("\n\033[1;32mUntil next time!\n"
-                  "Remember, books open doors to new worlds.\n"
-                  "Have a good day!\033[0m")
-
-            break
-        elif choice == LIST_ITEMS_OPTION:
-            # Retrieve and display all items from the data store
-            list_items(data_store.get_all_items())
-        elif choice == ADD_ITEM_OPTION:
-            # Add a new item to the data store
-            add_item(data_store)
-        elif choice == DELETE_ITEM_OPTION:
-            # Prompt the user for an item ID and delete the item
-            item_id = int(
-                input("Please enter the ID of the item you want to delete: "))
-            delete_item(data_store, item_id)
-        elif choice in {SEARCH_TITLE_OPTION, SEARCH_AUTHOR_OPTION,
-                        SEARCH_YEAR_OPTION, SEARCH_GENRE_OPTION}:
-            # Prompt the user for a search term and display search results
-            search_terms = {
-                SEARCH_TITLE_OPTION: "title",
-                SEARCH_AUTHOR_OPTION: "author",
-                SEARCH_YEAR_OPTION: "year",
-                SEARCH_GENRE_OPTION: "genre"
-            }
-            search_term = input(f"Enter {search_terms[choice]} to search: ")
-            search_result = list(data_store.search_by_field(
-                search_terms[choice], search_term))
-            list_items(search_result)
-        else:
-            print("Invalid choice. Please select a valid option.")
+        # Process the user's choice using match case
+        match choice:
+            case "1":
+                list_items(data_store.get_all_items())
+            case "2":
+                add_book_record(data_store)
+            case "3":
+                search_term = input("Enter title to search: ")
+                search_result = list(
+                    data_store.search_by_field("title", search_term))
+                list_items(search_result)
+            case "4":
+                search_term = input("Enter author to search: ")
+                search_result = list(
+                    data_store.search_by_field("author", search_term))
+                list_items(search_result)
+            case "5":
+                search_term = input("Enter year to search: ")
+                search_result = list(
+                    data_store.search_by_field("year", search_term))
+                list_items(search_result)
+            case "6":
+                search_term = input("Enter genre to search: ")
+                search_result = list(
+                    data_store.search_by_field("genre", search_term))
+                list_items(search_result)
+            case "7":  # Handle the new "Search by filter" option
+                filters = {}
+                for field in ["title", "author", "year", "genre"]:
+                    search_term = input(f"Enter {field} to search: ")
+                    if search_term:
+                        filters[field] = search_term
+                search_result = data_store.search_with_filters(filters)
+                list_items(search_result)
+            case "8":
+                item_id = int(
+                    input("Please enter the ID of the item you want to delete: "))
+                delete_item(data_store, item_id)
+            case "9":
+                print("\n\033[1;32mUntil next time!\n"
+                      "Remember, books open doors to new worlds.\n"
+                      "Have a good day!\033[0m")
+                break
+            case _:
+                print("Invalid choice. Please select a valid option.")
 
 
 if __name__ == "__main__":

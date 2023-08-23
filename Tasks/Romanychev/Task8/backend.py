@@ -17,7 +17,7 @@ class DataStore:
     Methods:
         load_data(): Loads data from the JSON file into the data store.
         save_data(): Saves the current data store content to the JSON file.
-        add_item(item): Adds a new item to the data store.
+        add_book_record(item): Adds a new item to the data store.
         delete_item_by_id(item_id): Deletes an item from the data store by its
         ID.
         get_all_items(): Retrieves all items from the data store.
@@ -61,7 +61,7 @@ class DataStore:
         with open(self.filename, 'w') as file:
             json.dump(self.data, file)
 
-    def add_item(self, item):
+    def add_book_record(self, item):
         """
         Add a new item to the data store.
 
