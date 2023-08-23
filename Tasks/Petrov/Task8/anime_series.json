@@ -53,5 +53,18 @@
             "Slice of Life",
             "Supernatural"
         ]
+    },
+    "6": {
+        "title": "The Future Diary",
+        "studios": "Asread",
+        "year": 2011,
+        "genres": [
+            "Action",
+            "Horror",
+            "Mystery",
+            "Psychological",
+            "Supernatural",
+            "Thriller"
+        ]
     }
 }

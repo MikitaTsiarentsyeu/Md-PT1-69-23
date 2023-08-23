@@ -51,9 +51,50 @@ def add_new_anime_series():
         print("This series is already in our storage")
     except StopIteration:
         print("Okay")
-        back_end.add_new_anime_series(new_title)  # to do false adding (cancel)
-        print("New anime series was added to storage")
+        try:
+            while True:
+                print("Fill the next parameters of this series:")
+                new_series = back_end.filling_new_series(new_title)
+                back_end.add_new_anime_series(new_series)
+                print("New anime series was added to storage")
+                break
+        except ValueError:
+            print("Wrong info for this field, error happened, try again")
 
 
 def search_anime_series():
-    back_end.search_anime_series()
+    while True:
+        try:
+            print("""Choose field to search anime series from:
+
+                1. Title
+                2. Studios
+                3. Year
+                4. Genre
+
+                5. Cancel the search""", end="\n\n")
+            search_field = int(back_end.action())
+            print(f"\nWrite the {back_end.fields[search_field-1]} you're searching for:", end=" ")
+            if search_field == 1:
+                res = back_end.search_by_title(input())
+            elif search_field == 2:
+                res = back_end.search_by_studios(input())
+            elif search_field == 3:
+                res = back_end.search_by_year(int(input()))
+            elif search_field == 4:
+                res = back_end.search_by_genre(input())
+            elif search_field == 5:
+                break
+            else:
+                raise ValueError
+            print("\nThe following anime series were found: ")
+            order = 1
+            for item in res:
+                print(f"\n{order}.", end=" ")
+                print('\n'.join(line for line in back_end.format_anime_series(item)))
+                order += 1
+            if order == 1:
+                print("No search results")
+            break
+        except ValueError:
+            print("Wrong input")
