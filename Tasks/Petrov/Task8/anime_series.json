@@ -1,9 +1,9 @@
 {
     "1": {
-        "title": "Death Note",
-        "studios": "MADHOUSE",
-        "year": 2006,
-        "genres": [
+        "Title": "Death Note",
+        "Studios": "MADHOUSE",
+        "Year": 2006,
+        "Genres": [
             "Mystery",
             "Psychological",
             "Supernatural",
@@ -11,10 +11,10 @@
         ]
     },
     "2": {
-        "title": "One-Punch Man",
-        "studios": "MADHOUSE",
-        "year": 2015,
-        "genres": [
+        "Title": "One-Punch Man",
+        "Studios": "MADHOUSE",
+        "Year": 2015,
+        "Genres": [
             "Action",
             "Comedy",
             "Sci-Fi",
@@ -22,10 +22,10 @@
         ]
     },
     "3": {
-        "title": "Steins;Gate",
-        "studios": "White Fox",
-        "year": 2011,
-        "genres": [
+        "Title": "Steins;Gate",
+        "Studios": "White Fox",
+        "Year": 2011,
+        "Genres": [
             "Drama",
             "Psychological",
             "Sci-Fi",
@@ -33,10 +33,10 @@
         ]
     },
     "4": {
-        "title": "Sword Art Online",
-        "studios": "A-1 Pictures",
-        "year": 2012,
-        "genres": [
+        "Title": "Sword Art Online",
+        "Studios": "A-1 Pictures",
+        "Year": 2012,
+        "Genres": [
             "Action",
             "Adventure",
             "Fantasy",
@@ -44,10 +44,10 @@
         ]
     },
     "5": {
-        "title": "Kanon",
-        "studios": "Kyoto Animation",
-        "year": 2006,
-        "genres": [
+        "Title": "Kanon",
+        "Studios": "Kyoto Animation",
+        "Year": 2006,
+        "Genres": [
             "Drama",
             "Romance",
             "Slice of Life",
@@ -55,16 +55,37 @@
         ]
     },
     "6": {
-        "title": "The Future Diary",
-        "studios": "Asread",
-        "year": 2011,
-        "genres": [
+        "Title": "The Future Diary",
+        "Studios": "Asread",
+        "Year": 2011,
+        "Genres": [
             "Action",
             "Horror",
             "Mystery",
             "Psychological",
             "Supernatural",
             "Thriller"
+        ]
+    },
+    "7": {
+        "Title": "Plastic Memories",
+        "Studios": "Doga Kobo",
+        "Year": 2015,
+        "Genres": [
+            "Comedy",
+            "Drama",
+            "Romance",
+            "Sci-Fi",
+            "Slice of Life"
+        ]
+    },
+    "8": {
+        "Title": "Golden Time",
+        "Studios": "J.C. Staff",
+        "Year": 2013,
+        "Genres": [
+            "Drama",
+            "Romance"
         ]
     }
 }

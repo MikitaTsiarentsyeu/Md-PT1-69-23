@@ -36,6 +36,8 @@ def process():
             add_new_anime_series()
         elif action == "3":
             search_anime_series()
+        else:
+            print("Uknown operation")
         separation()
 
 
@@ -70,11 +72,12 @@ def search_anime_series():
                 1. Title
                 2. Studios
                 3. Year
-                4. Genre
+                4. Genres
 
                 5. Cancel the search""", end="\n\n")
             search_field = int(back_end.action())
-            print(f"\nWrite the {back_end.fields[search_field-1]} you're searching for:", end=" ")
+            obj = back_end.fields[search_field-1]
+            print(f"\n{obj} you're searching for:", end=" ")
             if search_field == 1:
                 res = back_end.search_by_title(input())
             elif search_field == 2:
@@ -82,7 +85,7 @@ def search_anime_series():
             elif search_field == 3:
                 res = back_end.search_by_year(int(input()))
             elif search_field == 4:
-                res = back_end.search_by_genre(input())
+                res = back_end.search_by_genres(input().split(", "))
             elif search_field == 5:
                 break
             else:
@@ -91,7 +94,8 @@ def search_anime_series():
             order = 1
             for item in res:
                 print(f"\n{order}.", end=" ")
-                print('\n'.join(line for line in back_end.format_anime_series(item)))
+                anime = back_end.format_anime_series(item)
+                print('\n'.join(line for line in anime))
                 order += 1
             if order == 1:
                 print("No search results")

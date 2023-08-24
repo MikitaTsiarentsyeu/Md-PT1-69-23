@@ -4,7 +4,7 @@ import json
 with open("anime_series.json", "r", encoding="UTF-8") as file:
     data = json.load(file)
 
-fields = ["title", "studios", "year", "genres"]
+fields = ["Title", "Studios", "Year", "Genres"]
 
 
 def greeting_message():
@@ -34,9 +34,9 @@ def format_anime_series(anime_series):
     result = []
     for key, value in anime_series.items():
         line = ""
-        if key == "title":
+        if key == "Title":
             line = f"{line}{value}"
-        elif key == "genres":
+        elif key == "Genres":
             line = f"{line}{key}: {', '.join(genre for genre in value)}"
         else:
             line = f"{line}{key}: {value}"
@@ -48,9 +48,9 @@ def filling_new_series(new_title):
     new_series = [new_title]
     for field in fields[1:]:
         value = input(f"{field} - ")
-        if field == "year":
+        if field == "Year":
             new_series.append(int(value))
-        elif field == "genres":
+        elif field == "Genres":
             new_series.append(value.split(", "))
         else:
             new_series.append(value)
@@ -66,25 +66,25 @@ def add_new_anime_series(new_series):
 
 def search_by_title(title_seek):
     for anime_series in data.values():
-        if anime_series["title"] == title_seek:
+        if anime_series["Title"].lower() == title_seek.lower():
             yield anime_series
 
 
 def search_by_studios(studios_seek):
     for anime_series in data.values():
-        if anime_series["studios"] == studios_seek:
+        if anime_series["Ttudios"].lower() == studios_seek.lower():
             yield anime_series
 
 
 def search_by_year(year_seek):
     for anime_series in data.values():
-        if anime_series["year"] == year_seek:
+        if anime_series["Year"] == year_seek:
             yield anime_series
 
 
-def search_by_genre(genre_seek):
+def search_by_genres(genres_seek):
     for anime_series in data.values():
-        for genre in anime_series["genres"]:
-            if genre == genre_seek:
-                yield anime_series
-                break
+        set_seek = set([genre.lower() for genre in genres_seek])
+        set_current = set([genre.lower() for genre in anime_series["Genres"]])
+        if set_seek - set_current == set():
+            yield anime_series
