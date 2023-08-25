@@ -11,14 +11,6 @@ with open(FILE_PATH, "r", encoding="UTF-8") as file:
 fields = ["Title", "Studios", "Year", "Genres"]
 
 
-def greeting_message():
-    return "Welcome to digital anime series storage!"
-
-
-def goodbye_message():
-    return "Thank you for using our storage, have a great day!"
-
-
 def action():
     """Returns user input as option choice"""
 
