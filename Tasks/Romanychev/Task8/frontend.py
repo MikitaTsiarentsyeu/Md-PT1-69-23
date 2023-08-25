@@ -55,7 +55,17 @@ def get_new_item_input():
         "Enter year: ",
         "Enter genre: "
     ]
-    user_inputs = map(input, prompts)
+    user_inputs = []
+
+    for prompt in prompts:
+        while True:
+            input_value = input(prompt)
+            if not input_value:
+                print("This field is required. Please provide a value.")
+            else:
+                user_inputs.append(input_value)
+                break
+
     new_item = dict(zip(DATA_FIELDS, user_inputs))
     return new_item
 
@@ -72,7 +82,7 @@ def add_book_record(data_store):
     """
     new_item = get_new_item_input()
     data_store.add_book_record(new_item)
-    print("The item has been successfully added.")
+    print("\n\033[1;32mThe item has been successfully added.\033[0m")
 
 
 def delete_item(data_store, item_id):
