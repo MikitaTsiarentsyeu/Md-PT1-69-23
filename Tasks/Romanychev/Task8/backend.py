@@ -24,7 +24,7 @@ class DataStore:
         recalculate_ids(): Recalculates IDs of items after deletion.
         search_by_field(field_name, search_term): Searches items by a specific
         field value.
-        search_with_filters(filters): Searches items using multiple filters.
+        search_With_Multiple_Parameters(filters): Searches items using multiple filters.
 
     """
 
@@ -136,7 +136,7 @@ class DataStore:
             if search_term.lower() in item[field_name].lower():
                 yield item
 
-    def search_with_filters(self, filters):
+    def search_With_Multiple_Parameters(self, filters):
         """
         Search items using multiple filters.
 

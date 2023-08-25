@@ -34,6 +34,30 @@ import backend  # Import the backend module for data handling
 
 COLUMN_SEPARATOR_WIDTH = 3
 TABLE_RIGHT_MARGIN = 1
+DATA_FIELDS = ["title", "author", "year", "genre"]
+MENU_OPTIONS = ["List all items", "Add a new item", "Search by title",
+                "Search by author", "Search by year", "Search by genre",
+                "Multi-Criteria Search", "Delete an item by ID", "Quit"
+                ]
+
+
+def get_new_item_input():
+    """
+    Get input from the user for creating a new item.
+
+    Returns:
+        dict: A dictionary containing item details (title, author, year,
+        genre).
+    """
+    prompts = [
+        "Enter title: ",
+        "Enter author: ",
+        "Enter year: ",
+        "Enter genre: "
+    ]
+    user_inputs = map(input, prompts)
+    new_item = dict(zip(DATA_FIELDS, user_inputs))
+    return new_item
 
 
 def add_book_record(data_store):
@@ -46,21 +70,7 @@ def add_book_record(data_store):
     Returns:
         None
     """
-    # Collect input from the user
-    prompts = [
-        "Enter title: ",
-        "Enter author: ",
-        "Enter year: ",
-        "Enter genre: "
-    ]
-
-    # Prompt the user for input for each field
-    user_inputs = map(input, prompts)
-
-    # Create a new item dictionary with incremental ID
-    new_item = dict(zip(["title", "author", "year", "genre"], user_inputs))
-
-    # Add the new item to the data store
+    new_item = get_new_item_input()
     data_store.add_book_record(new_item)
     print("The item has been successfully added.")
 
@@ -155,17 +165,8 @@ def main():
     data_store = backend.create_data_store('data.json')
 
     # Define the menu options available to the user as a dictionary
-    options = {
-        "1": "List all items",
-        "2": "Add a new item",
-        "3": "Search by title",
-        "4": "Search by author",
-        "5": "Search by year",
-        "6": "Search by genre",
-        "7": "Search by filter",
-        "8": "Delete an item by ID",
-        "9": "Quit"
-    }
+    options = {str(index + 1): option for index,
+               option in enumerate(MENU_OPTIONS)}
 
     # Main loop to repeatedly present the menu to the user
     while True:
@@ -186,12 +187,10 @@ def main():
             case "2":
                 add_book_record(data_store)
             case "3" | "4" | "5" | "6":
-                field_mapping = {
-                    "3": "title",
-                    "4": "author",
-                    "5": "year",
-                    "6": "genre"
-                }
+                field_mapping = {}
+                for i, field in enumerate(DATA_FIELDS, start=3):
+                    field_mapping[str(i)] = field
+
                 field = field_mapping[choice]
                 search_term = input(f"Enter {field} to search: ")
                 search_result = list(
@@ -199,11 +198,12 @@ def main():
                 list_items(search_result)
             case "7":  # Handle the new "Search by filter" option
                 filters = {}
-                for field in ["title", "author", "year", "genre"]:
+                for field in DATA_FIELDS:
                     search_term = input(f"Enter {field} to search: ")
                     if search_term:
                         filters[field] = search_term
-                search_result = data_store.search_with_filters(filters)
+                search_result = data_store.search_With_Multiple_Parameters(
+                    filters)
                 list_items(search_result)
             case "8":
                 item_id = int(
