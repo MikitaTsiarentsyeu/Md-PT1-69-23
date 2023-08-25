@@ -132,9 +132,15 @@ class DataStore:
             dict: Items matching the search criteria.
 
         """
+        search_term = search_term.lower()
+        search_results = []
+
         for item in self.data:
-            if search_term.lower() in item[field_name].lower():
-                yield item
+            field_value = item[field_name].lower()
+            if any(word.startswith(search_term) for word in field_value.split()):
+                search_results.append(item)
+
+        return search_results
 
     def search_With_Multiple_Parameters(self, filters):
         """
@@ -148,9 +154,16 @@ class DataStore:
 
         """
         results = self.data
+
         for field, search_term in filters.items():
-            results = [item for item in results if search_term.lower()
-                       in item[field].lower()]
+            search_term = search_term.lower()
+            search_results = []
+            for item in results:
+                field_value = item[field].lower()
+                if any(word.startswith(search_term) for word in field_value.split()):
+                    search_results.append(item)
+            results = search_results
+
         return results
 
 

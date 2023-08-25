@@ -90,7 +90,8 @@ def delete_item(data_store, item_id):
     if data_store.delete_item_by_id(item_id):
         print("The item has been successfully deleted.")
     else:
-        print("Sorry, the item with the specified ID was not found.")
+        print(
+            "\n\033[1;31mSorry, the item with the specified ID was not found.\033[0m")
 
 
 def list_items(items):
@@ -105,7 +106,7 @@ def list_items(items):
     """
     items_list = list(items)
     if not items_list:
-        print("No items found.")
+        print("\n\033[1;31mNo items found.\033[0m")
         return
 
     # Define headers for the columns in the table
@@ -171,7 +172,7 @@ def main():
     # Main loop to repeatedly present the menu to the user
     while True:
         print(
-            "\nWelcome to the Library System!\n\n\033[1;32mChoose an option:\033[0m")
+            "\n\033[1;4mWelcome to the Library System!\033[0m\n\n\033[1;32mChoose an option:\033[0m")
 
         # Display the menu options with corresponding indices
         for key, value in options.items():
