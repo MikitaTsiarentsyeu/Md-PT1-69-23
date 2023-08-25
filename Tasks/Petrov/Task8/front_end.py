@@ -6,6 +6,7 @@ import back_end
 GREETING_MSG = "Welcome to digital anime series storage!"
 GOODBYE_MSG = "Thank you for using our storage, have a great day!"
 
+
 def separation():
     """Printing the line and waiting for visual part"""
 
