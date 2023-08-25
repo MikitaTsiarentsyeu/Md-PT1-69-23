@@ -1,0 +1,3 @@
+Execution time - 0.0
+All values - (8, 10)
+Result - 18
