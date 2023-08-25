@@ -114,7 +114,7 @@ def search_by_title(title_seek):
         string line as search for title"""
 
     for anime_series in data.values():
-        if anime_series["Title"].lower() == title_seek.lower():
+        if title_seek.lower() in anime_series["Title"].lower():
             yield anime_series
 
 
@@ -125,7 +125,7 @@ def search_by_studios(studios_seek):
         string line as search for studios"""
 
     for anime_series in data.values():
-        if anime_series["Ttudios"].lower() == studios_seek.lower():
+        if studios_seek.lower() in anime_series["Studios"].lower():
             yield anime_series
 
 
