@@ -22,9 +22,10 @@ Usage Examples:
 - If searching items by year of release piques your interest, opt for option 5
 and input the year.
 - To search items by genre, select option 6 and enter the genre.
-- To delete an item by its ID, select option 7 and input the corresponding ID.
+- To search items using multiple filters, select option 7 and input filters.
+- To delete an item by its ID, select option 8 and input the corresponding ID.
 - To gracefully conclude your interaction with the application, select
-option 8.
+option 9.
 
 """
 
