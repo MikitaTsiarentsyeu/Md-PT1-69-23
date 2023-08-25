@@ -184,25 +184,17 @@ def main():
                 list_items(data_store.get_all_items())
             case "2":
                 add_book_record(data_store)
-            case "3":
-                search_term = input("Enter title to search: ")
+            case "3" | "4" | "5" | "6":
+                field_mapping = {
+                    "3": "title",
+                    "4": "author",
+                    "5": "year",
+                    "6": "genre"
+                }
+                field = field_mapping[choice]
+                search_term = input(f"Enter {field} to search: ")
                 search_result = list(
-                    data_store.search_by_field("title", search_term))
-                list_items(search_result)
-            case "4":
-                search_term = input("Enter author to search: ")
-                search_result = list(
-                    data_store.search_by_field("author", search_term))
-                list_items(search_result)
-            case "5":
-                search_term = input("Enter year to search: ")
-                search_result = list(
-                    data_store.search_by_field("year", search_term))
-                list_items(search_result)
-            case "6":
-                search_term = input("Enter genre to search: ")
-                search_result = list(
-                    data_store.search_by_field("genre", search_term))
+                    data_store.search_by_field(field, search_term))
                 list_items(search_result)
             case "7":  # Handle the new "Search by filter" option
                 filters = {}
