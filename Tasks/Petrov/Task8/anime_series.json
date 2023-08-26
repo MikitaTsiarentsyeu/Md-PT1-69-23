@@ -1,0 +1,91 @@
+{
+    "1": {
+        "Title": "Death Note",
+        "Studios": "MADHOUSE",
+        "Year": 2006,
+        "Genres": [
+            "Mystery",
+            "Psychological",
+            "Supernatural",
+            "Thriller"
+        ]
+    },
+    "2": {
+        "Title": "One-Punch Man",
+        "Studios": "MADHOUSE",
+        "Year": 2015,
+        "Genres": [
+            "Action",
+            "Comedy",
+            "Sci-Fi",
+            "Supernatural"
+        ]
+    },
+    "3": {
+        "Title": "Steins;Gate",
+        "Studios": "White Fox",
+        "Year": 2011,
+        "Genres": [
+            "Drama",
+            "Psychological",
+            "Sci-Fi",
+            "Thriller"
+        ]
+    },
+    "4": {
+        "Title": "Sword Art Online",
+        "Studios": "A-1 Pictures",
+        "Year": 2012,
+        "Genres": [
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Romance"
+        ]
+    },
+    "5": {
+        "Title": "Kanon",
+        "Studios": "Kyoto Animation",
+        "Year": 2006,
+        "Genres": [
+            "Drama",
+            "Romance",
+            "Slice of Life",
+            "Supernatural"
+        ]
+    },
+    "6": {
+        "Title": "The Future Diary",
+        "Studios": "Asread",
+        "Year": 2011,
+        "Genres": [
+            "Action",
+            "Horror",
+            "Mystery",
+            "Psychological",
+            "Supernatural",
+            "Thriller"
+        ]
+    },
+    "7": {
+        "Title": "Plastic Memories",
+        "Studios": "Doga Kobo",
+        "Year": 2015,
+        "Genres": [
+            "Comedy",
+            "Drama",
+            "Romance",
+            "Sci-Fi",
+            "Slice of Life"
+        ]
+    },
+    "8": {
+        "Title": "Golden Time",
+        "Studios": "J.C. Staff",
+        "Year": 2013,
+        "Genres": [
+            "Drama",
+            "Romance"
+        ]
+    }
+}
