@@ -112,7 +112,7 @@ def is_there_title(title_seek):
     """Returns a generator that has anime series with proper title
 
     title_seek
-        string line as search for title"""
+        string line as search by title"""
 
     for anime_series in data.values():
         if title_seek.lower() == anime_series["Title"].lower():
@@ -131,10 +131,10 @@ def search_by_title(title_seek):
 
 
 def search_by_studios(studios_seek):
-    """Returns a generator that has anime series with proper studios
+    """Returns a generator that has anime series with relevant studios
 
     studios_seek
-        string line as search for studios"""
+        string line as full or partial match to search for studios"""
 
     for anime_series in data.values():
         if studios_seek.lower() in anime_series["Studios"].lower():
