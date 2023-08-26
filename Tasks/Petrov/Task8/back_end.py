@@ -67,9 +67,10 @@ def filling_new_series(new_title):
         if field == "Year":
             new_series.append(int(value))
         elif field == "Genres":
-            new_series.append(value.split(", "))
+            values = value.split(", ")
+            new_series.append([new_value.capitalize() for new_value in values])
         else:
-            new_series.append(value)
+            new_series.append(value.capitalize())
     return {field: value for field, value in zip(fields, new_series)}
 
 
@@ -107,11 +108,22 @@ def search_anime_series_by_field(field_seek, input_text):
         return search_by_genres(input_text.split(", "))
 
 
-def search_by_title(title_seek):
+def is_there_title(title_seek):
     """Returns a generator that has anime series with proper title
 
     title_seek
         string line as search for title"""
+
+    for anime_series in data.values():
+        if title_seek.lower() == anime_series["Title"].lower():
+            yield anime_series
+
+
+def search_by_title(title_seek):
+    """Returns a generator that has anime series with relevant title
+
+    title_seek
+        string line as full or partial match to search for title"""
 
     for anime_series in data.values():
         if title_seek.lower() in anime_series["Title"].lower():

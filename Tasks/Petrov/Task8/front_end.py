@@ -75,12 +75,13 @@ def add_new_anime_series():
     try:
 
         # If anime series with such title was found, nothing will be added
-        next(back_end.search_by_title(new_title))
+        next(back_end.is_there_title(new_title))
         print("This series is already in our storage")
     except StopIteration:
         print("Okay")
         try:
             while True:
+                new_title = new_title.capitalize()
 
                 # Filling other fields of the object
                 print("Fill the next parameters of this series:")
