@@ -108,25 +108,22 @@ def search_anime_series_by_field(field_seek, input_text):
         return search_by_genres(input_text.split(", "))
 
 
-def is_there_title(title_seek):
-    """Returns a generator that has anime series with proper title
-
-    title_seek
-        string line as search by title"""
-
-    for anime_series in data.values():
-        if title_seek.lower() == anime_series["Title"].lower():
-            yield anime_series
-
-
-def search_by_title(title_seek):
+def search_by_title(title_seek, full_search=False):
     """Returns a generator that has anime series with relevant title
 
     title_seek
-        string line as full or partial match to search for title"""
+        string line as full or partial match to search for title
+    full_search
+        flag for searching strictly full match"""
 
     for anime_series in data.values():
-        if title_seek.lower() in anime_series["Title"].lower():
+        title_seek = title_seek.lower()
+        current_search = anime_series["Title"].lower()
+        if not full_search:
+            match = title_seek in current_search
+        else:
+            match = title_seek == current_search
+        if match:
             yield anime_series
 
 
