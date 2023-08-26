@@ -3,9 +3,6 @@
 import time
 import back_end
 
-GREETING_MSG = "Welcome to digital anime series storage!"
-GOODBYE_MSG = "Thank you for using our storage, have a great day!"
-
 
 def separation():
     """Printing the line and waiting for visual part"""
@@ -17,15 +14,17 @@ def separation():
 def welcome():
     """Printing the welcome message"""
 
-    print(GREETING_MSG)
+    greeting_message = "Welcome to digital anime series storage!"
+    print(greeting_message)
     separation()
 
 
 def ending():
     """Printing the goodbye message"""
 
+    goodbye_message = "Thank you for using our storage, have a great day!"
     separation()
-    print(GOODBYE_MSG)
+    print(goodbye_message)
 
 
 def process():

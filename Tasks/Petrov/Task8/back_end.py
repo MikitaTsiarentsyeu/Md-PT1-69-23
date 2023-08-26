@@ -34,7 +34,7 @@ def all_anime_series():
     return result
 
 
-def format_anime_series(anime_series):
+def format_anime_series(anime_series: dict) -> list:
     """Returns list of strings with fields of one anime series"""
 
     result = []
@@ -54,7 +54,7 @@ def format_anime_series(anime_series):
     return result
 
 
-def filling_new_series(new_title):
+def filling_new_series(new_title: str) -> dict:
     """Returns dictionary object of new anime series
 
     new_title
@@ -74,7 +74,7 @@ def filling_new_series(new_title):
     return {field: value for field, value in zip(fields, new_series)}
 
 
-def add_new_anime_series(new_series):
+def add_new_anime_series(new_series: dict):
     """Adding new anime series to storage
 
     new_series
@@ -89,7 +89,7 @@ def add_new_anime_series(new_series):
         json.dump(data, file, indent=4)
 
 
-def search_anime_series_by_field(field_seek, input_text):
+def search_anime_series_by_field(field_seek: str, input_text: str):
     """Searching for anime series by field from inputted text.
     Returns generator with proper anime series
 
@@ -108,7 +108,7 @@ def search_anime_series_by_field(field_seek, input_text):
         return search_by_genres(input_text.split(", "))
 
 
-def search_by_title(title_seek, full_search=False):
+def search_by_title(title_seek: str, full_search=False):
     """Returns a generator that has anime series with relevant title
 
     title_seek
@@ -127,7 +127,7 @@ def search_by_title(title_seek, full_search=False):
             yield anime_series
 
 
-def search_by_studios(studios_seek):
+def search_by_studios(studios_seek: str):
     """Returns a generator that has anime series with relevant studios
 
     studios_seek
@@ -138,7 +138,7 @@ def search_by_studios(studios_seek):
             yield anime_series
 
 
-def search_by_year(year_seek):
+def search_by_year(year_seek: int):
     """Returns a generator that has anime series with proper year
 
     year_seek
@@ -149,7 +149,7 @@ def search_by_year(year_seek):
             yield anime_series
 
 
-def search_by_genres(genres_seek):
+def search_by_genres(genres_seek: list):
     """Returns a generator that has anime series with proper genres
 
     genres_seek
