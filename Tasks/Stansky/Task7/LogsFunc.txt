@@ -1,0 +1,4 @@
+Logs of function "sum_elem":
+The function has arguments: (0, 20, 448, 5687, 14687963) 
+Function execution time 0.000000 seconds:
+Function execution result: 3172711401424943411032
