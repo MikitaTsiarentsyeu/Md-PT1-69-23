@@ -1,0 +1,56 @@
+[
+    {
+        "author": "author",
+        "genre": "genre",
+        "title": "title",
+        "year": "year"
+    },
+    {
+        "author": "Sandro Botticelli",
+        "genre": "History Painting",
+        "title": "Birth of Venus",
+        "year": "1485"
+    },
+    {
+        "author": "Leonardo da Vinci",
+        "genre": "Portrait",
+        "title": "Mona Lisa",
+        "year": "1503"
+    },
+    {
+        "author": "Leonardo da Vinci",
+        "genre": "History Painting",
+        "title": "The Last Supper",
+        "year": "1498"
+    },
+    {
+        "author": "Rafael Santi",
+        "genre": "Christian art",
+        "title": "Sistine Madonna",
+        "year": "1515"
+    },
+    {
+        "author": "Michelangelo",
+        "genre": "Christian art",
+        "title": "Creation of Adam",
+        "year": "1511"
+    },
+    {
+        "author": "autor pic",
+        "genre": "testGenre",
+        "title": "name pic",
+        "year": "1990"
+    },
+    {
+        "author": "autor pic",
+        "genre": "testGenre",
+        "title": "name pic",
+        "year": "1990"
+    },
+    {
+        "author": "El Greco",
+        "genre": "Christian art",
+        "title": "Christ bearing the cross",
+        "year": "1580"
+    }
+]
