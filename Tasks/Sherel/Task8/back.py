@@ -32,3 +32,5 @@ class DataBase:
         for i in data:
             if self in i[by]:
                 yield i
+            else:
+                'pictures not found'

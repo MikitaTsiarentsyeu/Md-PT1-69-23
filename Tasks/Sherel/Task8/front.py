@@ -27,21 +27,11 @@ Please select the desired action: """)
                 search = input('\nI am a smart search and I can search by: \n1) by Title picture\n2) by Author picture\n'
                                '3) by Year picture\n4) by Genre picture''\n\nEnter the search number you are interested in: ')
                 try:
-                    search = int(search)
-                    if search not in [1, 2, 3, 4]:
-                        raise RuntimeError("\nYou entered not an integer or there is no such menu item, try again: ")
-                    elif search == 1:
-                        title = input('Enter the Title of the picture: ')
-                        print(tabulate.tabulate([x for x in db.gen_search_in_collection(title, 'title')], showindex="always"))
-                    elif search == 2:
-                        author = input('Enter the Author of the picture: ')
-                        print(tabulate.tabulate([x for x in db.gen_search_in_collection(author, 'author')], showindex="always"))
-                    elif search == 3:
-                        year = input('Enter the Year of the picture: ')
-                        print(tabulate.tabulate([x for x in db.gen_search_in_collection(year, 'year')], showindex="always"))
-                    elif search == 4:
-                        genre = input('Enter the Genre of the picture: ')
-                        print(tabulate.tabulate([x for x in db.gen_search_in_collection(genre, 'genre')], showindex="always"))
+                    test = {'1': 'title', '2': 'author', '3': 'year', '4': 'genre'}
+                    for i in test:
+                        if search in i:
+                            search_input = input(f'Enter the {test[i]} of the picture: ')
+                            print(f"""{tabulate.tabulate([x for x in db.gen_search_in_collection(search_input, test[i])])}""")
                 except ValueError:
                     print("\nYou entered not an integer or there is no such menu item, try again: ")
         except ValueError:
