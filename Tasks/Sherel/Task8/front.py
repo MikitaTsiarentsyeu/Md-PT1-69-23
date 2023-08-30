@@ -1,5 +1,7 @@
 import tabulate #printing small tables without hassle
-from back import DataBase as db
+from back import DataBase
+
+db = DataBase('data.json')
 
 def main():
     while True:
@@ -17,9 +19,21 @@ Please select the desired action: """)
             elif number == 0:
                 main()
             elif number == 1:
-                db.post_collection(dict)
+                message_for_user = ["Name picture: ", "Author picture: ", "Year picture: ", "Genre picture: "]
+                headers = ["title", "author", "year", "genre"]
+                user_inputs = []
+                for x in message_for_user:
+                    while True:
+                        input_value = input(x)
+                        if not input_value:
+                            print("The field cannot be empty, please enter a value.")
+                        else:
+                            user_inputs.append(input_value)
+                            break
+                print('\nThe picture has been added to the database.') if db.post_collection(headers, user_inputs) is True else print('oops')
             elif number == 2:
-                db.get_collection(list)
+                print('\nDatabase is empty or missing') if db.get_collection() == None else (
+                    print(f'\n{tabulate.tabulate(db.get_collection(), headers="firstrow")}'))
             elif number == 4:
                 print('\nBye, all the best!')
                 exit()

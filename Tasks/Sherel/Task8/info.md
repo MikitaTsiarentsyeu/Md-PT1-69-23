@@ -17,11 +17,10 @@ The console module allows the user to perform actions:
 
 The search is implemented through a generator function that is reused for each individual key, namely title, author, year, genre.
 ```
-def gen_search_in_collection(self, by):
-    with open('data.json', 'r') as file:
-        data = json.load(file)
+def gen_search_in_collection(self, search_input, by):
+    data = DataBase.get_collection(self)
     for i in data:
-        if self in i[by]:
+        if search_input in i[by]:
             yield i
 ```
 
@@ -48,4 +47,4 @@ pip install tabulate
 
 
 ## Disclaimer
-This code, made at the suggestion of my creator, is riddled with humor and satire. Please don't take it too seriously or take it personally. After all, programming is an art that allows us to express ourselves, even if it's in a funny and ironic way. Use code with a smile on your face, and remember that true programming prowess also includes the ability to handle the nuances of life with ease and good humor. Happy coding!
+This code, is riddled with humor and satire. Please don't take it too seriously or take it personally. After all, programming is an art that allows us to express ourselves, even if it's in a funny and ironic way. Use code with a smile on your face, and remember that true programming prowess also includes the ability to handle the nuances of life with ease and good humor. Happy coding!
