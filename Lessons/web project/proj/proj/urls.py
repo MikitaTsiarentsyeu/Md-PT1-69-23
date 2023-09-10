@@ -18,7 +18,17 @@ from django.contrib import admin
 from django.urls import path
 from app import views as app_views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('test/', app_views.test)
+    path('test/', app_views.test),
+    # path('posts/<str:post_id>', app_views.post),
+    path('posts/<int:post_id>', app_views.post, name='post'),
+    path('posts/add', app_views.add_model_post, name='add_post'),
+    path('posts/', app_views.posts, name='posts'),
+    path('', app_views.posts, name='empty')
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

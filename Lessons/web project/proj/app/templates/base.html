@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Example</title>
+  <link rel="stylesheet" href="{% static 'app/css/style.css' %}" />
+</head>
+<body>
+    <header>
+        <a href="{% url 'empty' %}"><h1 class="title" id="title">My Blog</h1></a>
+    </header>
+  <div class="container">
+    <div class="column">
+        {% block content %}
+        {% endblock %}
+    </div>
+  </div>
+  <footer id="footer">
+    <p>&copy; 2023 Flexbox Example</p>
+  </footer>
+</body>
+</html>
