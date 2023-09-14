@@ -1,0 +1,20 @@
+[
+    {
+        "title": "The Dark Side of the Moon",
+        "artist_or_director": "Pink Floyd",
+        "year": 1973,
+        "genre": "Progressive rock"
+    },
+    {
+        "title": "The Godfather",
+        "artist_or_director": "Francis Ford Coppola",
+        "year": 1972,
+        "genre": "Crime drama"
+    },
+    {
+        "title": "Thriller",
+        "artist_or_director": "Michael Jackson",
+        "year": 1982,
+        "genre": "Pop"
+    }
+]
