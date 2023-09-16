@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 import datetime
 from .models import Author, Post
 from .forms import AddPost, AddPostModelForm
+from django.contrib.auth.decorators import permission_required
 
 # Create your views here.
 def test(request):
@@ -14,15 +15,21 @@ def test(request):
 def post(request, post_id):
     try:
         p = Post.objects.get(id=post_id)
+        viewed_posts = request.session.get('viewed_posts', [])
+        if post_id not in viewed_posts:
+            viewed_posts.append(post_id)
+        request.session['viewed_posts'] = viewed_posts
     except:
         p = False
     return render(request, 'post.html', {'post':p})
 
 def posts(request):
     posts = Post.objects.all()
+    viewed_posts = request.session.get('viewed_posts', [])
     
-    return render(request, 'posts.html', {'posts':posts})
+    return render(request, 'posts.html', {'posts':posts, 'viewed_posts':viewed_posts})
 
+@permission_required('app.add_post')
 def add_post(request):
     if request.method == "POST":
         form = AddPost(request.POST, request.FILES)
@@ -42,13 +49,14 @@ def add_post(request):
         form = AddPost()
     return render(request, 'add_post.html', {'form':form})
 
+@permission_required('app.add_post')
 def add_model_post(request):
     if request.method == "POST":
         form = AddPostModelForm(request.POST, request.FILES)
 
         if form.is_valid():
             post_entry = form.save(commit=False)
-            post_entry.author = Author.objects.all()[0]
+            post_entry.author = Author.objects.get(email=request.user.email)
             post_entry.issued = datetime.datetime.now()
             post_entry.save()
             # form.save_m2m()

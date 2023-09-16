@@ -5,6 +5,9 @@
     <a href="{% url 'post' post.id %}">
         <h3>{{post.title}}</h3>
     </a>
+    {% if post.id in viewed_posts %}
+    |viewed|
+    {% endif %}
     {% if post.image %}
         <img class="image" src="{{post.image.url}}" />
     {% endif %}

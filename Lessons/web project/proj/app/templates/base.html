@@ -7,8 +7,17 @@
   <link rel="stylesheet" href="{% static 'app/css/style.css' %}" />
 </head>
 <body>
-    <header>
+    <header style="color: white;">
         <a href="{% url 'empty' %}"><h1 class="title" id="title">My Blog</h1></a>
+        {% if user.is_authenticated %}
+          <p>{{ user.get_username }}|</p>
+          {% if perms.app.add_post %}
+            <a style="color: azure;" href="{% url 'add_post' %}">add post|</a>
+          {% endif %}
+          <a style="color: azure;" href="{% url 'logout' %}?next={{request.path}}">logout</a>
+        {% else %}
+          <a style="color: azure;" href="{% url 'login' %}?next={{request.path}}">login</a>
+        {% endif %}
     </header>
   <div class="container">
     <div class="column">
