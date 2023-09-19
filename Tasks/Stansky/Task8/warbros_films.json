@@ -1,0 +1,32 @@
+{
+    "1": {
+        "Title": "Barbie",
+        "Director": "Greta Gerwig",
+        "Year": 2023,
+        "Genre": "Comedy"
+    },
+    "2": {
+        "Title": "Aquaman",
+        "Director": "James Wan",
+        "Year": 2018,
+        "Genre": "Action"
+    },
+    "3": {
+        "Title": "Joker",
+        "Director": "Todd Phillips",
+        "Year": 2019,
+        "Genre": "Thriller"
+    },
+    "4": {
+        "Title": "Inception",
+        "Director": "Christopher Nolan",
+        "Year": 2010,
+        "Genre": "Thriller"
+    },
+    "5": {
+        "Title": "Gravity",
+        "Director": "Alfonso Cuaron",
+        "Year": 2013,
+        "Genre": "Suspense"
+    }
+}
