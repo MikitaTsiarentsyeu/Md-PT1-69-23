@@ -79,7 +79,9 @@ elif mm==1 or mm==21 or mm==31 or mm==41:
     print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[0],my_dict[hh][1],x)
 elif 1<mm<5 or 21<mm<25 or 31<mm<35 or 41<mm<45:
     print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[1],my_dict[hh][1],x)
-elif 4<mm<15 or 15<mm<21 or 24<mm<30 or 34<mm<41:
+elif mm==20 or mm==30 or mm==40:
+    print(your_time,' - ',my_dict[mm][2],mm_words[2],my_dict[hh][1],x)
+elif 4<mm<15 or 15<mm<20 or 24<mm<30 or 34<mm<40:
     print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[2],my_dict[hh][1],x)
 elif mm==45:
     if hh==11 and x=="(время после полудня)":
