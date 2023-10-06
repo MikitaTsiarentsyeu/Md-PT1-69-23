@@ -21,13 +21,9 @@ while True:
         print("You entered the wrong data format!\n")
         continue
     hh,mm=int(hh),int(mm)
-    if hh>24:
-        print("Incorrect input, the hour value sould be less then 24!\n")
+    if hh>23 or mm>59:
+        print("Incorrect input, the hour value sould be less then 24, and the minutes value sould be less then 60!\n")
         continue
-    if mm>59:
-        print("Incorrect input, the minutes value sould be less then 60!\n")
-        continue
-
     break
 
         
@@ -45,7 +41,7 @@ my_dict={0:['полночь','первого','ровно',''],
          10:['десять','одиннадцатого','десять','без'],
          11:['одиннадцать','двенадцатого','одиннадцать','без одиннадцати'],
          12:['полдень','первого','двенадцать','без двенадцати'],
-         13:['','','тринадцать','без тринадцати'],
+         13:['час','','тринадцать','без тринадцати'],
          14:['','','четырнадцать','без четырнадцати'],
          15:['четверть','','','без четверти'],
          16:['','','шестнадцать',''],
@@ -58,12 +54,14 @@ my_dict={0:['полночь','первого','ровно',''],
 hh_words=('часов','часа')
 mm_words=('минута','минуты','минут')
 x="(время до полудня)"
-m1=(mm//10)*10
-m2=mm-m1
+if mm>20:
+    m1=(mm//10)*10
+    m2=mm-m1
 
-if 12<hh<24:
-    hh-=12
+if 11<hh<24:
     x="(время после полудня)"
+if 12<hh<24:
+    hh=hh%12
 if mm==0:
     if hh==0 or hh==12:
         print(your_time,' - ',my_dict[hh][0])
@@ -75,19 +73,23 @@ if mm==0:
         print(your_time,' - ',my_dict[hh][0],hh_words[0],my_dict[mm][2],x)
 elif mm==15 or mm==30:
     print(your_time,' - ',my_dict[mm][0],my_dict[hh][1],x)
-elif mm==1 or mm==21 or mm==31 or mm==41:
-    print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[0],my_dict[hh][1],x)
-elif 1<mm<5 or 21<mm<25 or 31<mm<35 or 41<mm<45:
-    print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[1],my_dict[hh][1],x)
-elif mm==20 or mm==30 or mm==40:
-    print(your_time,' - ',my_dict[mm][2],mm_words[2],my_dict[hh][1],x)
-elif 4<mm<15 or 15<mm<20 or 24<mm<30 or 34<mm<40:
-    print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[2],my_dict[hh][1],x)
 elif mm==45:
     if hh==11 and x=="(время после полудня)":
         print(your_time,' - ',my_dict[60-mm][3],my_dict[0][0],x)
     else:
-        print(your_time,' - ',my_dict[60-mm][3],my_dict[hh][1],x)
+        print(your_time,' - ',my_dict[60-mm][3],my_dict[hh+1][0],x)
+elif mm==1:
+    print(your_time,' - ',my_dict[mm][2],mm_words[0],my_dict[hh][1],x)
+elif mm==21 or mm==31 or mm==41:
+    print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[0],my_dict[hh][1],x)
+elif 1<mm<5:
+    print(your_time,' - ',my_dict[mm][2],mm_words[1],my_dict[hh][1],x)
+elif 21<mm<25 or 31<mm<35 or 41<mm<45:
+    print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[1],my_dict[hh][1],x)
+elif 4<mm<15 or 15<mm<21 or mm==40:
+    print(your_time,' - ',my_dict[mm][2],mm_words[2],my_dict[hh][1],x)
+elif 24<mm<30 or 34<mm<40:
+    print(your_time,' - ',my_dict[m1][2],my_dict[m2][2],mm_words[2],my_dict[hh][1],x)
 elif 45<mm<59:
     if hh==11 and x=="(время после полудня)":
         print(your_time,' - ',my_dict[60-mm][3],mm_words[2],my_dict[0][0],x)
