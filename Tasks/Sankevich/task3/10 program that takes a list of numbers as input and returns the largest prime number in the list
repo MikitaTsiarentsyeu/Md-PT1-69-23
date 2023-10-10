@@ -1,0 +1,40 @@
+import math
+
+list_of_numbers = []
+list_OF_PRIME = []
+check_list = []
+
+flag = True
+while flag == True:
+    add_number_or_done = input('Gimme some number or print "done": ')
+    if add_number_or_done == 'done':
+        break
+
+    while add_number_or_done.isdigit() == False:
+        add_number_or_done = input('Gimme some number or print "done": ')
+
+    if add_number_or_done.isdigit() == True:
+        list_of_numbers.append(int(add_number_or_done))
+
+for number in list_of_numbers:
+
+    if number < 2:
+        continue
+
+    if number == 2:
+        list_OF_PRIME.append(2)
+
+    if number > 2:
+        for i in range(2, math.ceil(number ** 0.5) + 1):
+            if number % i == 0:
+                check_list.append(i)
+                break
+
+        if check_list == []:
+            list_OF_PRIME.append(number)
+            
+    check_list.clear()
+            
+
+print(list_OF_PRIME)
+
