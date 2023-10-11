@@ -165,6 +165,8 @@ def search():
     count = 0
     items = Cinematheque()
     for item in gener:
+        print(item)
+        print(type(item))
         items.append(item)
         count += 1
 
@@ -201,7 +203,7 @@ def search_by_year():
     year = year_validation(year)
     if not year:
         print("Be careful with entering a year!!!")
-        return search_by_year()
+        yield from search_by_year()
     for movie in movies:
         if movie.year == year:
             yield movie
